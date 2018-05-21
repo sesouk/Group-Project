@@ -6,6 +6,7 @@ drop table if exists productoptions;
 drop table if exists productcategories;
 drop table if exists optiontable;
 drop table if exists optiongroups;
+drop table if exists cart;
 
 create table cart(
 cartID serial primary key,

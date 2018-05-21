@@ -8,11 +8,11 @@ import store from "./ducks/store";
 import { Provider } from "react-redux";
 
 ReactDOM.render(
-//   <Provider store={store}>
+  <Provider store={store}>
     <Br>
       <App />
     </Br>
-//   </Provider>
+  </Provider>
 ,
   document.getElementById("root")
 );
