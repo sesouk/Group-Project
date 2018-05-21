@@ -3,9 +3,9 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const session = require("express-session")
 const massive = require("massive")
-import userCtrl from './user_controller'
-import productCtrl from './product_controller'
-import orderCtrl from './order_controller'
+const userCtrl = require('./user_controller')
+const productCtrl = require('./product_controller')
+const orderCtrl = require('./order_controller')
 
 const app = express()
 app.use(bodyParser.json())
