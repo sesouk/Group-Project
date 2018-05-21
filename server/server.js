@@ -35,10 +35,12 @@ app.delete("/api/shop/:id", productCtrl.deleteProduct)
 app.put("/api/shop/:id", productCtrl.updateProduct)
 app.post("/api/shop", productCtrl.createProduct)
 
-app.get("/auth/callback", userCtrl.auth)
+app.get("/auth/callback", userCtrl.auth) //auth0 endpoint
 app.post("/api/logout", userCtrl.logout)
 app.get("/api/user-data", (req, res) => {
   res.json({ user: req.session.user })
 })
 app.post("/api/cart", userCtrl.cart)
-app.get("/api/admin", userCtrl.admin)
+
+app.get('/api/users', userCtrl.getUsers) //for admin page to get all users
+app.get('/api/orders', orderCtrl.getOrders) //get users orders

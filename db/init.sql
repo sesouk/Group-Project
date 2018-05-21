@@ -16,10 +16,10 @@ userState varchar(20),
 userZip varchar(20),
 userPhone varchar(20),
 userAddress varchar(100)
-)
+);
 
 create table orders(
-orderID int,
+orderID serial primary key,
 orderUserID int references users(userID),
 orderAmount float,
 orderShipAddress varchar(100),
@@ -33,19 +33,15 @@ orderEmail varchar(100),
 orderDate timestamp,
 orderShipped int,
 orderTrackingNumber varchar(80)
-)
+);
 
-create table orderdetails(
-detailID int,
-detailOrderID int references orders(orderID),
-detailProductID int reference products(productID), 
-detailName varchar(250),
-detailPrice float,
-detailSKU varchar(50),
-detailQuantity int))
+create table productcategories(
+categoryID int UNIQUE,
+categoryName varchar(50)
+);
 
 create table products(
-productID int,
+productID serial primary key,
 productSKU varchar(50),
 productName varchar(100),
 productPrice float,
@@ -57,27 +53,37 @@ productThumb varchar(100),
 productImage varchar(100),
 productCategoryID int references productcategories(categoryID),
 productUpdateDate timestamp,
-productStock float,
-productLive tinyint(1),
-productUnlimited tinyint(10),
-productLocation varchar(250)
-)
+productStock float
+);
 
-create table productcategories(
-categoryID int,
-categoryName varchar(50))
+
+create table orderdetails(
+detailID serial primary key,
+detailOrderID int references orders(orderID),
+detailProductID int references products(productID), 
+detailName varchar(250),
+detailPrice float,
+detailSKU varchar(50),
+detailQuantity int
+);
+
+create table optiongroups(
+optionGroupID text primary key UNIQUE,
+optionGroupName varchar(50)
+);
+
+create table optiontable(
+optionID int unique,
+optionName text references optiongroups(optionGroupID)
+);
+
 
 create table productoptions(
 productOptionID int,
-optionID int references options(optionID),
+optionID int references optiontable(optionID),
 productID int references products(productID),
 optionGroupID int,
-optionPriceIncrement double)
+optionPriceIncrement float
+);
 
-create table options(
-optionID int,
-optionName varchar(50) references optionGroupID int)
 
-create table optiongroups(
-optionGroupID int,
-optionGroupName varchar(50))
