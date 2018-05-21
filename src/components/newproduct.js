@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const NewProduct = () => {
-    return (
-        <h1>New Product</h1>
-    );
-};
-
-export default NewProduct;
+export default class NewProduct extends Component {
+    render() {
+        return (
+            <h1>New Product</h1>
+        )
+    }
+}

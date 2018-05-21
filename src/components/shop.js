@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const Shop = () => {
-    return (
-        <h1>Stop N Shop</h1>
-    );
-};
-
-export default Shop;
+export default class Shop extends Component {
+    render() {
+        return (
+            <h1>Stop N Shop</h1>
+        )
+    }
+}

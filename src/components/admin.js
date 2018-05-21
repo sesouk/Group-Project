@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-const Admin = () => {
-    return (
-        <h1>Admin</h1>
-    );
-};
-
-export default Admin;
+export default class Admin extends Component {
+    render() {
+        return (
+            <h1>Admin</h1>
+        )
+    }
+}
