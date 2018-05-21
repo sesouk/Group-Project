@@ -1,2 +1,4 @@
-insert into products(productstock)
-values(0) where productID = $1;
+update products
+set productstock = 0
+where productID = $1
+returning *;
