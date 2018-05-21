@@ -7,6 +7,11 @@ drop table if exists productcategories;
 drop table if exists optiontable;
 drop table if exists optiongroups;
 
+create table cart(
+cartID serial primary key,
+cartTotal float,
+cartItems text
+)
 create table users(
 userID serial primary key,
 userName varchar(100),
@@ -15,7 +20,8 @@ userCity varchar(100),
 userState varchar(20),
 userZip varchar(20),
 userPhone varchar(20),
-userAddress varchar(100)
+userAddress varchar(100),
+cartID int references cart(cartID)
 );
 
 create table orders(
