@@ -1,3 +1,3 @@
 
 select * from users
-where userid =  $1;;
+where userid =  $1;
