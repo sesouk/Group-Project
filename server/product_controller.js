@@ -2,7 +2,8 @@
 module.exports ={
   createProduct:(req,res,next)=>{
         const dbInstance = req.app.get('db')
-        dbInstance.createProduct().then(products =>res.status(200).send(products))
+        const {productname,productprice,productshortdesc, productstock}=req.body;
+        dbInstance.createProduct(productname,productprice,productshortdesc, productstock).then(products =>res.status(200).send(products))
         .catch(error =>console.log(error))
     },
     
@@ -15,14 +16,21 @@ module.exports ={
 
     deleteProduct:(req,res,next)=>{
         const dbInstance = req.app.get('db')
-        dbInstance.deleteProduct().then(products =>res.status(200).send(products))
+        console.log("parameters are",req.params);
+        const productId=req.params.id;
+        dbInstance.deleteProduct(productId).then(products =>res.status(200).send(products))
         .catch(error =>console.log(error))
     },
 
 
     updateProduct:(req,res,next)=>{
         const dbInstance = req.app.get('db')
-        dbInstance.updateProduct().then(products =>res.status(200).send(products))
+       const {params,query} = req;
+       console.log("params are", params)
+       const {productprice,productname,productstock}=req.body;
+
+       console.log(productprice,productname,productstock);
+        dbInstance.updateProduct(params.id,productprice,productname,productstock).then(updatedProduct =>res.status(200).send(updatedProduct))
         .catch(error =>console.log(error))
     },
 }
