@@ -2,7 +2,7 @@ import React from 'react'
 import cart from './components/cart'
 import home from './components/home'
 import shop from './components/shop'
-import Admin from './components/admin'
+import Admin from './components/Admin'
 import newproduct from './components/newproduct'
 import {Route, Switch} from 'react-router-dom'
 
