@@ -4,7 +4,7 @@ drop table if exists orderdetails;
 drop table if exists products;
 drop table if exists productoptions;
 drop table if exists productcategories;
-drop table if exists options;
+drop table if exists optiontable;
 drop table if exists optiongroups;
 
 create table users(
