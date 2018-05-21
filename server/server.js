@@ -30,7 +30,7 @@ app.listen(PORT, () => {
   console.log(`It's over ${PORT}!!!`)
 })
 
-app.get("/api/shop", productCtrl.getProducts)
+app.get("/api/shop", productCtrl.getProducts) //tested
 app.delete("/api/shop/:id", productCtrl.deleteProduct)
 app.put("/api/shop/:id", productCtrl.updateProduct)
 app.post("/api/shop", productCtrl.createProduct)
@@ -42,5 +42,6 @@ app.get("/api/user-data", (req, res) => {
 })
 // app.post("/api/cart", userCtrl.cart)
 
-app.get('/api/users', userCtrl.getUsers) //for admin page to get all users
+app.get('/api/users', userCtrl.getUsers) //for admin page to get all users //tested
+app.get('/api/user/:id',userCtrl.getUserByID)
 // app.get('/api/orders', orderCtrl.getOrders) //get users orders
