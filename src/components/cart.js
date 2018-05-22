@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { getProducts, getCart, decrementQty, incrementQty, removeFromCart} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
-class Cart extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  
+class Cart extends Component {  
     render() {
       console.log('============= current cart', this.props.cart)
       const cart = this.props.cart.length > 0 ? this.props.cart.map( (e,i) => {
@@ -16,7 +10,7 @@ class Cart extends Component {
         return <div key={i}>
               <div>{e.item}
               <img src={e.image} alt={e.shortdesc}/> 
-                <button onClick={() =>e.qty-1 == 0 ? this.props.removeFromCart(e.item) : this.props.decrementQty(e.item)}>-</button>{e.qty}
+                <button onClick={() =>e.qty-1 === 0 ? this.props.removeFromCart(e.item) : this.props.decrementQty(e.item)}>-</button>{e.qty}
                 <button onClick={() => this.props.incrementQty(e.item)}>+</button>
               </div>  
           </div>
