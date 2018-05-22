@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 class Cart extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      cart: this.props.cart,
+      total: this.props.total
+    }
   }
   componentDidMount(){
     this.props.cartTotal()
@@ -13,9 +17,9 @@ class Cart extends Component {
 
   
     render() {
-      // console.log('============= current cart', this.props.cart)
+      console.log('============= current cart', this.props.cart)
       // console.log('-------------------', this.props.total)
-      const cart = this.props.cart.length > 0 ? this.props.cart.map( (e,i) => {
+      const cart = this.props.cart ? this.props.cart.map( (e,i) => {
         console.log('--------------- items ', 'qty: ', e.qty)
         return <div key={i}>
               <div>{e.item}

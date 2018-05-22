@@ -20,11 +20,13 @@ class Shop extends Component {
   }
 
     render() {
+      console.log('---------products',this.props.products)
+      // console.log('---------productid', this.props.cart[0])
       // console.log('---------products',this.props.products)
       // console.log('---------productid', this.props.cart)
       // console.log('---------cart.productID', this.props.cart.findIndex(e => e.id))
       // console.log('---------this.props.cart-------', this.props.cart)
-      const products = this.props.products.map( (e, i) => {
+      const products = this.props.products ? this.props.products.map( (e, i) => {
         // console.log('----------e', e);
         // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} className='item'>
@@ -39,7 +41,7 @@ class Shop extends Component {
                 <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
         </div>
                </div>
-      })
+      }): 'nothing to display'
       // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
         return (
           <div>
