@@ -20,10 +20,12 @@ class Shop extends Component {
 
     render() {
       // console.log('---------products',this.props.products)
-      // console.log('---------productid', this.props.cart[0])
+      // console.log('---------productid', this.props.cart)
+      console.log('---------cart.productID', this.props.cart.findIndex(e => e.id))
+      console.log('---------this.props.cart-------', this.props.cart)
       const products = this.props.products.map( (e, i) => {
-        console.log('----------e', e);
-        console.log('----------this.props.cart', this.props.cart);
+        // console.log('----------e', e);
+        // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} >
                 <h1>{e.productname}</h1>
                 <h2>{e.productshortdesc} </h2>
@@ -32,7 +34,7 @@ class Shop extends Component {
                 <span>{e.productprice}</span>
 
                 <span>{e.productstock <=0 ? ' out-of-stock' : e.productstock >0 && e.productstock <= 10 ? ' limited-stock' : ' in-stock'}</span>
-                <button onClick={this.props.cart.indexOf(e) > -1 ? null : () => this.props.addToCart({item: e, qty: 1})}>Buy it!</button>
+                <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage })}>Buy it!</button>
                </div>
       })
       // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
