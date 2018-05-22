@@ -24,7 +24,7 @@ class Shop extends Component {
       const products = this.props.products.map( (e, i) => {
         return <div key={i} >
                 <h1>{e.productname}</h1>
-                <h3>{e.productcartdesc} </h3>
+                <h2>{e.productshortdesc} </h2>
                 <img src ={e.productimage}  />
                 <h3> {e.productcartdesc} </h3>
                 <span>{e.productprice}</span>
