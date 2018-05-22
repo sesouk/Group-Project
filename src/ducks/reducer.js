@@ -70,13 +70,6 @@ export const updateQuantity = (quantity) => {
   }
 }
 
-// export const getCart = (cart) => {
-//   return {
-//     type: GET_CART,
-//     payload: cart
-//   }
-// }
-
 export const getUserInfo = (user) => {
   return {
     type: GET_USER_INFO,
@@ -94,12 +87,8 @@ export const getProducts = (products) => {
 function reducer ( state=initialState, action ){
   let newCart = state.cart.slice()
   switch(action.type){
+
     case ADD_TO_CART:
-      // console.log('----------------ACTION', action.payload)
-      // console.log('---------------newCart---', newCart )
-      // console.log('---------------original Cart----', state.cart)
-      // console.log('-------------price---', action.payload.price)
-      // console.log('-------------total----', action.payload.price*= state.cart)
       let index = newCart.findIndex( e => e.id === action.payload.id )
       if(index !== -1 ){
         newCart[index].qty +=1
@@ -112,42 +101,39 @@ function reducer ( state=initialState, action ){
     case REMOVE_FROM_CART:
       index = newCart.findIndex( e => e.id === action.payload )
       newCart.splice(index, 1)
-      return { ...state, cart: newCart }
+        return { ...state, cart: newCart }
 
     case GET_USER_INFO:
-      return Object.assign( {}, state, { user: action.payload })
+        return Object.assign( {}, state, { user: action.payload })
 
     case GET_PRODUCTS:
-      return Object.assign( {}, state, { products: action.payload })
+        return Object.assign( {}, state, { products: action.payload })
 
-      case CATEGORY_ITEMS:
-      return {...state, category_items:action.payload}
+    case CATEGORY_ITEMS:
+        return {...state, category_items:action.payload}
 
     case INCREMENT_QTY:
-      console.log('-------------- e ', action.payload)
-      console.log('-------------- e.id', action.payload)
+      // console.log('-------------- e ', action.payload)
+      // console.log('-------------- e.id', action.payload)
       index = newCart.findIndex( e => e.id === action.payload )
-        newCart[index].qty +=1
-        newCart[index].total = newCart[index].qty*newCart[index].price
-          return { ...state, cart: newCart }
+      newCart[index].qty +=1
+      newCart[index].total = newCart[index].qty*newCart[index].price
+        return { ...state, cart: newCart }
 
     case DECREMENT_QTY:
       index = newCart.findIndex( e => e.id === action.payload )
-        newCart[index].qty -=1
-        newCart[index].total = newCart[index].qty*newCart[index].price
-          return { ...state, cart: newCart }
+      newCart[index].qty -=1
+      newCart[index].total = newCart[index].qty*newCart[index].price
+        return { ...state, cart: newCart }
 
     case CART_TOTAL:
       console.log('newCart',newCart)
       let total
-      newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = state.cart_total
-      // total = [] ? total = 0 : total.reduce((a,b) => a+=b)
-      // console.log('-----------total', total)
-      console.log('----------totals', total)
-      // return Object.assign( {}, state, { cart_total: total })
+        return newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = state.cart_total
+      // console.log('----------totals', total)
 
     default:
-      return state
+        return state
   }
 }
 
