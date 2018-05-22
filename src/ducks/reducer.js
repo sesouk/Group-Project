@@ -1,6 +1,7 @@
 const initialState = {
   cart:  [],
-  products: []
+  products: [],
+  category_items:[]
   // user: {
   //   name:  '',
   //   email:  '',
@@ -17,6 +18,7 @@ const GET_USER_INFO = 'GET_USER_INFO'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const DECREMENT_QTY = 'DECREMENT_QTY'
 const INCREMENT_QTY = 'INCREMENT_QTY'
+const CATEGORY_ITEMS = 'CATEGORY_ITEMS'
 
 export const decrementQty = item => {
   return {
@@ -29,6 +31,14 @@ export const incrementQty = item => {
   return {
     type: INCREMENT_QTY,
     payload: item
+  }
+}
+
+
+export const getCategoryProducts =(category_items) =>{
+  return {
+    type:CATEGORY_ITEMS,
+    payload:category_items
   }
 }
 export const addToCart = (item) => {
@@ -102,6 +112,9 @@ function reducer ( state=initialState, action ){
 
     case GET_PRODUCTS:
       return Object.assign( {}, state, { products: action.payload })
+
+      case CATEGORY_ITEMS:
+      return {...state, category_items:action.payload}
 
     case INCREMENT_QTY:
        index = newCart.findIndex( e => e.item === action.payload )

@@ -14,6 +14,12 @@ module.exports ={
         .catch(error =>console.log(error))
     },
 
+
+    getCategoryData:(req,res,next)=>{
+        const dbInstance = req.app.get('db')
+        dbInstance.itemByCategory().then(products =>res.status(200).send(products))
+        .catch(error =>console.log(error))
+    },
     deleteProduct:(req,res,next)=>{
         const dbInstance = req.app.get('db')
         console.log("parameters are",req.params);
