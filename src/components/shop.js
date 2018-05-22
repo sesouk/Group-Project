@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { getProducts } from '../ducks/reducer'
+import { getProducts, addToCart } from '../ducks/reducer'
 
 class Shop extends Component {
   constructor(props){
@@ -19,7 +19,8 @@ class Shop extends Component {
   }
 
     render() {
-      console.log('---------products',this.props.products)
+      // console.log('---------products',this.props.products)
+      // console.log('---------productid', this.props.cart[0])
       const products = this.props.products.map( (e, i) => {
         return <div key={i} >
                 <h1>{e.productname}</h1>
@@ -29,8 +30,10 @@ class Shop extends Component {
                 <span>{e.productprice}</span>
 
                 <span>{e.productstock <=0 ? ' out-of-stock' : e.productstock >0 && e.productstock <= 10 ? ' limited-stock' : ' in-stock'}</span>
+                <button onClick={this.props.cart.indexOf(e) > -1 ? null : () => this.props.addToCart({item: e, qty: 1})}>Buy it!</button>
                </div>
       })
+      // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
         return (
           <div>
             <h1>Stop N Shop</h1>
@@ -43,7 +46,8 @@ class Shop extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    cart: state.cart
   }
 }
-export default connect(mapStateToProps, {getProducts})(Shop)
+export default connect(mapStateToProps, {getProducts, addToCart})(Shop)
