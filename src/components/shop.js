@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { getProducts, addToCart } from '../ducks/reducer'
+import '../Styling/shop.css'
 
 class Shop extends Component {
-  constructor(props){
-    super(props)
-  }
   componentDidMount(props){
     axios.get('/api/shop')
       .then( products => {
@@ -19,6 +17,8 @@ class Shop extends Component {
   }
 
     render() {
+      console.log('---------products',this.props.products)
+      // console.log('---------productid', this.props.cart[0])
       // console.log('---------products',this.props.products)
       // console.log('---------productid', this.props.cart)
       // console.log('---------cart.productID', this.props.cart.findIndex(e => e.id))
@@ -29,11 +29,11 @@ class Shop extends Component {
         return <div key={i} >
                 <h1>{e.productname}</h1>
                 <h2>{e.productshortdesc} </h2>
-                <img src ={e.productimage}  />
+                <img src ={e.productimage} alt={e.productname}  />
                 <h3> {e.productcartdesc} </h3>
                 <span>{e.productprice}</span>
 
-                <span>{e.productstock <=0 ? ' out-of-stock' : e.productstock >0 && e.productstock <= 10 ? ' limited-stock' : ' in-stock'}</span>
+                <p>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
                 <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
                </div>
       }) : 'no products to display'
@@ -41,7 +41,9 @@ class Shop extends Component {
         return (
           <div>
             <h1>Stop N Shop</h1>
+            <div className='container'>
             {products}
+            </div>
           </div>
 
         )
