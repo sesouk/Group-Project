@@ -93,7 +93,7 @@ function reducer ( state=initialState, action ){
         newCart[index].qty +=1
         return { ...state, cart: newCart }
       }else{
-        return { ...state, cart: [ ...state.cart, {item: action.payload.item.productid, qty: action.payload.qty}]}
+        return { ...state, cart: [ ...state.cart, {item: action.payload.item.productname, qty: action.payload.qty}]}
       }
 
     case REMOVE_FROM_CART:
