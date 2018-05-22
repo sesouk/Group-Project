@@ -14,7 +14,8 @@ class Cart extends Component {
       const cart = this.props.cart.length > 0 ? this.props.cart.map( (e,i) => {
         // console.log(e)
         return <div key={i}>
-              <div>{e.item} 
+              <div>{e.item}
+              <img src={e.image} alt={e.shortdesc}/> 
                 <button onClick={() =>e.qty-1 == 0 ? this.props.removeFromCart(e.item) : this.props.decrementQty(e.item)}>-</button>{e.qty}
                 <button onClick={() => this.props.incrementQty(e.item)}>+</button>
               </div>  

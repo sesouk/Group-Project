@@ -22,6 +22,8 @@ class Shop extends Component {
       // console.log('---------products',this.props.products)
       // console.log('---------productid', this.props.cart[0])
       const products = this.props.products.map( (e, i) => {
+        console.log('----------e', e);
+        console.log('----------this.props.cart', this.props.cart);
         return <div key={i} >
                 <h1>{e.productname}</h1>
                 <h2>{e.productshortdesc} </h2>
