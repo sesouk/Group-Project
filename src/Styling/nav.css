@@ -1,0 +1,11 @@
+nav {
+    background-color: pink;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+nav > span {
+    flex: 1;
+}
