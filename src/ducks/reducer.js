@@ -77,12 +77,13 @@ function reducer ( state=initialState, action ){
   let newCart = state.cart.slice()
   switch(action.type){
     case ADD_TO_CART:
-      let index = newCart.findIndex( e => e.item === action.payload.item.productname )
+      console.log('----------------ACTION', action.payload)
+      let index = newCart.findIndex( e => e.item === action.payload.item.productid )
       if(index !== -1 ){
         newCart[index].qty +=1
         return { ...state, cart: newCart }
       }else{
-        return { ...state, cart: [ ...state.cart, {item: action.payload.item.productname, qty: action.payload.qty}]}
+        return { ...state, cart: [ ...state.cart, {item: action.payload.item.productid, qty: action.payload.qty}]}
       }
 
     case REMOVE_FROM_CART:
