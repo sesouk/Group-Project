@@ -18,7 +18,8 @@ class Cart extends Component {
   
     render() {
       console.log('============= current cart', this.props.cart)
-      // console.log('-------------------', this.props.total)
+      console.log('-------------------', this.props.total)
+      const total = this.props.total
       const cart = this.props.cart ? this.props.cart.map( (e,i) => {
         console.log('--------------- items ', 'qty: ', e.qty)
         return <div key={i}>
@@ -36,6 +37,7 @@ class Cart extends Component {
           <div>
             <h1>Cart</h1>
             {cart}
+            <div>{total}</div>
           </div>
         )
     }

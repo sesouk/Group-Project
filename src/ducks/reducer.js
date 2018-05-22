@@ -131,6 +131,7 @@ function reducer ( state=initialState, action ){
       let total
       newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = state.cart_total
       // console.log('----------totals', total)
+      return { ...state, cart: newCart, cart_total: total}
 
     default:
         return state
