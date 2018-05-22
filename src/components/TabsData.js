@@ -11,7 +11,9 @@ class TabsData extends Component {
         super();
         this.state={
             filterByCategory:'',
-            category_items:''
+            category_items:'',
+            allItems:''
+
 
         }
         
@@ -20,7 +22,8 @@ class TabsData extends Component {
         axios.get('/api/category')
           .then( products => {
             this.props.getCategoryProducts(products.data)
-            console.log('--------products', this.props.products )
+            this.setState({allItems:products.data})
+            console.log('--------products', this.state.allItems )
           })
           .catch( err => {
             console.log( err )
@@ -29,16 +32,16 @@ class TabsData extends Component {
     render() {
         
         const{category_items}=this.props;
-        console.log("inside tabs",category_items);
-        const{filterByCategory}=this.state;
+        const{filterByCategory,allItems}=this.state;
         console.log("inside tabs filter value",filterByCategory);
         const filteredItem = filterCategory(category_items,filterByCategory)
+        
         return (
             <div>
      <h1> Inside tabs </h1>
      <div className ="filter-data">
     { console.log("in the tabs output is ",filteredItem)}
-  {/* <ItemList filteredItem="filteredItem" /> */}
+
      <Button variant="raised" color="primary" value='T-shirts' onClick ={()=>this.setState({filterByCategory:'T-shirts'})}>
       T-shirts
     </Button>
@@ -53,7 +56,14 @@ class TabsData extends Component {
     </Button>
 
      </div>
+<div>
+   {/* Passing render props to ItemList component  */}
+<ItemList>
 
+   {filteredItem}
+   {allItems}
+   </ItemList>
+  </div>
                 </div>
 
             

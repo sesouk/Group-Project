@@ -19,7 +19,7 @@ class Shop extends Component {
   }
 
     render() {
-      // console.log('---------products',this.props.products)
+      console.log('---------products',this.props.products)
       // console.log('---------productid', this.props.cart[0])
       const products = this.props.products.map( (e, i) => {
         console.log('----------e', e);
