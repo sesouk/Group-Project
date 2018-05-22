@@ -1,11 +1,13 @@
 nav {
     background-color: pink;
     padding: 20px;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 70% 10% 10% 10%; 
+    justify-items: end;
     align-items: center
 }
 
-nav > span {
-    flex: 1;
+.nav-logo {
+    justify-self: start;
 }
+
