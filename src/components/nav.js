@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import '../Styling/nav.css'
 
 export default class Nav extends Component {
     render() {
         return (
-            <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/shop">Shop</Link>
-        </li>
-        <li>
-          <Link to="/cart">Cart</Link>
-        </li>
-      </ul>
+    <nav>
+        <span><button className='nav-logo'>LOGO HERE</button></span>
+        <span><Link to="/"><button>Home</button></Link></span>
+        <span><Link to="/shop"><button>Shop</button></Link></span>
+        <span><Link to="/cart"><button>Cart</button></Link></span>
     </nav>
         );
     }
