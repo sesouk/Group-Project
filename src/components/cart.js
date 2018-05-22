@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 class Cart extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      cart: this.props.cart,
+      total: this.props.total
+    }
   }
   componentDidMount(){
     this.props.cartTotal()

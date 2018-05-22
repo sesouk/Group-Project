@@ -36,7 +36,7 @@ class Shop extends Component {
                 <p>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
                 <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
                </div>
-      }) : 'no products to display'
+      }): 'nothing to display'
       // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
         return (
           <div>
