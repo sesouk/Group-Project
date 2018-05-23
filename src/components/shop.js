@@ -31,7 +31,7 @@ class Shop extends Component {
         // console.log('----------e', e);
         // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} className='item'>
-<div>
+<div className='item-contain'>
                 <h1>{e.productname}</h1>
                 {/* <h2>{e.productshortdesc} </h2> */}
                 <img src ={e.productimage} alt={e.productname}  />

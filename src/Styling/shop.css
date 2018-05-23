@@ -9,7 +9,8 @@
 }
 
 img {
-    width: 200px
+    width: 200px;
+    height: 200px
 }
 
 .item {
@@ -22,5 +23,9 @@ img {
 .item > * {
     text-align: center;
     justify-content: center;
+}
+
+.item-contain {
+    min-height: 425px; 
 }
 
