@@ -33,13 +33,13 @@ class Shop extends Component {
         return <div key={i} className='item'>
 <div>
                 <h1>{e.productname}</h1>
-                <h2>{e.productshortdesc} </h2>
+                {/* <h2>{e.productshortdesc} </h2> */}
                 <img src ={e.productimage} alt={e.productname}  />
-                <h3> {e.productcartdesc} </h3>
-                <span>{e.productprice}</span>
+                {/* <h3> {e.productcartdesc} </h3> */}
+                <p>${e.productprice}</p>
 
                 <p>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
-                <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
+                <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Add to Cart</button>
 </div>
                </div>
       }): 'nothing to display'
