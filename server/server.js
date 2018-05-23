@@ -6,6 +6,7 @@ const massive = require("massive")
 const userCtrl = require('./user_controller')
 const productCtrl = require('./product_controller')
 const orderCtrl = require('./order_controller')
+const paymentCtrl = require('./payment_controller')
 
 const app = express()
 app.use(bodyParser.json())
@@ -53,3 +54,10 @@ app.get('/api/user/:id',userCtrl.getUserByID) //tested
 
 //***************ORDER Endpoints *********************/
 app.get('/api/orders', orderCtrl.allOrders) //get orders//tested
+
+//***************Payment****************** */
+app.get('/',(req,res)=>{
+  res.render('index');
+})
+
+app.post('/api/payment',paymentCtrl.paymentAPI)
