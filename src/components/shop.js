@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { getProducts, addToCart } from '../ducks/reducer'
 import '../Styling/shop.css'
+// import TabsData from './TabsData'
 
 class Shop extends Component {
   constructor(props){
@@ -45,7 +46,7 @@ class Shop extends Component {
       // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
         return (
           <div>
-            <h1>Stop N Shop</h1>
+            {/* <TabsData/> */}
             <div className='container'>
             {products}
             </div>
