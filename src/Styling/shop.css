@@ -1,9 +1,9 @@
 .container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 16px;
+    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+    grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+    grid-gap: 10px;
     align-items: center;
 }
 
