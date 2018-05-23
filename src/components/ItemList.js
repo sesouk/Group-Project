@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
  class ItemList extends Component {
     
     render() {
-        // const children = (this.props.children)
+        console.log(this.props.children)
         // {console.log("values of chilred", children)}
         return (
             <div>
@@ -18,7 +18,7 @@ import { connect } from 'react-redux'
                 <h3> {e.productcartdesc} </h3>
                 <span>{e.productprice}</span>
                 <span>{e.productstock <=0 ? ' out-of-stock' : e.productstock >0 && e.productstock <= 10 ? ' limited-stock' : ' in-stock'}</span>
-                <button onClick={this.props.cart.indexOf(e) > -1 ? null : () => this.props.addToCart({item: e, qty: 1})}>Buy it!</button>
+                <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
 
          
               </div>

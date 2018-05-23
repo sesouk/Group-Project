@@ -93,15 +93,15 @@ function reducer ( state=initialState, action ){
       if(index !== -1 ){
         newCart[index].qty +=1
         newCart[index].total = newCart[index].qty*newCart[index].price
-        return { ...state, cart: newCart }
+        return { ...state, cart: newCart, cart_total: parseInt(total) }
       }else{
-        return { ...state, cart: [ ...state.cart, {item: action.payload.name, image: action.payload.image, id: action.payload.id, qty: action.payload.qty, price:action.payload.price, total: action.payload.price }]}
+        return { ...state, cart: [ ...state.cart, {item: action.payload.name, image: action.payload.image, id: action.payload.id, qty: parseInt(action.payload.qty), price:parseInt(action.payload.price), total: parseInt(action.payload.price) }]}
       }
 
     case REMOVE_FROM_CART:
       index = newCart.findIndex( e => e.id === action.payload )
       newCart.splice(index, 1)
-        return { ...state, cart: newCart }
+        return { ...state, cart: newCart}
 
     case GET_USER_INFO:
         return Object.assign( {}, state, { user: action.payload })
@@ -118,18 +118,18 @@ function reducer ( state=initialState, action ){
       index = newCart.findIndex( e => e.id === action.payload )
       newCart[index].qty +=1
       newCart[index].total = newCart[index].qty*newCart[index].price
-        return { ...state, cart: newCart }
+        return { ...state, cart: newCart, cart_total: parseInt(total) }
 
     case DECREMENT_QTY:
       index = newCart.findIndex( e => e.id === action.payload )
       newCart[index].qty -=1
       newCart[index].total = newCart[index].qty*newCart[index].price
-        return { ...state, cart: newCart }
+        return { ...state, cart: newCart, cart_total: parseInt(total) }
 
     case CART_TOTAL:
       console.log('newCart',newCart)
-      let total
-      newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = 0
+      let total = 0
+      newCart[0] ? total = newCart.map( e => +e.total ).reduce((a,b) => a+b) : total = 0
       // console.log('----------totals', total)
       return { ...state, cart: newCart, cart_total: parseInt(total)}
 
