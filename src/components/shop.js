@@ -31,7 +31,7 @@ class Shop extends Component {
         // console.log('----------e', e);
         // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} className='item'>
-        <div>
+<div>
                 <h1>{e.productname}</h1>
                 <h2>{e.productshortdesc} </h2>
                 <img src ={e.productimage} alt={e.productname}  />
@@ -40,7 +40,7 @@ class Shop extends Component {
 
                 <p>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
                 <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Buy it!</button>
-        </div>
+</div>
                </div>
       }): 'nothing to display'
       // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
