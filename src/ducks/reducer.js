@@ -129,9 +129,9 @@ function reducer ( state=initialState, action ){
     case CART_TOTAL:
       console.log('newCart',newCart)
       let total
-      newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = state.cart_total
+      newCart[0] ? total = newCart.map( e => e.total ).reduce((a,b) => a+b) : total = 0
       // console.log('----------totals', total)
-      return { ...state, cart: newCart, cart_total: total}
+      return { ...state, cart: newCart, cart_total: parseInt(total)}
 
     default:
         return state
