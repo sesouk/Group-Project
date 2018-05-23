@@ -53,11 +53,8 @@ app.get('/api/users', userCtrl.getUsers) //for admin page to get all users //tes
 app.get('/api/user/:id',userCtrl.getUserByID) //tested
 
 //***************ORDER Endpoints *********************/
-app.get('/api/orders', orderCtrl.allOrders) //get orders//tested
+// app.get('/api/orders', orderCtrl.allOrders) //get orders//tested
 
 //***************Payment****************** */
-app.get('/',(req,res)=>{
-  res.render('index');
-})
 
-app.post('/api/payment',paymentCtrl.paymentAPI)
+// app.post('/api/payment',paymentCtrl.paymentAPI)
