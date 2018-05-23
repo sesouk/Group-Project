@@ -6,9 +6,6 @@ import '../Styling/shop.css'
 // import TabsData from './TabsData'
 
 class Shop extends Component {
-  constructor(props){
-    super(props)
-  }
   componentDidMount(props){
     axios.get('/api/shop')
       .then( products => {
@@ -22,14 +19,7 @@ class Shop extends Component {
 
     render() {
       console.log('---------products',this.props.products)
-      // console.log('---------productid', this.props.cart[0])
-      // console.log('---------products',this.props.products)
-      // console.log('---------productid', this.props.cart)
-      // console.log('---------cart.productID', this.props.cart.findIndex(e => e.id))
-      // console.log('---------this.props.cart-------', this.props.cart)
       const products = this.props.products ? this.props.products.map( (e, i) => {
-        // console.log('----------e', e);
-        // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} className='item'>
 <div>
                 <h1>{e.productname}</h1>

@@ -7,19 +7,25 @@ const userCtrl = require('./user_controller')
 const productCtrl = require('./product_controller')
 const orderCtrl = require('./order_controller')
 const paymentCtrl = require('./payment_controller')
+const authCtrl = require('./auth_controller')
+
+const checkForSession = require('./checkForSession')
 
 const app = express()
 app.use(bodyParser.json())
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7
     }
   })
 )
+
+app.use( checkForSession )
+
 massive(process.env.CONNECTION_STRING)
   .then(db => {
     app.set("db", db)
@@ -40,11 +46,9 @@ app.post("/api/shop", productCtrl.createProduct) //tested
 
 
 //*************USER login/logout Endpoints**************/
-// app.get("/auth/callback", userCtrl.auth) //auth0 endpoint
-// app.post("/api/logout", userCtrl.logout)
-app.get("/api/user-data", (req, res) => {
-  res.json({ user: req.session.user })
-})
+app.get("/auth/callback", authCtrl.auth) //auth0 endpoint
+app.post("/api/logout", authCtrl.logout)
+app.get("/api/user-data", userCtrl.getUser)
 // app.post("/api/cart", userCtrl.cart)
 
 //************User Endpoints ***************************/

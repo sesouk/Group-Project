@@ -1,5 +1,9 @@
 
 module.exports = {
+    getUser: (req, res) => {
+      console.log(req.session.user)
+      res.status(200).send(req.session.user)
+    },
     getUsers: (req,res,next) =>{
         const dbInstance = req.app.get('db');
         // console.log('received request')
