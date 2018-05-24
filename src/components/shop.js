@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { getProducts, addToCart } from '../ducks/reducer'
+import { Link } from 'react-router-dom'
+import { getProducts, getProduct } from '../ducks/reducer'
 import '../Styling/shop.css'
 // import TabsData from './TabsData'
 
@@ -32,14 +33,14 @@ class Shop extends Component {
         // console.log('----------this.props.cart', this.props.cart);
         return <div key={i} className='item'>
 <div className='item-contain'>
-                <h1>{e.productname}</h1>
+                <p>{e.productname}</p>
                 {/* <h2>{e.productshortdesc} </h2> */}
                 <img src ={e.productimage} alt={e.productname}  />
                 {/* <h3> {e.productcartdesc} </h3> */}
                 <p>${e.productprice}</p>
 
-                <p>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
-                <button onClick={() => this.props.addToCart({ name: e.productname, id:e.productid, qty: 1, image: e.productimage, price: e.productprice })}>Add to Cart</button>
+                <p className='stock'>{e.productstock <=0 ? 'out-of-stock' : e.productstock >0 && e.productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
+                <Link to='/product'><button onClick={() => this.props.getProduct({ name: e.productname, id:e.productid, image: e.productimage, price: e.productprice, info: e.productcartdesc, subinfo: e.productshortdesc })}>Details</button></Link>
 </div>
                </div>
       }): 'nothing to display'
@@ -48,7 +49,9 @@ class Shop extends Component {
           <div>
             {/* <TabsData/> */}
             <div className='container'>
+            <div className='sidebar'>sorting component would go here</div>
             {products}
+            <div className='footer'>footer component here</div>
             </div>
           </div>
 
@@ -59,7 +62,7 @@ class Shop extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    cart: state.cart
+    product: state.product
   }
 }
-export default connect(mapStateToProps, {getProducts, addToCart})(Shop)
+export default connect(mapStateToProps, {getProducts, getProduct})(Shop)

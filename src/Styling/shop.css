@@ -1,23 +1,22 @@
 .container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5% 1fr 1fr 1fr 5%;
     grid-gap: 10px;
     align-items: center;
     justify-content: center;
+    height: 96vh
 }
 
 img {
-    width: 200px;
-    height: 200px
+    width: 70px;
+    height: 70px
 }
 
 .item {
     display: grid;
     margin: 0 auto;
-    grid-row-start: 2;
-    /* grid-column-start: 2 */
 }
 
 .item > * {
@@ -26,6 +25,19 @@ img {
 }
 
 .item-contain {
-    min-height: 425px; 
+    min-height: 200px; 
+}
+
+.sidebar {
+    grid-column: span 3;
+}
+
+.footer {
+    grid-column: span 3;
+    grid-row-start: 5 
+}
+
+p {
+    font-size: small
 }
 
