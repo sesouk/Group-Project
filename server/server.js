@@ -49,7 +49,7 @@ app.post("/api/shop", productCtrl.createProduct) //tested
 app.get("/auth/callback", authCtrl.auth) //auth0 endpoint
 app.post("/api/logout", authCtrl.logout)
 app.get("/api/user-data", userCtrl.getUser)
-// app.post("/api/cart", userCtrl.cart)
+app.post("/api/cart", userCtrl.cart)
 
 //************User Endpoints ***************************/
 // app.get('api/register',userCtrl.createUser)

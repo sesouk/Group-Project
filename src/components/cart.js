@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 import { getProducts, decrementQty, incrementQty, removeFromCart, cartTotal} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 class Cart extends Component {
 
   componentDidMount(){
-    this.props.cartTotal()
+    // this.props.cartTotal()
+    // setInterval( () => {
+    //   let cart = this.props.cart
+    //   axios.post('/api/cart',{cart})
+    // }, 10000)
+
+    // let cart = this.props.cart
+    // window.addEventListener("unload", axios.post('/api/cart', {cart}))
   }
 
   
