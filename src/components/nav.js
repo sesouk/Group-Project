@@ -11,6 +11,7 @@ export default class Nav extends Component {
         <span><Link to="/tabs"><button>Tabs</button></Link></span>
         <span><Link to="/shop"><button>Shop</button></Link></span>
         <span><Link to="/cart"><button>Cart</button></Link></span>
+        <span><Link to="/checkout"><button>Checkout</button></Link></span>
 
 
     </nav>

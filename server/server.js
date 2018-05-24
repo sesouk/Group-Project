@@ -40,6 +40,7 @@ app.listen(PORT, () => {
 //***********PRODUCT Endpoints *************/
 app.get("/api/category",productCtrl.getCategoryData)
 app.get("/api/shop", productCtrl.getProducts) //tested
+app.get("/api/product/:id", productCtrl.getProduct)
 app.delete("/api/shop/:id", productCtrl.deleteProduct) //tested
 app.put("/api/shop/:id", productCtrl.updateProduct) //tested
 app.post("/api/shop", productCtrl.createProduct) //tested

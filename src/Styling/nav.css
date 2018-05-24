@@ -1,6 +1,6 @@
 nav {
     background-color: pink;
-    padding: 20px;
+    min-height: 32px;
     display: grid;
     grid-template-columns: 60% 10% 10% 10% 10%; 
     justify-items: end;

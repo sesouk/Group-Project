@@ -8,7 +8,9 @@ const initialState = {
     email:  '',
     address:  '',
     phone:  ''
-  }
+  },
+  product: []
+ 
 }
 
 const ADD_TO_CART = 'ADD_TO_CART'
@@ -16,6 +18,7 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 const GET_USER_INFO = 'GET_USER_INFO'
 const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_PRODUCT = 'GET_PRODUCT'
 const DECREMENT_QTY = 'DECREMENT_QTY'
 const INCREMENT_QTY = 'INCREMENT_QTY'
 const CATEGORY_ITEMS = 'CATEGORY_ITEMS'
@@ -84,6 +87,13 @@ export const getProducts = (products) => {
   }
 }
 
+export const getProduct = (product) => {
+  return {
+    type: GET_PRODUCT,
+    payload: product
+  }
+}
+
 function reducer ( state=initialState, action ){
   let newCart = state.cart.slice()
   let total = 0
@@ -110,6 +120,12 @@ function reducer ( state=initialState, action ){
     case GET_PRODUCTS:
         return Object.assign( {}, state, { products: action.payload })
 
+    case GET_PRODUCT:
+        return {
+          ...state, 
+          product: action.payload
+        }
+        
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
 
