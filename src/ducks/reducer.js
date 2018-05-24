@@ -102,10 +102,11 @@ function reducer ( state=initialState, action ){
     case ADD_TO_CART:
       let index = newCart.findIndex( e => e.id === action.payload.id )
       if(index !== -1 ){
-        newCart[index].qty +=1
+        newCart[index].qty+=1
         newCart[index].total = newCart[index].qty*newCart[index].price
         return { ...state, cart: newCart, cart_total: parseInt(total) }
       }else{
+        console.log('initial total:', action.payload.total)
         return { ...state, cart: [ ...state.cart, {item: action.payload.name, image: action.payload.image, id: action.payload.id, qty: parseInt(action.payload.qty), price:parseInt(action.payload.price), total: parseInt(action.payload.price) }]}
       }
 
@@ -146,7 +147,7 @@ function reducer ( state=initialState, action ){
     case CART_TOTAL:
       console.log('newCart',newCart)
       newCart[0] ? total = newCart.map( e => +e.total ).reduce((a,b) => a+b) : total = 0
-      // console.log('----------totals', total)
+      console.log('----------total', total)
       return { ...state, cart: newCart, cart_total: parseInt(total)}
 
     default:

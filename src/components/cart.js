@@ -18,11 +18,11 @@ class Cart extends Component {
 
   
     render() {
-      console.log('============= current cart', this.props.cart)
-      console.log('-------------------', this.props.total)
+      // console.log('============= current cart', this.props.cart)
+      console.log('------------------- CART TOTAL ', this.props.total)
       const total = this.props.total
       const cart = this.props.cart ? this.props.cart.map( (e,i) => {
-        console.log('--------------- items ', 'qty: ', e.qty)
+        // console.log('--------------- items ', 'qty: ', e.qty)
         return <div key={i}>
               <div>{e.item}
               <img src={e.image} alt={e.shortdesc}/> 
