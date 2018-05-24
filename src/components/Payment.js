@@ -14,16 +14,16 @@ const errorPayment = data => {
   alert('Payment Error');
 };
 
-const onToken = (amount, description) => token =>
+const onToken = (amount, description,register) => token =>
   axios.post('/api/payment',
     {
       description,
       source: token.id,
       currency: CURRENCY,
       amount: fromUSDToCent(amount)
-    })
-    .then(successPayment)
+    }).then((register()))
     .catch(errorPayment);
+    console.log("payment failed");
 
 const Checkout = ({ name, description, amount }) =>
   <StripeCheckout
