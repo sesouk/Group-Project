@@ -8,6 +8,7 @@ import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
 import Payment from './components/Payment'
 import product from './components/product'
+import options from './components/options'
 import {Route, Switch} from 'react-router-dom'
 
 
@@ -22,5 +23,6 @@ export default (
             <Route component={Checkout} path ='/checkout'/>
             <Route component={Payment} path ='/payment' />
             <Route component={product} path='/product'/>
+            <Route component={options} path='/options'/>
         </Switch>
 )

@@ -3,7 +3,8 @@ const initialState = {
   products: [],
   category_items:[],
   cart_total: 0,
-  product: []
+  product: [],
+  options: []
   // user: {
   //   name:  '',
   //   email:  '',
@@ -18,6 +19,7 @@ const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 const GET_USER_INFO = 'GET_USER_INFO'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_PRODUCT = 'GET_PRODUCT'
+const GET_OPTIONS = 'GET_OPTIONS'
 const DECREMENT_QTY = 'DECREMENT_QTY'
 const INCREMENT_QTY = 'INCREMENT_QTY'
 const CATEGORY_ITEMS = 'CATEGORY_ITEMS'
@@ -85,6 +87,12 @@ export const getProducts = (products) => {
     payload: products
   }
 }
+export const getOptions = (options) => {
+  return {
+    type: GET_OPTIONS,
+    payload: options
+  }
+}
 
 export const getProduct = (product) => {
   return {
@@ -122,6 +130,11 @@ function reducer ( state=initialState, action ){
         return {
           ...state, 
           product: action.payload
+        }
+    case GET_OPTIONS:
+        return {
+          ...state, 
+          options: action.payload
         }
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
