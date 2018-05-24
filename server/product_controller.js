@@ -45,6 +45,12 @@ module.exports ={
         dbInstance.updateProduct(params.id,productprice,productname,productstock).then(updatedProduct =>res.status(200).send(updatedProduct))
         .catch(error =>console.log(error))
     },
+    getProduct:(req, res, next) => {
+        const dbInstance = req.app.get('db')
+        const productId=req.params.id
+        dbInstance.getProductByID(productId).then(product => res.status(200).send(product))
+        .catch(error =>console.log(error))
+    }
 }
 
 

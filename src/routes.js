@@ -2,11 +2,12 @@ import React from 'react'
 import cart from './components/cart'
 import home from './components/home'
 import shop from './components/shop'
-import admin from './components/Admin'
+import admin from './components/admin'
 import TabsData from './components/TabsData'
 import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
 import Payment from './components/Payment'
+import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
 
 
@@ -20,6 +21,6 @@ export default (
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
             <Route component={Payment} path ='/payment' />
-
+            <Route component={product} path='/product'/>
         </Switch>
 )
