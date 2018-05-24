@@ -37,6 +37,7 @@ app.get("/api/shop", productCtrl.getProducts) //tested
 app.delete("/api/shop/:id", productCtrl.deleteProduct) //tested
 app.put("/api/shop/:id", productCtrl.updateProduct) //tested
 app.post("/api/shop", productCtrl.createProduct) //tested
+app.get("/api/itemOptions", productCtrl.itemOptions)
 
 
 //*************USER login/logout Endpoints**************/
@@ -57,4 +58,4 @@ app.get('/api/user/:id',userCtrl.getUserByID) //tested
 
 //***************Payment****************** */
 
-// app.post('/api/payment',paymentCtrl.paymentAPI)
+app.post('/api/payment',paymentCtrl.paymentAPI)

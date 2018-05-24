@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { getProducts, removeFromCart, cartTotal} from '../ducks/reducer'
 import { connect } from 'react-redux'
+import Payment from "./Payment";
 import FaTrash from "react-icons/lib/fa/trash";
 import './../Styling/minicartStyle.css'
 
@@ -22,9 +23,11 @@ class Cart extends Component {
       const total = this.props.total
       const cart = this.props.cart.map( (e,i) => {
         return <div className="minicart_flex" key={i}>
+        <div className="minicart_wrapper">
               <div>{e.item} </div>
              <div> <img src={e.image} alt={e.shortdesc} width="80px"/> </div>
              <div>Quanity{e.qty} </div>
+             </div>io9
              <div>Item Total {e.total} </div>
              <span className="Message__delete" onClick={() => this.props.removeFromCart(e.id) && this.props.cartTotal()}>  <FaTrash /> </span>
 
@@ -49,6 +52,7 @@ class Cart extends Component {
                             <span>Order Total:</span>
                             <div>${((total * 1.06) + 5).toFixed(2)} </div>
                         </div>
+                        <Payment amount = {((total * 1.06) + 5).toFixed(2)}/>
                     </div>
                
                     
