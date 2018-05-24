@@ -14,6 +14,12 @@ module.exports ={
         .catch(error =>console.log(error))
     },
 
+    itemOptions:(req,res,next)=>{
+        const dbInstance = req.app.get('db')
+        dbInstance.itemOption().then(options =>res.status(200).send(options))
+        .catch(error =>console.log(error))
+    },
+
 
     getCategoryData:(req,res,next)=>{
         const dbInstance = req.app.get('db')
