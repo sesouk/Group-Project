@@ -3,13 +3,14 @@ const initialState = {
   products: [],
   category_items:[],
   cart_total: 0,
+  user: {
+    name:  '',
+    email:  '',
+    address:  '',
+    phone:  ''
+  },
   product: []
-  // user: {
-  //   name:  '',
-  //   email:  '',
-  //   address:  '',
-  //   phone:  ''
-  // }
+ 
 }
 
 const ADD_TO_CART = 'ADD_TO_CART'
@@ -95,15 +96,17 @@ export const getProduct = (product) => {
 
 function reducer ( state=initialState, action ){
   let newCart = state.cart.slice()
+  let total = 0
   switch(action.type){
 
     case ADD_TO_CART:
       let index = newCart.findIndex( e => e.id === action.payload.id )
       if(index !== -1 ){
-        newCart[index].qty +=1
+        newCart[index].qty+=1
         newCart[index].total = newCart[index].qty*newCart[index].price
         return { ...state, cart: newCart, cart_total: parseInt(total) }
       }else{
+        console.log('initial total:', action.payload.total)
         return { ...state, cart: [ ...state.cart, {item: action.payload.name, image: action.payload.image, id: action.payload.id, qty: parseInt(action.payload.qty), price:parseInt(action.payload.price), total: parseInt(action.payload.price) }]}
       }
 
@@ -123,6 +126,7 @@ function reducer ( state=initialState, action ){
           ...state, 
           product: action.payload
         }
+        
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
 
@@ -142,9 +146,8 @@ function reducer ( state=initialState, action ){
 
     case CART_TOTAL:
       console.log('newCart',newCart)
-      let total = 0
       newCart[0] ? total = newCart.map( e => +e.total ).reduce((a,b) => a+b) : total = 0
-      // console.log('----------totals', total)
+      console.log('----------total', total)
       return { ...state, cart: newCart, cart_total: parseInt(total)}
 
     default:
