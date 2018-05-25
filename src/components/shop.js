@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { getProducts, getProduct } from '../ducks/reducer'
+import { getProducts, getProduct, actions } from '../ducks/reducer'
 import '../Styling/shop.css'
 // import TabsData from './TabsData'
 
@@ -10,6 +10,7 @@ class Shop extends Component {
   componentDidMount(props){
     axios.get('/api/shop')
       .then( products => {
+        // console.log(products.data)
         this.props.getProducts(products.data)
         // console.log('--------products', this.props.products )
       })
@@ -19,7 +20,7 @@ class Shop extends Component {
   }
 
     render() {
-      console.log('---------products',this.props.products)
+      // console.log('---------products',this.props.products)
       const products = this.props.products ? this.props.products.map( (e, i) => {
         return <div key={i} className='item'>
 <div className='item-contain'>
