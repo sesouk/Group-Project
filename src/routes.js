@@ -6,7 +6,7 @@ import shop from './components/shop'
 import TabsData from './components/TabsData'
 import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
-import Payment from './components/Payment'
+import StripeCheckout from './components/StripeCheckout'
 import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
 
@@ -20,7 +20,7 @@ export default (
             <Route component={newproduct} path ='/admin/newproduct'/>
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
-            <Route component={Payment} path ='/payment' />
+            <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
         </Switch>
 )

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { getProducts, removeFromCart, cartTotal} from '../ducks/reducer'
 import { connect } from 'react-redux'
-import Payment from "./Payment";
+
+import StripeCheckout from './StripeCheckout'
 import FaTrash from "react-icons/lib/fa/trash";
 import './../Styling/minicartStyle.css'
 
@@ -52,7 +53,7 @@ class Cart extends Component {
                             <span>Order Total:</span>
                             <div>${((total * 1.06) + 5).toFixed(2)} </div>
                         </div>
-                        <Payment amount = {((total * 1.06) + 5).toFixed(2)}/>
+                       
                     </div>
                
                     

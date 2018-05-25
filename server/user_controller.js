@@ -34,6 +34,10 @@ module.exports = {
         
         dbInstance.getUserByID(userId).then(user=> res.status(200).send(user))
         .catch(error => console.log(error));
+    },
+
+    checkSession:(req,res)=>{
+        res.status(200).send(req.session);
     }
 }
 

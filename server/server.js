@@ -65,3 +65,5 @@ app.get('/api/user/:id',userCtrl.getUserByID) //tested
 //***************Payment****************** */
 
 app.post('/api/payment',paymentCtrl.paymentAPI)
+app.post('/api/shippingDetails',paymentCtrl.shippingDetails)
+app.get('/api/checksession',userCtrl.checkSession)

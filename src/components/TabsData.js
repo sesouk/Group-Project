@@ -42,16 +42,16 @@ class TabsData extends Component {
      <div className ="filter-data">
     { console.log("in the tabs output is ",filteredItem)}
 
-     <Button variant="raised" color="primary" value='T-shirts' onClick ={()=>this.setState({filterByCategory:'T-shirts'})}>
+     <Button variant="raised" color="primary" value='T-shirts' onClick ={()=>this.setState({filterByCategory:'"shirt"'})}>
       T-shirts
     </Button>
-    <Button variant="raised" color="primary" value='Jeans' onClick ={()=>this.setState({filterByCategory:'Jeans'})}>
+    <Button variant="raised" color="primary" value='Jeans' onClick ={()=>this.setState({filterByCategory:'pant'})}>
       Jeans
     </Button>
-    <Button variant="raised" color="primary" value='Watch' onClick ={()=>this.setState({filterByCategory:'Watches'})}>
-      Watch
+    <Button variant="raised" color="primary" value='Watch' onClick ={()=>this.setState({filterByCategory:"accessory"})}>
+     Accessory
     </Button>
-    <Button variant="raised" color="primary" value = 'Shoes' onClick ={()=>this.setState({filterByCategory:"Shoes"})}>
+    <Button variant="raised" color="primary" value = 'Shoes' onClick ={()=>this.setState({filterByCategory:"shoe"})}>
       Shoes
     </Button>
 

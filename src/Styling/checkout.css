@@ -1,0 +1,64 @@
+.checkout_main_body{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+    align-items: stretch;
+    padding: 100px 50px;
+}
+
+.checkout_body_form{
+    padding-top: 100px;
+    width: 55%;
+}
+
+.checkout_body_form  input {
+    margin: 10px 10px 10px 0;
+    font-size: 14pt;
+    padding: 7px;
+}
+
+.checkout_title{
+    font-size: 20pt;
+    margin-bottom: 15px;
+}
+
+.checkout_name_email_flex{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    align-items: stretch;
+}
+
+.checkout_name_email_flex input{
+    width: 50%;
+}
+
+.checkout_sec_wrapper input{
+    width: 95%;
+}
+
+.checkout_third_wrapper input {
+    width: 30%;
+}
+
+.checkout_third_wrapper select {
+    width: 25%;
+    height: 40px;
+    margin-right: 10px;
+    font-size: 12pt;
+    outline: none;
+}
+
+.checkout_summary{
+    padding: 20px 90px;
+}
+
+.checkout_minicart{
+    box-shadow: 2px 2px 24px -6px rgba(0,0,0,0.49);
+    padding: 30px;
+    /* button{
+        margin: 5px 8px;
+    } */
+}
