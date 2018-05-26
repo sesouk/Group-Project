@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
         return (
             <div>
                
-             {this.props.children[0].map((e, i) => {
+             {this.props.children.map((e, i) => {
                     return <div key={i} >
                         <h1>{e.productname}</h1>
                 <h2>{e.productshortdesc} </h2>

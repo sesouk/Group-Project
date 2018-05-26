@@ -171,7 +171,7 @@ class Checkout extends React.Component {
          
        
           <br />
-          <button onClick ={()=>this.shippingDetails()} > Save detials </button>
+          {/* <button onClick ={()=>this.shippingDetails()} > Save detials </button> */}
           <br />
           <br />
         </div>
@@ -181,12 +181,14 @@ class Checkout extends React.Component {
         <MiniCart />
      
         <div > 
+          <div onClick ={()=>this.shippingDetails()} >
         <StripeCheckout 
         shippingAddress ={this.state.address}
         amount = {((total * 1.06) + 5).toFixed(2)}
         zip_code={true}
         token ={this.onToken}
         />
+        </div>
         </div>
         </div>
          </div>
