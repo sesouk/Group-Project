@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, removeFromCart, cartTotal} from '../ducks/reducer'
+import { getProducts, cartTotal} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 import StripeCheckout from './StripeCheckout'
@@ -47,7 +47,9 @@ class Cart extends Component {
                         </div>
                         <div>
                             <span>Tax:</span>
-                            <div>${(total * .06).toFixed(2)}</div>
+                            <div>${(total * .06).toFixed(2)}
+                            
+                            </div>
                         </div>
                         <div className="minicart_ordersubtotals"> 
                             <span>Order Total:</span>
@@ -68,4 +70,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getProducts, removeFromCart, cartTotal })(Cart)
+export default connect(mapStateToProps, {getProducts,cartTotal })(Cart)
