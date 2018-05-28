@@ -1,5 +1,17 @@
 
 module.exports = {
+    cart: ( req, res ) => {
+      const dbInstance = req.app.get('db')
+      req.session.user.cart = req.body
+      dbInstance.save_cart(JSON.stringify(req.session.user.cart))
+        .then( cart => res.status(200).send(cart))
+          .catch( err => console.log( err ))
+      // dbInstance.save_cart()
+    },
+    getUser: (req, res) => {
+      console.log(req.session.user)
+      res.status(200).send(req.session.user)
+    },
     getUsers: (req,res,next) =>{
         const dbInstance = req.app.get('db');
         // console.log('received request')

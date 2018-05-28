@@ -7,9 +7,6 @@ import '../Styling/shop.css'
 // import TabsData from './TabsData'
 
 class Shop extends Component {
-  constructor(props){
-    super(props)
-  }
   componentDidMount(props){
     axios.get('/api/shop')
       .then( products => {
