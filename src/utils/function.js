@@ -1,7 +1,7 @@
 module.exports={
-    filterCategory: (category_items,filterByCategory) =>{
-        console.log("insdide filter function", filterByCategory, category_items)
-     return  category_items.filter(item => item.categoryname === filterByCategory)
+    filterCategory: (products,filterByCategory) =>{
+        console.log("insdide filter function", filterByCategory, products)
+     return  products.filter(item => item.productcategory  === filterByCategory)
 
 
        }
