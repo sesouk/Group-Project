@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, decrementQty, incrementQty, removeFromCart, cartTotal, actions } from '../ducks/reducer'
+import { getProducts, cartTotal, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 class Cart extends Component {
 
   componentDidMount(){
     this.props.getCart()
+    this.props.cartTotal()
   }
   
   render() {
@@ -45,11 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProducts,
-  decrementQty,
-  incrementQty,
-  removeFromCart,
   cartTotal,
-  actions,
   ...actions
 }
 
