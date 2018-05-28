@@ -3,16 +3,6 @@ const initialState = {
   products: [],
   category_items:[],
   cart_total: 0,
-<<<<<<< HEAD
-  product: [],
-  options: []
-  // user: {
-  //   name:  '',
-  //   email:  '',
-  //   address:  '',
-  //   phone:  ''
-  // }
-=======
   user: {
     name:  '',
     email:  '',
@@ -21,7 +11,6 @@ const initialState = {
   },
   product: []
  
->>>>>>> b45615fb015fba40db3329df285235f2e3d3755d
 }
 
 const ADD_TO_CART = 'ADD_TO_CART'
@@ -144,15 +133,7 @@ function reducer ( state=initialState, action ){
           ...state, 
           product: action.payload
         }
-<<<<<<< HEAD
-    case GET_OPTIONS:
-        return {
-          ...state, 
-          options: action.payload
-        }
-=======
         
->>>>>>> b45615fb015fba40db3329df285235f2e3d3755d
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
 
