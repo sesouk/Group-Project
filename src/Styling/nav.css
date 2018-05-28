@@ -2,7 +2,7 @@ nav {
     background-color: pink;
     min-height: 32px;
     display: grid;
-    grid-template-columns: 60% 10% 10% 10% 10%; 
+    grid-template-columns: 50% 10% 10% 10% 10% 10%; 
     justify-items: end;
     align-items: center
 }

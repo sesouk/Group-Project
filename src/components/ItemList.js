@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getProducts, addToCart } from '../ducks/reducer'
+import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 
  class ItemList extends Component {
@@ -35,4 +35,9 @@ const mapStateToProps = state => {
       cart: state.cart
     }
   }
-  export default connect(mapStateToProps, {getProducts, addToCart})(ItemList)
+
+const mapDispatchToProps = {
+  getProducts,
+  ...actions
+}
+  export default connect(mapStateToProps, mapDispatchToProps)(ItemList)

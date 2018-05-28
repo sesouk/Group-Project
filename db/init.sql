@@ -1,7 +1,11 @@
 drop table if exists users CASCADE;
+drop table if exists lineItem;
 drop table if exists orders;
 drop table if exists products;
+<<<<<<< HEAD
 drop table if exists lineItem;
+=======
+>>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
 
 
 create table users(
@@ -25,7 +29,12 @@ productThumb varchar(100),
 productImage varchar(100),
 productStock float,
 productSize varchar(20),
+<<<<<<< HEAD
 productcolor varchar(20)
+=======
+productcolor varchar(20),
+productcategory varchar(20)
+>>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
 );
 
 
@@ -63,11 +72,21 @@ insert into users(userName,userEmail,userCity,userState,userZip,userPhone,userad
 
 
 
+<<<<<<< HEAD
 insert into products(productName, productPrice,productCartDesc,productShortDesc,productImage,productStock,productSize,productcolor)VALUES
 ('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','M','Red'),
 ('Men Jeans','150','Levis Men  505 Regular Fit Jean','Slim fit Jeans','https://www.supercasuals.com/images/Levis/00501_0193_L.jpg','15','36','Blue'),
 ('Men Shoes','200','MEN VARSITY COMPETE WIDE TRAINING SHOE','best running shoes','https://www.famousfootwear.com/ProductImages/shoes_ia77638.jpg','25','Black','8'),
 ('Men Watch','225','NEUTRA CHRONOGRAPH NAVY LEATHER WATCH','blue dial watch','http://fossil.scene7.com/is/image/FossilPartners/FS5454_main?$aemResponsive_pdp$','10','1','Blue');
+=======
+insert into products(productName, productPrice,productCartDesc,productShortDesc,productImage,productStock,productSize,productcolor,productcategory)VALUES
+('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','M','Red', 'shirt'),
+('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','S','Blue', 'shirt'),
+('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','L','Red', 'shirt'),
+('Men Jeans','150','Levis Men  505 Regular Fit Jean','Slim fit Jeans','https://www.supercasuals.com/images/Levis/00501_0193_L.jpg','15','36','Blue', 'pant'),
+('Men Shoes','200','MEN VARSITY COMPETE WIDE TRAINING SHOE','best running shoes','https://www.famousfootwear.com/ProductImages/shoes_ia77638.jpg','25','Black','8', 'shoe'),
+('Men Watch','225','NEUTRA CHRONOGRAPH NAVY LEATHER WATCH','blue dial watch','http://fossil.scene7.com/is/image/FossilPartners/FS5454_main?$aemResponsive_pdp$','10','One Size','Blue', 'accessory');
+>>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
 
 insert into orders(orderUserID,orderAmount,orderShipAddress,orderCity,orderState,orderZip,orderPhone,orderShippingCharges,orderTax,orderEmail,orderDate,orderStatus,orderTrackingNumber)
 values(1,'50','abcdef','phoenix','arizona','85032','4805273139','5','2','Sincere@april.biz',CURRENT_DATE,'open','455566');
@@ -80,4 +99,8 @@ values(1,1,2);
 select * from users;
 select * from products;
 select * from orders;
+<<<<<<< HEAD
 select * from lineItem;
+=======
+select * from lineItem;
+>>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab

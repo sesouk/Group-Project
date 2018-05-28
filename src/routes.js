@@ -8,11 +8,14 @@ import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
 import StripeCheckout from './components/StripeCheckout'
 import product from './components/product'
+import options from './components/options'
 import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
+import { BrowserRouter } from 'react-router-dom'
 
 
 export default (
+
         <Switch>
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
@@ -24,5 +27,7 @@ export default (
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation'/>
+            <Route component={options} path='/options'/>
         </Switch>
+
 )

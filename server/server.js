@@ -52,7 +52,8 @@ app.get("/api/optionByProductID/:id",productCtrl.optionByProductID)
 app.get("/auth/callback", authCtrl.auth) //auth0 endpoint
 app.post("/api/logout", authCtrl.logout)
 app.get("/api/user-data", userCtrl.getUser)
-app.post("/api/cart", userCtrl.cart)
+app.post("/api/cartToSession", userCtrl.cartToSession)
+app.get('/api/cartToRedux', userCtrl.cartToRedux)
 
 //************User Endpoints ***************************/
 // app.get('api/register',userCtrl.createUser)
