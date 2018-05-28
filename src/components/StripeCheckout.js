@@ -1,20 +1,80 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import StripeCheckout from 'react-stripe-checkout';
+// import React, { Component } from 'react';
+// import axios from 'axios';
+// import StripeCheckout from 'react-stripe-checkout';
+
+// const CURRENCY = 'USD';
+
+// const fromUSDToCent = amount => amount * 100;
+
+// const successPayment = data => {
+//   alert('Payment Successful');
+// };
+
+// const errorPayment = data => {
+//   alert('Payment Error');
+// };
+
+// const onToken = (amount) => token =>
+//   axios.post('/api/payment',
+//     {
+//       // name,
+//       // shippingAddress,
+//       source: token.id,
+//       currency: CURRENCY,
+//       email:token.email,
+//       amount: fromUSDToCent(amount)
+//     }).then(successPayment)
+//     .catch(errorPayment);
+//     console.log("payment failed");
+
+// const Checkout = ({ name, amount }) =>
+//   <StripeCheckout
+//     // acct= {acct}
+//     name='Stop-n-Shop'
+//     amount={fromUSDToCent(amount)}
+//     token={onToken(amount)}
+//     currency={CURRENCY}
+//     stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE}
+//   />
+
+// export default Checkout;
+
+
+import React, { Component } from 'react'
+import StripeCheckout from 'react-stripe-checkout'
+import { Redirect } from 'react-router-dom'
+import OrderConfirmation from './OrderConfirmation'
+import { connect } from 'react-redux'
+import axios from 'axios'
 
 const CURRENCY = 'USD';
 
 const fromUSDToCent = amount => amount * 100;
 
-const successPayment = data => {
-  alert('Payment Successful');
-};
+class TakeMoney extends Component {
+    constructor(){
+        super()
 
-const errorPayment = data => {
-  alert('Payment Error');
-};
+        this.state = {
+            orderComplete: false, 
+            orderNumber: 0,
+            order:[]
+        }
+    }
 
-const onToken = (amount) => token =>
+    successPayment = data => {
+        console.log('Payment Successful')
+
+        this.setState({orderComplete: true})
+
+   
+    }
+
+    errorPayment = data => {
+      alert('Payment Error');
+    }
+
+ onToken = (amount) => token =>
   axios.post('/api/payment',
     {
       // name,
@@ -23,20 +83,37 @@ const onToken = (amount) => token =>
       currency: CURRENCY,
       email:token.email,
       amount: fromUSDToCent(amount)
-    }).then(successPayment)
-    .catch(errorPayment);
-    console.log("payment failed");
+    }).then(this.successPayment)
+    .catch(this.errorPayment);
+ 
+    render() {
+        if(this.state.orderComplete){
+            // return <Redirect to={`/OrderConfirmation/${this.state.orderNumber}`} />
+            return <Redirect to ={'/orderConfirmation'}/>
+        }
 
-const Checkout = ({ name, amount }) =>
-  <StripeCheckout
+        const {name, amount} = this.props
+        return (
+            <div>
+                  <StripeCheckout
     // acct= {acct}
     name='Stop-n-Shop'
     amount={fromUSDToCent(amount)}
-    token={onToken(amount)}
+    token={this.onToken(amount)}
     currency={CURRENCY}
     stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE}
   />
 
-export default Checkout;
+                
+            </div>
+        )
+    }
+}
 
+const mapStateToProps = state => {
+    return {
+        cart: state.cart
+    }
+}
 
+export default connect(mapStateToProps)(TakeMoney)

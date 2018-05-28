@@ -25,6 +25,7 @@ module.exports = {
                 
                     req.app.get('db').createOrder([email,address,zip_code, state, city,phone]).then(orders => {
                         res.status(200).send(orders)
+                        console.log(orders);
                     }).catch(error => {
                         console.log("post orders controller error", error)
                     

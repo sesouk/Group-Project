@@ -9,6 +9,7 @@ import Checkout from './components/Checkout'
 import StripeCheckout from './components/StripeCheckout'
 import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
+import OrderConfirmation from './components/OrderConfirmation'
 
 
 export default (
@@ -22,5 +23,6 @@ export default (
             <Route component={Checkout} path ='/checkout'/>
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
+            <Route component={OrderConfirmation} path='/orderConfirmation'/>
         </Switch>
 )
