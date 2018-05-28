@@ -5,13 +5,14 @@ import axios from 'axios'
 
 class Product extends Component {
     render() {
-        console.log('============', this.props.product.name);
-        console.log('============', this.props.product.image);
-        console.log('============', this.props.product.subinfo);
-        console.log('============', this.props.product.info);
-        console.log('============', this.props.product.price);
-        console.log('============= current product', this.props.product)
+        // console.log('============', this.props.product.name);
+        // console.log('============', this.props.product.image);
+        // console.log('============', this.props.product.subinfo);
+        // console.log('============', this.props.product.info);
+        // console.log('============', this.props.product.price);
+        // console.log('============= current product', this.props.product.details)
         const product = this.props.product.price ? [this.props.product].map((e, i) => {
+            console.log(e.details);
             return <div key={i}>
             <p>{e.name}</p>
             <img src={e.image} alt={e.subinfo}/>

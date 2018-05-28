@@ -10,9 +10,11 @@ import Payment from './components/Payment'
 import product from './components/product'
 import options from './components/options'
 import {Route, Switch} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 
 export default (
+
         <Switch>
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
@@ -25,4 +27,5 @@ export default (
             <Route component={product} path='/product'/>
             <Route component={options} path='/options'/>
         </Switch>
+
 )
