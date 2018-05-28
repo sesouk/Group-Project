@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, removeFromCart, cartTotal} from '../ducks/reducer'
+import { getProducts, cartTotal, actions} from '../ducks/reducer'
 import { connect } from 'react-redux'
 import Payment from "./Payment";
 import FaTrash from "react-icons/lib/fa/trash";
@@ -67,4 +67,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getProducts, removeFromCart, cartTotal })(Cart)
+const mapDispatchToProps = {
+  getProducts,
+  cartTotal,
+  ...actions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
