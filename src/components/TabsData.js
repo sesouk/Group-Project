@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getCategoryProducts} from '../ducks/reducer'
+import { getCategoryProducts,getProducts} from '../ducks/reducer'
 import Button from '@material-ui/core/Button';
 import {filterCategory} from './../utils/function'
 import ItemList from './ItemList'
@@ -11,29 +11,20 @@ class TabsData extends Component {
         super();
         this.state={
             filterByCategory:'',
-            category_items:'',
-            allItems:''
+            products:[],
+         
 
 
         }
         
     }
-    componentDidMount(props){
-        axios.get('/api/category')
-          .then( products => {
-            this.props.getCategoryProducts(products.data)
-            this.setState({allItems:products.data})
-            console.log('--------products', this.state.allItems )
-          })
-          .catch( err => {
-            console.log( err )
-          })
-      }
+ 
     render() {
-        
-        const{category_items}=this.props;
-        const{filterByCategory,allItems}=this.state;
-        console.log("inside tabs filter value",filterByCategory);
+   
+        const{category_items,products}=this.props;
+        const{filterByCategory}=this.state;
+    
+        console.log("inside tabs filter value",this.props.products);
         const filteredItem = filterCategory(category_items,filterByCategory)
         
         return (
@@ -42,17 +33,18 @@ class TabsData extends Component {
      <div className ="filter-data">
     { console.log("in the tabs output is ",filteredItem)}
 
-     <Button variant="raised" color="primary" value='T-shirts' onClick ={()=>this.setState({filterByCategory:'T-shirts'})}>
+     <Button variant="raised" color="primary" value='T-shirts' onClick ={()=>this.setState({filterByCategory:'"shirt"'})}>
       T-shirts
     </Button>
-    <Button variant="raised" color="primary" value='Jeans' onClick ={()=>this.setState({filterByCategory:'Jeans'})}>
+    <Button variant="raised" color="primary" value='Jeans' onClick ={()=>this.setState({filterByCategory:'pant'})}>
       Jeans
     </Button>
-    <Button variant="raised" color="primary" value='Watch' onClick ={()=>this.setState({filterByCategory:'Watches'})}>
-      Watch
-    </Button>
-    <Button variant="raised" color="primary" value = 'Shoes' onClick ={()=>this.setState({filterByCategory:"Shoes"})}>
+    
+    <Button variant="raised" color="primary" value = 'Shoes' onClick ={()=>this.setState({filterByCategory:"shoe"})}>
       Shoes
+    </Button>
+    <Button variant="raised" color="primary" value='Watch' onClick ={()=>this.setState({filterByCategory:"accessory"})}>
+     Accessory
     </Button>
 
      </div>
@@ -61,7 +53,7 @@ class TabsData extends Component {
 <ItemList>
 
    {filteredItem}
-   {allItems}
+   {/* {allItems} */}
    </ItemList>
   </div>
                 </div>
@@ -73,7 +65,8 @@ class TabsData extends Component {
 const mapStateToProps = state => {
     return {
         category_items: state.category_items,
+        products: state.products
 
     }
   }
-  export default connect(mapStateToProps, {getCategoryProducts})(TabsData);
+  export default connect(mapStateToProps, {getCategoryProducts,getProducts})(TabsData);

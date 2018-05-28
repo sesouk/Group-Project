@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { getProducts, getProduct, actions } from '../ducks/reducer'
 import '../Styling/shop.css'
-// import TabsData from './TabsData'
+import TabsData from './TabsData'
 
 class Shop extends Component {
   componentDidMount(props){
@@ -94,7 +94,7 @@ class Shop extends Component {
       // })
         return (
           <div>
-            {/* <TabsData/> */}
+            <TabsData/>
             <div className='container'>
             <div className='sidebar'>sorting component would go here</div>
             {products}
