@@ -7,25 +7,24 @@ class Cart extends Component {
 
   componentDidMount(){
     this.props.getCart()
-    this.props.total()
   }
   
   render() {
       // console.log(this.props)
-      // console.log('============= current cart', this.props.cart)
+      console.log('============= current cart', this.props.cart)
       // console.log('------------------- CART TOTAL ', this.props.total)
       const total = this.props.total
-      const cart = this.props.cart ? this.props.cart.map( (e,i) => {
+      const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
         // console.log('--------------- items ', 'qty: ', e.qty)
         return <div key={i}>
-              <div>{e.item}
-              <img src={e.image} alt={e.shortdesc}/> 
-                <button onClick={() =>e.qty-1 === 0 ? this.props.removeFromCart(e.id) && this.props.total() : this.props.minusOne(e) && this.props.total()}>-</button>
+              <div>{e.name}
+              <img src={e.image} alt={e.name}/> 
+                <button onClick={() =>e.qty-1 === 0 ? this.props.remove(e.id) && this.props.cartTotal() : this.props.minusOne(e.id) && this.props.cartTotal()}>-</button>
                 {e.qty}
-                <button onClick={() => this.props.plusOne(e) && this.props.total()}>+</button>
+                <button onClick={() => this.props.plusOne(e.id) && this.props.cartTotal()}>+</button>
               </div>  
 
-              <button onClick={() => this.props.removeFromCart(e.id) && this.props.total()}>Remove this Item</button>
+              <button onClick={() => this.props.remove(e.id) && this.props.cartTotal()}>Remove this Item</button>
           </div>
           
       }) : 'add something to your cart!'

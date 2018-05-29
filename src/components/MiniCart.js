@@ -70,7 +70,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProducts,
-  cartTotal,
   ...actions
 }
 

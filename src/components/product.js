@@ -103,7 +103,7 @@ toggle = () => {
         // console.log('============= current size', reducedSize)
         const optionColors = this.state.size ? this.state.colorOptions.map((e, i) => {
             // console.log(e)
-            return <div>
+            return <div key={i}>
                     <input onClick={() => this.setState({checked: true})} type="radio" id={e.id} name={e.name} checked={this.state.checked}
                     onChange={() => {
                         this.setState({ color: e.color, id: e.id })
@@ -115,7 +115,7 @@ toggle = () => {
         const optionSize = this.props.product.price ? reducedSize.map((e, i) => {
             // console.log(e)
             // console.log(this.state.size)
-            return <div>
+            return <div key={i}>
                     <input type="radio" id={e.id} name={e.name} value={e.size}
                     onChange={() => {
                     this.filtered(e.size)    
@@ -139,7 +139,7 @@ toggle = () => {
                         <p>{product.info}</p>
                         <p>${product.price}</p>
                         <button onClick={
-                            () => this.props.addToCart({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
+                            () => this.props.add({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
                             && this.props.cartTotal() 
                             && this.props.getCart()
                         }>
@@ -169,7 +169,7 @@ const mapDispatchToProps = {
   getProduct,
   ...actions
 }
-  export default connect(mapStateToProps, mapDispatchToProps /* {getProduct, addToCart, cartTotal} */)(Product)
+  export default connect(mapStateToProps, mapDispatchToProps)(Product)
 
 
 
