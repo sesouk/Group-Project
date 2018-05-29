@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, actions} from '../ducks/reducer'
+import { getProducts, cartTotal, actions} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 import StripeCheckout from './StripeCheckout'
@@ -70,6 +70,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProducts,
+  cartTotal,
   ...actions
 }
 
