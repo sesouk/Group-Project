@@ -5,10 +5,34 @@ import { connect } from 'react-redux'
 
 class Cart extends Component {
 
+  constructor(){
+    super()
+
+
+    this.increment = this.increment.bind(this)
+    this.decrement = this.decrement.bind(this)
+    this.delete = this.delete.bind(this)
+  }
   componentDidMount(){
     this.props.getCart()
   }
   
+  increment(item){
+    this.props.plusOne(item)
+    this.props.cartTotal()
+  }
+
+  decrement(item){
+    
+    this.props.minusOne(item)
+    this.props.cartTotal()
+  }
+
+  delete(item){
+    this.props.remove(item)
+    this.props.cartTotal()
+  }
+
   render() {
       // console.log(this.props)
       console.log('============= current cart', this.props.cart)
@@ -19,12 +43,12 @@ class Cart extends Component {
         return <div key={i}>
               <div>{e.name}
               <img src={e.image} alt={e.name}/> 
-                <button onClick={() =>e.qty-1 === 0 ? this.props.remove(e.id) && this.props.cartTotal() : this.props.minusOne(e.id) && this.props.cartTotal()}>-</button>
+                <button onClick={() => e.qty-1 === 0 ? this.delete(e.id) : this.decrement(e.id)}>-</button>
                 {e.qty}
-                <button onClick={() => this.props.plusOne(e.id) && this.props.cartTotal()}>+</button>
+                <button onClick={() => this.increment(e.id)}>+</button>
               </div>  
 
-              <button onClick={() => this.props.remove(e.id) && this.props.cartTotal()}>Remove this Item</button>
+              <button onClick={() => this.delete(e.id)}>Remove this Item</button>
           </div>
           
       }) : 'add something to your cart!'
