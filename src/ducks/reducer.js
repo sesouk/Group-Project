@@ -11,7 +11,8 @@ const initialState = {
     address:  '',
     phone:  ''
   },
-  product: []
+  product: [],
+  reducedDataItems:[]
  
 }
 
@@ -27,7 +28,7 @@ const INCREMENT_QTY = 'INCREMENT_QTY'
 const CATEGORY_ITEMS = 'CATEGORY_ITEMS'
 const CART_TOTAL = 'CART_TOTAL'
 const GET_CART = 'GET_CART'
-
+const FILTER_DATA = 'FILTER_DATA'
 export const actions = {
 
   getCart: () => {
@@ -112,6 +113,13 @@ export const cartTotal = item => {
   }
 }
 
+export const reducedData =(reducedData) =>{
+
+  return {
+    type:FILTER_DATA,
+    payload:reducedData
+  }
+}
 
 export const getCategoryProducts =(category_items) =>{
   return {
@@ -181,6 +189,9 @@ function reducer ( state=initialState , action ){
         
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
+
+        case FILTER_DATA:
+        return {...state, reducedDataItems:action.payload}
 
     // case INCREMENT_QTY:
     //   // console.log('-------------- e ', action.payload)
