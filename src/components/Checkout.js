@@ -8,7 +8,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {  cartTotal} from '../ducks/reducer'
+import { actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import MiniCart from "./MiniCart";
 import StripeCheckout from './StripeCheckout'
@@ -206,4 +206,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default  connect(mapStateToProps,{cartTotal} )(Checkout);
+const mapDispatchToProps = {
+  ...actions
+}
+export default  connect(mapStateToProps, mapDispatchToProps)(Checkout);

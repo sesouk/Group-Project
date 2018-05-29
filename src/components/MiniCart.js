@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, cartTotal} from '../ducks/reducer'
+import { getProducts, cartTotal, actions} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 import StripeCheckout from './StripeCheckout'
@@ -16,7 +16,7 @@ class Cart extends Component {
     }
   }
   componentDidMount(){
-    this.props.cartTotal()
+    this.props.total()
   }
 
   
@@ -30,7 +30,7 @@ class Cart extends Component {
              <div>Quanity{e.qty} </div>
              </div>
              <div>Item Total {e.total} </div>
-             <span className="Message__delete" onClick={() => this.props.removeFromCart(e.id) && this.props.cartTotal()}>  <FaTrash /> </span>
+             <span className="Message__delete" onClick={() => this.props.removeFromCart(e.id) && this.props.total()}>  <FaTrash /> </span>
 
                   {/* <Button variant="raised" color="primary" onClick={() => this.props.removeFromCart(e.id) && this.props.cartTotal()}>Remove this Item </Button> */}
           </div>
@@ -70,4 +70,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getProducts,cartTotal })(Cart)
+const mapDispatchToProps = {
+  getProducts,
+  ...actions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

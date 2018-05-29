@@ -65,6 +65,7 @@ class Shop extends Component {
         // console.log('duplicate item')
         arr[i].products.push(current);
 
+<<<<<<< HEAD
         return arr;
       } else {
         // console.log('new item')
@@ -78,6 +79,19 @@ class Shop extends Component {
     }, []);
     this.props.reducedData(reduced);
     // console.log('reduced---------',reduced);
+=======
+      const products = reduced.map((e,i) => {
+        // console.log(e.products[0].productimage);
+        // const productsnested = e.products.map((el,i) => {
+        //   // console.log(el.productprice);
+          return <div key={i} className='item'>
+          <div className='item-contain'>
+                <p>{e.name}</p>
+                <h2>{e.products[0].productshortdesc} </h2>
+                <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
+                {/* <h3> {e.productcartdesc} </h3> */}
+                <p>${e.products[0].productprice}</p>
+>>>>>>> 79d29f36d19a3a7157cfe834ec6d2fc8721716f6
 
     // const products = reduced.map((e,i) => {
     //   // console.log(e.products[0].productimage);
