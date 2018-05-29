@@ -49,6 +49,7 @@ class Checkout extends React.Component {
 
   shippingDetails(){
     console.log("state values", this.state)
+    console.log("props value",this.props)
     const{email,address,zip_code, state, city,phone} = this.state
     axios.post('/api/shippingDetails',{email,address,zip_code, state, city,phone}).then(res =>{
     console.log("Value from express "+ JSON.stringify(res.data))
