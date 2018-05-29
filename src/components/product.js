@@ -12,7 +12,7 @@ class Product extends Component {
 			id: null,
 			colorOptions: [],
 			checked: false,
-			button: false
+			button: true
 		}
 }
   
@@ -39,10 +39,12 @@ sizerefresh(){
 toggle = () => {
   if(this.state.checked && this.state.id){
     this.setState({
-      checked: false
+			checked: false,
+			button: true
     })
   }
 }
+
   render() {
     const {product} = this.props
     const {price} = this.props.product
@@ -65,25 +67,26 @@ toggle = () => {
 
     const optionColors = this.state.size ? this.state.colorOptions.map((e, i) => {
       return <div key={i}>
-      				<input onClick={() => this.setState({checked: true})} type="radio" id={e.id} name={e.name} checked={this.state.checked}
+      				<input onClick={() => this.setState({checked: true, button: false})} type="radio" id={e.id} name={e.name} checked={this.state.checked}
         				onChange={() => {
           			this.setState({ color: e.color, id: e.id })
         				}}/>
       				<label htmlFor={e.id}>{e.color}</label>
           	</div>
         }): null
-const optionSize = this.props.product.price ? reducedSize.map((e, i) => {
-  return <div key={i}>
-        	<input type="radio" id={e.id} name={e.name} value={e.size}
-            onChange={() => {
-            this.filtered(e.size)    
-            this.sizerefresh()
-            this.toggle()
-            this.setState({ size: e.size })
-            }}/>
-          <label htmlFor={e.id}>{e.size}</label>
-        </div>
-        }): null
+		
+		const optionSize = this.props.product.price ? reducedSize.map((e, i) => {
+			return <div key={i}>
+							<input type="radio" id={e.id} name={e.name} value={e.size}
+								onChange={() => {
+								this.filtered(e.size)    
+								this.sizerefresh()
+								this.toggle()
+								this.setState({ size: e.size })
+								}}/>
+							<label htmlFor={e.id}>{e.size}</label>
+						</div>
+						}): null
 
   return (
     <div>
@@ -95,7 +98,7 @@ const optionSize = this.props.product.price ? reducedSize.map((e, i) => {
               <img src={product.image} alt={product.name}/>
               <p>{product.info}</p>
               <p>${product.price}</p>
-              <button onClick={
+              <button disabled={this.state.button} onClick={
                 () => this.props.add({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
                 && this.props.cartTotal() 
                 && this.props.getCart()}>Buy it!</button>
