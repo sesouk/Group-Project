@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, cartTotal, actions} from '../ducks/reducer'
+import { getProducts, actions} from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 import StripeCheckout from './StripeCheckout'
@@ -16,7 +16,7 @@ class Cart extends Component {
     }
   }
   componentDidMount(){
-    this.props.total()
+    this.props.cartTotal()
   }
 
   

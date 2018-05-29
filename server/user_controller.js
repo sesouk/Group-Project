@@ -7,18 +7,18 @@ module.exports = {
     },
 
     cartToSession: ( req, res ) => {
-      // console.log('-----cartToSession-----req.body--', req.body)
-      // console.log('-----req.session.user.cart----', req.session.user.cart)
+      console.log('-----cartToSession-----req.body--', req.body)
+      console.log('-----req.session.user.cart----', req.session.user.cart)
       req.session.user.cart = req.body
       res.end()
     },
     getUser: (req, res) => {
-      // console.log(req.session.user)
+      console.log(req.session.user)
       res.status(200).send(req.session.user)
     },
     getUsers: (req,res,next) =>{
         const dbInstance = req.app.get('db');
-        // console.log('received request')
+        console.log('received request')
         dbInstance.getUsers().then(users=> res.status(200).send(users))
         .catch(error => console.log(error));
     },
