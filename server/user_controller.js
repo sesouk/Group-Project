@@ -7,11 +7,11 @@ module.exports = {
     },
 
     cartToSession: ( req, res ) => {
-      // console.log('-----cartToSession-----req.body--', req.body)
-      // console.log('-----req.session.user.cart----', req.session.user.cart)
       req.session.user.cart = req.body
+      console.log(req.session.user)
       res.end()
     },
+
     getUser: (req, res) => {
       // console.log(req.session.user)
       res.status(200).send(req.session.user)
