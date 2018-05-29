@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { getProduct, addToCart, cartTotal, actions } from '../ducks/reducer'
 import axios from 'axios'
 
@@ -98,10 +99,10 @@ toggle = () => {
               <img src={product.image} alt={product.name}/>
               <p>{product.info}</p>
               <p>${product.price}</p>
-              <button disabled={this.state.button} onClick={
+              <Link to='/shop'><button disabled={this.state.button} onClick={
                 () => this.props.add({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
                 && this.props.cartTotal() 
-                && this.props.getCart()}>Buy it!</button>
+                && this.props.getCart()}>Buy it!</button></Link>
                 <p>Select a Size: </p>
                   {optionSize}
                 { this.state.size ?
