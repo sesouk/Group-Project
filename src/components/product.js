@@ -96,7 +96,7 @@ const optionSize = this.props.product.price ? reducedSize.map((e, i) => {
               <p>{product.info}</p>
               <p>${product.price}</p>
               <button onClick={
-                () => this.props.addToCart({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
+                () => this.props.add({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
                 && this.props.cartTotal() 
                 && this.props.getCart()}>Buy it!</button>
                 <p>Select a Size: </p>
