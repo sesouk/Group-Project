@@ -28,7 +28,7 @@ class Cart extends Component {
               <div>{e.item} </div>
              <div> <img src={e.image} alt={e.shortdesc} width="80px"/> </div>
              <div>Quanity{e.qty} </div>
-             </div>io9
+             </div>
              <div>Item Total {e.total} </div>
              <span className="Message__delete" onClick={() => this.props.removeFromCart(e.id) && this.props.total()}>  <FaTrash /> </span>
 
@@ -47,7 +47,9 @@ class Cart extends Component {
                         </div>
                         <div>
                             <span>Tax:</span>
-                            <div>${(total * .06).toFixed(2)}</div>
+                            <div>${(total * .06).toFixed(2)}
+                            
+                            </div>
                         </div>
                         <div className="minicart_ordersubtotals"> 
                             <span>Order Total:</span>

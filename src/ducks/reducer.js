@@ -11,7 +11,8 @@ const initialState = {
     address:  '',
     phone:  ''
   },
-  product: []
+  product: [],
+  reducedDataItems:[]
  
 }
 
@@ -26,7 +27,7 @@ const INCREMENT_QTY = 'INCREMENT_QTY'
 const CATEGORY_ITEMS = 'CATEGORY_ITEMS'
 const CART_TOTAL = 'CART_TOTAL'
 const GET_CART = 'GET_CART'
-
+const FILTER_DATA = 'FILTER_DATA'
 export const actions = {
 
   getCart: () => {
@@ -121,6 +122,14 @@ export const actions = {
   }
 }
 
+export const reducedData =(reducedData) =>{
+
+  return {
+    type:FILTER_DATA,
+    payload:reducedData
+  }
+}
+
 export const getCategoryProducts =(category_items) =>{
   return {
     type:CATEGORY_ITEMS,
@@ -179,6 +188,16 @@ function reducer ( state=initialState , action ){
     case CATEGORY_ITEMS:
       return { ...state, category_items:action.payload}
 
+        case FILTER_DATA:
+        return {...state, reducedDataItems:action.payload}
+
+    // case INCREMENT_QTY:
+    //   // console.log('-------------- e ', action.payload)
+    //   // console.log('-------------- e.id', action.payload)
+    //   index = newCart.findIndex( e => e.id === action.payload )
+    //   newCart[index].qty +=1
+    //   newCart[index].total = newCart[index].qty*newCart[index].price
+    //     return { ...state, cart: newCart, cart_total: parseInt(total) }
     case INCREMENT_QTY:
       return { ...state, cart: action.payload }
 
