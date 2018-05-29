@@ -123,8 +123,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProduct,
-  cartTotal,
   ...actions
 }
   export default connect(mapStateToProps, mapDispatchToProps)(Product)
-

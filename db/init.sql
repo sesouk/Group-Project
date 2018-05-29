@@ -29,12 +29,9 @@ productThumb varchar(100),
 productImage varchar(100),
 productStock float,
 productSize varchar(20),
-<<<<<<< HEAD
 productcolor varchar(20)
-=======
 productcolor varchar(20),
 productcategory varchar(20)
->>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
 );
 
 
@@ -72,21 +69,19 @@ insert into users(userName,userEmail,userCity,userState,userZip,userPhone,userad
 
 
 
-<<<<<<< HEAD
-insert into products(productName, productPrice,productCartDesc,productShortDesc,productImage,productStock,productSize,productcolor)VALUES
-('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','M','Red'),
-('Men Jeans','150','Levis Men  505 Regular Fit Jean','Slim fit Jeans','https://www.supercasuals.com/images/Levis/00501_0193_L.jpg','15','36','Blue'),
-('Men Shoes','200','MEN VARSITY COMPETE WIDE TRAINING SHOE','best running shoes','https://www.famousfootwear.com/ProductImages/shoes_ia77638.jpg','25','Black','8'),
-('Men Watch','225','NEUTRA CHRONOGRAPH NAVY LEATHER WATCH','blue dial watch','http://fossil.scene7.com/is/image/FossilPartners/FS5454_main?$aemResponsive_pdp$','10','1','Blue');
-=======
+
 insert into products(productName, productPrice,productCartDesc,productShortDesc,productImage,productStock,productSize,productcolor,productcategory)VALUES
 ('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','M','Red', 'shirt'),
 ('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','S','Blue', 'shirt'),
 ('Men T-shirt','25','FAKE ReactJS JavaScript Programmer T-Shirt','Cool Programming T-Shirts','https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg','10','L','Red', 'shirt'),
 ('Men Jeans','150','Levis Men  505 Regular Fit Jean','Slim fit Jeans','https://www.supercasuals.com/images/Levis/00501_0193_L.jpg','15','36','Blue', 'pant'),
 ('Men Shoes','200','MEN VARSITY COMPETE WIDE TRAINING SHOE','best running shoes','https://www.famousfootwear.com/ProductImages/shoes_ia77638.jpg','25','Black','8', 'shoe'),
-('Men Watch','225','NEUTRA CHRONOGRAPH NAVY LEATHER WATCH','blue dial watch','http://fossil.scene7.com/is/image/FossilPartners/FS5454_main?$aemResponsive_pdp$','10','One Size','Blue', 'accessory');
->>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
+('Men Watch','225','NEUTRA CHRONOGRAPH NAVY LEATHER WATCH','blue dial watch','http://fossil.scene7.com/is/image/FossilPartners/FS5454_main?$aemResponsive_pdp$','10','One Size','Blue', 'accessory'),
+('Classic Angular T-Shirt','44.99','T-shirt with the Angularjs logo.','One of the most classic t-shirts in a basic fit. It is made from 6oz of 100% cotton jersey cotton. It has a seamless double needle 7/8 collar along with a taped neck and shoulders.','http://www.devshirts.io/wp-content/uploads/2016/08/t-shirt_men_angularjs_white_1.png','5','M','White', 'shirt'),
+('Javascript T-shirt','27.99','T-shirt with the Javascript logo..','One of the most classic t-shirts in a basic fit. It is made from 6oz of 100% cotton jersey cotton.','http://www.devshirts.io/wp-content/uploads/2016/09/t-shirt_js_white.png','15','L','White', 'shirt'),
+('AE DENIM X HIGH-WAISTED JEGGING','47.99','American eagle best jeans','High level stretch holds its shape & would not bag out so you always look and feel great. It is made from 6oz of 100% cotton jersey cotton.','https://s7d2.scene7.com/is/image/aeo/0433_1236_692_of?$PDP_78_Main$','2','30','Blue', 'pant'),
+('AE DENIM X HIGH-WAISTED JEGGING','47.99','American eagle best jeans','High level stretch holds its shape & would not bag out so you always look and feel great. It is made from 6oz of 100% cotton jersey cotton.','https://s7d2.scene7.com/is/image/aeo/0433_1236_692_of?$PDP_78_Main$','4','32','Blue', 'pant'),
+('G-Shock Watch','99.99','Men Black Resin Strap Round 55mm Watch GA100-1A1','Analog Digital Casio G Shock Watches GL110GB-1A.','http://www.beshopaholic.com/wp-content/uploads/2017/12/Casio-G-Shock.jpg','15','L','Black', 'accessory');
 
 insert into orders(orderUserID,orderAmount,orderShipAddress,orderCity,orderState,orderZip,orderPhone,orderShippingCharges,orderTax,orderEmail,orderDate,orderStatus,orderTrackingNumber)
 values(1,'50','abcdef','phoenix','arizona','85032','4805273139','5','2','Sincere@april.biz',CURRENT_DATE,'open','455566');

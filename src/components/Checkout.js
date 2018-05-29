@@ -8,7 +8,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {  cartTotal} from '../ducks/reducer'
+import { actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import MiniCart from "./MiniCart";
 import StripeCheckout from './StripeCheckout'
@@ -49,6 +49,7 @@ class Checkout extends React.Component {
 
   shippingDetails(){
     console.log("state values", this.state)
+    console.log("props value",this.props)
     const{email,address,zip_code, state, city,phone} = this.state
     axios.post('/api/shippingDetails',{email,address,zip_code, state, city,phone}).then(res =>{
     console.log("Value from express "+ JSON.stringify(res.data))
@@ -205,4 +206,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default  connect(mapStateToProps,{cartTotal} )(Checkout);
+const mapDispatchToProps = {
+  ...actions
+}
+export default  connect(mapStateToProps, mapDispatchToProps)(Checkout);
