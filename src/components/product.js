@@ -12,9 +12,8 @@ class Product extends Component {
         // console.log('============', this.props.product.subinfo);
         // console.log('============', this.props.product.info);
         // console.log('============', this.props.product.price);
-        // console.log('============= current product', this.props.product.details)
+        console.log('============= current product', this.props.product)
         const product = this.props.product.price ? [this.props.product].map((e, i) => {
-            console.log(e.details);
             return <div key={i}>
             <p>{e.name}</p>
             <img src={e.image} alt={e.subinfo}/>
@@ -22,7 +21,7 @@ class Product extends Component {
             <p>${e.price}</p>
             <button onClick={
                 () => this.props.addToCart({ name: e.name, id:e.id, qty: 1, image: e.image, price: e.price, total: e.price })
-                  && this.props.cartTotal() 
+                  && this.props.total() 
                       && this.props.getCart()
                     }>Buy it!</button> 
         </div>
@@ -44,7 +43,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProduct,
-  cartTotal,
   ...actions
 }
-  export default connect(mapStateToProps, mapDispatchToProps /* {getProduct, addToCart, cartTotal} */)(Product)
+  export default connect(mapStateToProps, mapDispatchToProps)(Product)

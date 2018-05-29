@@ -61,7 +61,7 @@ class Shop extends Component {
       console.log('reduced---------',reduced);
 
       const products = reduced.map((e,i) => {
-        console.log(e.products[0].productimage);
+        // console.log(e.products[0].productimage);
         // const productsnested = e.products.map((el,i) => {
         //   // console.log(el.productprice);
           return <div key={i} className='item'>

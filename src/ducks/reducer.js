@@ -35,7 +35,7 @@ export const actions = {
     // console.log(getState());
     return (
       axios.get('/api/user-data')
-        .then( response => { console.log('cart', response.data.cart, 'total', response.data); dispatch({
+        .then( response => { /* console.log('cart', response.data.cart, 'total', response.data); */ dispatch({
           type: GET_CART,
           payload: response.data.cart
         })})
@@ -77,7 +77,8 @@ export const actions = {
   plusOne: (item) => {
     return ( dispatch, getState ) => {
       let cart = [ ...getState().cart ]
-      let index = cart.findIndex( e => e.id === item.payload )
+      console.log(cart)
+      let index = cart.findIndex( e => e.id === item.id)
         cart[index].qty +=1
         cart[index].total = cart[index].qty*cart[index].price
 
@@ -92,7 +93,8 @@ export const actions = {
   minusOne: (item) => {
     return ( dispatch, getState ) => {
       let cart = [ ...getState().cart ]
-      let index = cart.findIndex( e => e.id === item.payload )
+      console.log(item)
+      let index = cart.findIndex( e => e.id === item )
         cart[index].qty -=1
         cart[index].total = cart[index].qty*cart[index].price
 
@@ -102,16 +104,19 @@ export const actions = {
         payload: item
       })
     }
+  }, 
+
+  total: () => {
+    return ( dispatch, getState ) => {
+      let cart = [ ...getState().cart ]
+      let total = cart.map( e => e.total).reduce( (t, c ) => t + c )
+      return dispatch({
+        type: CART_TOTAL,
+        payload: total
+      })
+    }
   }
 }
-
-export const cartTotal = item => {
-  return {
-    type: CART_TOTAL,
-    payload: item
-  }
-}
-
 
 export const getCategoryProducts =(category_items) =>{
   return {
@@ -160,9 +165,9 @@ function reducer ( state=initialState , action ){
   let total = 0
   switch(action.type){
 
-    case ADD_TO_CART: {
+    case ADD_TO_CART: 
         return { ...state, cart: action.payload }
-      }
+      
 
     case REMOVE_FROM_CART:
         return { ...state, cart: action.payload }
@@ -182,22 +187,15 @@ function reducer ( state=initialState , action ){
     case CATEGORY_ITEMS:
         return {...state, category_items:action.payload}
 
-    // case INCREMENT_QTY:
-    //   // console.log('-------------- e ', action.payload)
-    //   // console.log('-------------- e.id', action.payload)
-    //   index = newCart.findIndex( e => e.id === action.payload )
-    //   newCart[index].qty +=1
-    //   newCart[index].total = newCart[index].qty*newCart[index].price
-    //     return { ...state, cart: newCart, cart_total: parseInt(total) }
+    case INCREMENT_QTY:
+        return { ...state, cart: action.payload }
 
     case DECREMENT_QTY:
         return { ...state, cart: action.payload }
 
     case CART_TOTAL:
       // console.log('newCart',newCart)
-      newCart[0] ? total = newCart.map( e => +e.total ).reduce((a,b) => a+b) : total = 0
-      // console.log('----------total', total)
-      return { ...state, cart: newCart, cart_total: parseInt(total)}
+      return { ...state, cart_total: action.payload}
     
     case GET_CART:
         return { ...state, cart: action.payload }

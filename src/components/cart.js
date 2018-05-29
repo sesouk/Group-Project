@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { getProducts, cartTotal, actions } from '../ducks/reducer'
+import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 
 class Cart extends Component {
 
   componentDidMount(){
     this.props.getCart()
-    this.props.cartTotal()
+    this.props.total()
   }
   
   render() {
+      // console.log(this.props)
       // console.log('============= current cart', this.props.cart)
       // console.log('------------------- CART TOTAL ', this.props.total)
       const total = this.props.total
@@ -19,12 +20,12 @@ class Cart extends Component {
         return <div key={i}>
               <div>{e.item}
               <img src={e.image} alt={e.shortdesc}/> 
-                <button onClick={() =>e.qty-1 === 0 ? this.props.removeFromCart(e.id) && this.props.cartTotal() : this.props.decrementQty(e.id) && this.props.cartTotal()}>-</button>
+                <button onClick={() =>e.qty-1 === 0 ? this.props.removeFromCart(e.id) && this.props.total() : this.props.minusOne(e) && this.props.total()}>-</button>
                 {e.qty}
-                <button onClick={() => this.props.incrementQty(e.id) && this.props.cartTotal()}>+</button>
+                <button onClick={() => this.props.plusOne(e) && this.props.total()}>+</button>
               </div>  
 
-              <button onClick={() => this.props.removeFromCart(e.id) && this.props.cartTotal()}>Remove this Item</button>
+              <button onClick={() => this.props.removeFromCart(e.id) && this.props.total()}>Remove this Item</button>
           </div>
           
       }) : 'add something to your cart!'
@@ -46,7 +47,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getProducts,
-  cartTotal,
   ...actions
 }
 
