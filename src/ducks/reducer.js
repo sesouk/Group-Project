@@ -68,7 +68,7 @@ export const actions = {
         cart[index].qty+=1
         cart[index].total = cart[index].qty*cart[index].price
       } else {
-        cart.push(item)
+        cart[cart.length] = (item)
       }
       axios.post('/api/cartToSession', cart)
       return dispatch({
