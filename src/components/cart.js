@@ -52,7 +52,7 @@ class Cart extends Component {
       }) : 'add something to your cart!'
         return (
           <div>
-            <h1>Cart</h1>
+            {/* <h1>Cart</h1> */}
             {cart}
             <div> <b>SubTotal: {total} </b></div>
 
