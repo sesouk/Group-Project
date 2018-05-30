@@ -61,7 +61,7 @@ app.get('/api/users', userCtrl.getUsers) //for admin page to get all users //tes
 app.get('/api/user/:id',userCtrl.getUserByID) //tested
 
 //***************ORDER Endpoints *********************/
-// app.get('/api/orders', orderCtrl.allOrders) //get orders//tested
+app.post('/api/lineitem', orderCtrl.addToLineItem) //get orders//tested
 
 //***************Payment****************** */
 

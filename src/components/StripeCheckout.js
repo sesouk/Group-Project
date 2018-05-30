@@ -63,12 +63,15 @@ class TakeMoney extends Component {
     }
 
     successPayment = data => {
-        console.log('Payment Successful',data)
+        console.log('Payment Successful',data.data[0].orderid)
         
+        this.setState({orderNumber:data.data[0].orderid})
 
-        this.setState({orderNumber:data.data.orderid, orderComplete: true})
+        axios.post('/api/lineitem').then(response => response.data)
+        console.log("inisde successpayment". response.data)
+        .catch(error => console.log(error)) 
 
-   
+   this.setState({ orderComplete: true})
     }
 
     errorPayment = data => {
@@ -93,7 +96,7 @@ class TakeMoney extends Component {
 
 
             // return <Redirect to={`/OrderConfirmation/${this.state.orderNumber}`} />
-            return <Redirect to ={'/orderConfirmation'}/>
+            return <Redirect to ={`/orderConfirmation/${this.state.orderNumber}`}/>
         }
 
         const {tax, amount} = this.props

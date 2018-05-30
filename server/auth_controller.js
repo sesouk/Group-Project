@@ -52,16 +52,4 @@ module.exports = {
       }
         
           }  
-        
-      
 
-     
-
-
-
-          
-                // console.log('-------- userData', userData );
-                //   req.session.user.name = userData.name
-                //   req.session.user.email = userData.email
-                //   req.session.user.cart = []
-                //   res.redirect('/');

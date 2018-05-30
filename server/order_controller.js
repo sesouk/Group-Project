@@ -1,15 +1,17 @@
 
 module.exports ={
 
-    // createOrder:(req,res)=>{
-    //     const dbInstance = req.app.get('db');
-    //     const{userID,total} = req.session;
-    //     const{email,address,city,state,zip_code,phone,shippingCharges,tax} = req.body
-    //     const date = new Date().toDateString()
-    //     dbInstance.createOrder[(orderuserid,orderamount,ordershipaddress,ordercity,orderstate,orderzip,orderphone,ordershipping,ordertax,orderemail	,orderdate)]
-    //     .then(order=>res.status(200).send(order))
-    //     .catch(error =>console.log("not able to create order",issue));
-    // },
+    addToLineItem: (req, res, next) => {
+        console.log("insde line item endpoint")
+        const{orderid}= req.body
+        const{cart} = req.session.user
+    console.log("inside line items,",cart)
+        cart.map((e)=>{
+        req.app.get('db').createLineItems(orderid,e.id,e.qty ).then(data=>res.status(200).send(data))
+      })
+          .catch(error =>(console.log(error))
+          );
+      },
 
 
 

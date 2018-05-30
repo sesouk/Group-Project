@@ -8,11 +8,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import { actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import MiniCart from "./MiniCart";
 import StripeCheckout from './StripeCheckout'
+import { getProducts, actions} from '../ducks/reducer'
 import axios from 'axios';
+import Cart from './cart'
 
 
 
@@ -33,8 +34,8 @@ import axios from 'axios';
 // });
 
 class Checkout extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       address: '',
@@ -42,10 +43,16 @@ class Checkout extends React.Component {
       state: '',
       city: '',
       phone: '',
-      username:''
+      username:'',
+      cart: this.props.cart,
+      total: this.props.total
     }
     this.shippingDetails = this.shippingDetails.bind(this)
   }
+
+  // componentDidMount(){
+  //   this.props.cartTotal()
+  // }
 
   shippingDetails(){
     console.log("state values", this.state)
@@ -59,6 +66,7 @@ class Checkout extends React.Component {
 
   render() {
     const total = this.props.total
+
     const { classes } = this.props;
     return (
    
@@ -179,7 +187,29 @@ class Checkout extends React.Component {
         
         
         <div className="checkout_minicart"> 
-        <MiniCart />
+        {/* <MiniCart /> */}
+
+        <div className="minicart_summary">
+                <Cart/>
+            <h3> Cart Summary </h3>
+            {/* {cart} */}
+            <div>SubTotal:{total}</div>
+            <div>
+                            <span>Shipping(Flat Rate):</span>
+                            <div>$5.00</div>
+                        </div>
+                        <div>
+                            <span>Tax:</span>
+                             <div>${(total * .06).toFixed(2)}
+                            
+                            </div> 
+                        </div>
+                        <div className="minicart_ordersubtotals"> 
+                            <span>Order Total:</span>
+                            <div>${((total * 1.06) + 5).toFixed(2)} </div>
+                        </div>
+                       
+                    </div>
      
         <div > 
           <div onClick ={()=>this.shippingDetails()} >
