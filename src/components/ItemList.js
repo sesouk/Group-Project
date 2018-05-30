@@ -9,7 +9,7 @@ import '../Styling/shop.css'
   render() {
     const {reducedDataItems} = this.props.reducedDataItems
     const {filteredData}=this.props.filteredData
-    console.log("fron redux",reducedDataItems)
+    // console.log("fron redux",reducedDataItems)
     console.log("inside display list",this.props.filteredData)
 
     return (
@@ -21,8 +21,9 @@ import '../Styling/shop.css'
               { this.props.filteredData.map((e,i) => {
             return <div key={i} className='item'>
             <div className='item-contain'>
-                  <p>{e.name}</p>
-                  <h2>{e.products[0].productcartdesc} </h2>
+            <h2>{e.name} </h2>
+                  <p> {e.products[0].productcartdesc}</p>
+                  
                   <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
                   {/* <h3> {e.productcartdesc} </h3> */}
                   <p>${e.products[0].productprice}</p>
@@ -40,8 +41,8 @@ import '../Styling/shop.css'
               { this.props.reducedDataItems.map((e,i) => {
         return <div key={i} className='item'>
         <div className='item-contain'>
-              <p>{e.name}</p>
-              <h2>{e.products[0].productcartdesc} </h2>
+        <h2>{e.name} </h2>
+                  <p> {e.products[0].productcartdesc}</p>
               <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
               {/* <h3> {e.productcartdesc} </h3> */}
               <p>${e.products[0].productprice}</p>

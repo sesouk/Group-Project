@@ -20,17 +20,24 @@ class TabsData extends Component {
       filteredData: []
     };
   }
+<<<<<<< HEAD
   // componentDidMount() {
   //   const { reducedDataItems } = this.props.reducedDataItems;
   //   // console.log("============= current cart", this.props.reducedDataItems);
   // }
+=======
+  componentDidMount() {
+    const { reducedDataItems } = this.props.reducedDataItems;
+    // console.log("============= current cart", this.props.reducedDataItems);
+  }
+>>>>>>> c3a49b0d8fafe2d0300f1f68331c180815b37ba3
 
   filterCategory = category => {
-    console.log("inside filter cat data", this.props.reducedDataItems);
+    // console.log("inside filter cat data", this.props.reducedDataItems);
     const reducedData = this.props.reducedDataItems.filter(
       item => item.category === category
     );
-    console.log("inside filter cat data", reducedData);
+    // console.log("inside filter cat data", reducedData);
     //   this.props.reducedData(reducedData)
     this.setState({ filteredData: reducedData });
   };
@@ -93,8 +100,4 @@ const mapStateToProps = state => {
     reducedDataItems: state.reducedDataItems
   };
 };
-export default connect(mapStateToProps, {
-  getCategoryProducts,
-  getProducts,
-  reducedData
-})(TabsData);
+export default connect(mapStateToProps, { getCategoryProducts, getProducts, reducedData })(TabsData);

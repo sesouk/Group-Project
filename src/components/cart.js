@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class Cart extends Component {
 
@@ -34,12 +35,8 @@ class Cart extends Component {
   }
 
   render() {
-      // console.log(this.props)
-      console.log('============= current cart', this.props.cart)
-      // console.log('------------------- CART TOTAL ', this.props.total)
       const total = this.props.total
       const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
-        // console.log('--------------- items ', 'qty: ', e.qty)
         return <div key={i}>
               <div>{e.name}
               <img src={e.image} alt={e.name}/> 
@@ -56,7 +53,14 @@ class Cart extends Component {
           <div>
             <h1>Cart</h1>
             {cart}
-            <div>SubTotal: {total}</div>
+            <div> <b>SubTotal: {total} </b></div>
+
+            <br />
+                 
+
+
+   
+    <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link>
           </div>
         )
     }

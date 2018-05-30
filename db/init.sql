@@ -2,10 +2,6 @@ drop table if exists users CASCADE;
 drop table if exists lineItem;
 drop table if exists orders;
 drop table if exists products;
-<<<<<<< HEAD
-drop table if exists lineItem;
-=======
->>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab
 
 
 create table users(
@@ -94,8 +90,4 @@ values(1,1,2);
 select * from users;
 select * from products;
 select * from orders;
-<<<<<<< HEAD
 select * from lineItem;
-=======
-select * from lineItem;
->>>>>>> 252045f2d1886c3fcc7fed29ae45732cd59c41ab

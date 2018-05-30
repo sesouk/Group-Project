@@ -1,7 +1,7 @@
 import React from 'react'
 import home from './components/home'
 import shop from './components/shop'
-// import admin from './components/admin'
+import Admin from './components/Admin'
 import TabsData from './components/TabsData'
 import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
@@ -9,6 +9,7 @@ import StripeCheckout from './components/StripeCheckout'
 import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
+import redirect from './components/redirect'
 
 
 export default (
@@ -23,6 +24,7 @@ export default (
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation'/>
+            <Route component={redirect} path='./redirect'/>
         </Switch>
 
 )

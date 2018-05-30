@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getProduct, addToCart, cartTotal, actions } from '../ducks/reducer'
+import { getProduct, actions } from '../ducks/reducer'
 import axios from 'axios'
 
 class Product extends Component {
