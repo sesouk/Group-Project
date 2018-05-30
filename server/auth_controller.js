@@ -12,14 +12,14 @@ module.exports = {
             redirect_uri: `http://${req.headers.host}/auth/callback || http://${req.headers.host}/shop || http://${req.headers.host}/checkout || http://${req.headers.host}/cart`
         }).then( accessTokenResponse => {
           const accessToken = accessTokenResponse.data.access_token;
-            // console.log('-------------accessToken', accessToken)
+            console.log('-------------accessToken', accessToken)
               return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${accessToken}`)
           .then( userInfoResponse => {
-            // console.log("response from auth0",userInfoResponse)
+            console.log("response from auth0",userInfoResponse)
               const userData = userInfoResponse.data;
               const name = userData.name;
               const email = userData.email;
-              // console.log(email)
+              console.log(email)
               req.app.get('db').findUser(email).then(response =>{
                
                 // console.log("response from database",response)
@@ -53,12 +53,9 @@ module.exports = {
         
           }  
 
-<<<<<<< HEAD
-=======
           
                 // console.log('-------- userData', userData );
                 //   req.session.user.name = userData.name
                 //   req.session.user.email = userData.email
                 //   req.session.user.cart = []
                 //   res.redirect('/');
->>>>>>> c3a49b0d8fafe2d0300f1f68331c180815b37ba3
