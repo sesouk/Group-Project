@@ -1,15 +1,22 @@
 
 module.exports = {
     cartToRedux: ( req, res ) => {
-      console.log('---cartToRedux-----req.body----', req.body)
+      // console.log('---cartToRedux-----req.body----', req.body)
       req.session.user.cart[0] ? 
       res.status( 201 ).send(req.session.user.cart) : res.status( 404 ).send("No current Cart in Session")
     },
 
     cartToSession: ( req, res ) => {
       req.session.user.cart = req.body
-      console.log(req.session.user)
+      // console.log(req.session.user)
       res.end()
+    },
+
+    sessionLocation: ( req, res, next ) => {
+      req.session.user.lastLocation = req.body.local
+      console.log('test location', req.body)
+      console.log('where to reroute? :', req.session.user.lastLocation)
+      next()
     },
 
     getUser: (req, res) => {

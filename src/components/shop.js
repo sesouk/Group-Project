@@ -2,25 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {
-  getProducts,
-  getProduct,
-  actions,
-  reducedData
-} from "../ducks/reducer";
+import {getProducts, getProduct, actions, reducedData } from "../ducks/reducer";
 import "../Styling/shop.css";
 import TabsData from "./TabsData";
 import ItemList from "./ItemList";
 
 class Shop extends Component {
   componentDidMount(props) {
-    axios
-      .get("/api/shop")
+    axios.get("/api/shop")
       .then(products => {
-        this.props.getProducts(
-          products.data
-          // console.log('--------products', this.props.products )
-        );
+        this.props.getProducts(products.data);
       })
       .catch(err => {
         console.log(err);

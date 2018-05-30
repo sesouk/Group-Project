@@ -5,15 +5,15 @@ const stripe = require('stripe')(process.env.STRIPE_SECRETKEY)
 
 module.exports = {
     shippingDetails: (req, res) => {
-        console.log('current session', req.session.shippingDetails)
+        // console.log('current session', req.session.shippingDetails)
         req.session.shippingDetails = req.body;
-        console.log('shipping details in session', req.session.shippingDetails)
+        // console.log('shipping details in session', req.session.shippingDetails)
         res.send("okie")
         
     },
     paymentAPI(req, res) {
-        console.log("inside stripe",req.session.shippingDetails);
-        console.log('------req.body', req.body);
+        // console.log("inside stripe",req.session.shippingDetails);
+        // console.log('------req.body', req.body);
         const { source, currency, amount, acct, addresses, email } = req.body
 
         stripe.charges.create({ source, currency, amount }, { stripe_account: acct }, (stripeErr, stripeRes) => {

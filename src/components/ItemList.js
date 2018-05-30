@@ -9,8 +9,8 @@ import '../Styling/shop.css'
   render() {
     const {reducedDataItems} = this.props.reducedDataItems
     const {filteredData}=this.props.filteredData
-    console.log("fron redux",reducedDataItems)
-    console.log("inside display list",this.props.filteredData)
+    // console.log("fron redux",reducedDataItems)
+    // console.log("inside display list",this.props.filteredData)
 
     return (
       <div>

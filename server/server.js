@@ -53,6 +53,7 @@ app.get("/auth/callback", authCtrl.auth) //auth0 endpoint
 app.post("/api/logout", authCtrl.logout)
 app.get("/api/user-data", userCtrl.getUser)
 app.post("/api/cartToSession", userCtrl.cartToSession)
+app.post('/api/sessionLocation', userCtrl.sessionLocation)
 app.get('/api/cartToRedux', userCtrl.cartToRedux)
 
 //************User Endpoints ***************************/
