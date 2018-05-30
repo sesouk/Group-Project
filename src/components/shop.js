@@ -9,10 +9,19 @@ import {
   reducedData
 } from "../ducks/reducer";
 import "../Styling/shop.css";
+import Button from "@material-ui/core/Button";
 import TabsData from "./TabsData";
 import ItemList from "./ItemList";
 
 class Shop extends Component {
+  constructor() {
+    super();
+    this.state = {
+      category: "",
+      filteredData: []
+    };
+  }
+  
   componentDidMount(props) {
     axios
       .get("/api/shop")
@@ -26,26 +35,8 @@ class Shop extends Component {
         console.log(err);
       });
   }
+
   render() {
-    //   const groupBy = (arrObj, property) => {
-    //     return arrObj.reduce((acc, obj) => {
-    //       const key = obj[property]
-    //       if (!acc[key]) {
-    //       acc[key] = []
-    //       console.log(acc[key]);
-    //       console.log(acc);
-    //     }
-    //       acc[key].push({ name: obj.productname, details: obj})
-    //       return acc
-    //   }, [])
-    // }
-    // const reduced = groupBy(this.props.products, 'productname')
-    // console.log('---------products',this.props.products)
-    // console.log('---------productid', this.props.cart[0])
-    // console.log('---------products',this.props.products)
-    // console.log('---------productid', this.props.cart)
-    // console.log('---------cart.productID', this.props.cart.findIndex(e => e.id))
-    // console.log('---------this.props.cart-------', this.props.cart)
     const reduced = this.props.products.reduce((arr, current) => {
       // console.log(current)
       if (!arr.length) {
@@ -76,58 +67,179 @@ class Shop extends Component {
         return arr;
       }
     }, []);
-    this.props.reducedData(reduced);
-    // console.log('reduced---------',reduced);
 
-    // const products = reduced.map((e,i) => {
-    //   // console.log(e.products[0].productimage);
-    //   // const productsnested = e.products.map((el,i) => {
-    //   //   // console.log(el.productprice);
-    //     return <div key={i} className='item'>
-    //     <div className='item-contain'>
-    //           <p>{e.name}</p>
-    //           <h2>{e.products[0].productcartdesc} </h2>
-    //           <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
-    //           {/* <h3> {e.productcartdesc} </h3> */}
-    //           <p>${e.products[0].productprice}</p>
+    const filterCategory = category => {
+      const filtered = reduced.filter(
+        item => item.category === category
+      );
+      this.setState({ filteredData: filtered });
+    };
 
-    //           <p className='stock'>{e.products[0].productstock <=0 ? 'out-of-stock' : e.products[0].productstock >0 && e.products[0].productstock <= 10 ? 'limited-stock' : 'in-stock'}</p>
-    //           <Link to='/product'><button onClick={() => this.props.getProduct({ name: e.products[0].productname, image: e.products[0].productimage, price: e.products[0].productprice, info: e.products[0].productcartdesc, subinfo: e.products[0].productshortdesc, details: e.products})}>Details</button></Link>
-    //           </div>
-    //          </div>
-    //   })
-    // console.log(productsnested);
-    // return productsnested
-    // })
-
-    // console.log('----------e', e);
-    // console.log('----------this.props.cart', this.props.cart);
-
-    //       }): 'nothing to display'
-    // { this.props.cart > 0 ? console.log( '---------productid', this.props.cart[0].productid : null) }
-    // const products = [reduced].map((e,i) => {
-    //   console.log('-------------',e);
-    //   return <div>
-    //     <p></p>
-    //   </div>
-    // })
+    const products = reduced.map((e,i) => {
+      return <div key={i} className='item'>
+      <div className='item-contain'>
+            <p>{e.name}</p>
+            <Link to='/product'>
+              <img src ={e.products[0].productimage} alt={e.products[0].productname}
+                onClick={() => this.props.getProduct({ 
+                  name: e.products[0].productname, 
+                  image: e.products[0].productimage, 
+                  price: e.products[0].productprice, 
+                  info: e.products[0].productcartdesc, 
+                  subinfo: e.products[0].productshortdesc, 
+                  details: e.products})}/>
+              </Link>
+            <p>${e.products[0].productprice}</p>
+    
+            <p className='stock'>
+              {e.products[0].productstock <=0
+              ? 'out-of-stock' 
+              : e.products[0].productstock >0 && e.products[0].productstock <= 10 
+              ? 'limited-stock' 
+              : 'in-stock'}
+            </p>
+            
+              {/* <button onClick={() => this.props.getProduct({ 
+                name: e.products[0].productname, 
+                image: e.products[0].productimage, 
+                price: e.products[0].productprice, 
+                info: e.products[0].productcartdesc, 
+                subinfo: e.products[0].productshortdesc, 
+                details: e.products})}>
+                Details
+              </button> */}
+            
+            </div>
+           </div>
+    })
+    
+    const filtered = this.state.filteredData.length ? this.state.filteredData.map((e,i) => {
+      return <div key={i} className='item'>
+      <div className='item-contain'>
+            <p>{e.name}</p>
+            <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
+            <p>${e.products[0].productprice}</p>
+    
+            <p className='stock'>
+              {e.products[0].productstock <=0 
+                ? 'out-of-stock' 
+                : e.products[0].productstock >0 && e.products[0].productstock <= 10 
+                ? 'limited-stock' 
+                : 'in-stock'}
+            </p>
+            <Link to='/product'>
+              <button onClick={() => this.props.getProduct({ 
+                name: e.products[0].productname, 
+                image: e.products[0].productimage, 
+                price: e.products[0].productprice, 
+                info: e.products[0].productcartdesc, 
+                subinfo: e.products[0].productshortdesc, 
+                details: e.products})}>
+                Details
+              </button>
+            </Link>
+            </div>
+           </div>
+    })
+    : null
+    const {reducedDataItems} = this.props.reducedDataItems
+    const { category } = this.state;
     return (
       <div>
-        {/* <TabsData  reduced={reduced} /> */}
-        <div className ="tabs">
-        <TabsData />
-<br />
-<br />
-</div>
+        <div>
+        {(this.state.filteredData.length!=0)
+        ?
+        <div className="container">
+            <div className="sidebar">
+          <Button
+            variant="raised"
+            color="primary"
+            value="T-shirts"
+            onClick={() => filterCategory("shirt")}
+          >
+            T-shirts
+          </Button>
+          <Button
+            variant="raised"
+            color="primary"
+            value="Jeans"
+            onClick={() => filterCategory("pant")}
+          >
+            Jeans
+          </Button>
 
-        {/* {this.props.reducedData(reduced)} */}
-        <div className="">
-          <div className="sidebar">sorting component would go here</div>
-          {/* {products} */}
-          {/* <ItemList reduced={this.props.reducedData} /> */}
-          <div className="footer">footer component here</div>
+          <Button
+            variant="raised"
+            color="primary"
+            value="Shoes"
+            onClick={() => filterCategory("shoe")}
+          >
+            Shoes
+          </Button>
+          <Button
+            variant="raised"
+            color="primary"
+            value="Watch"
+            onClick={() => filterCategory("accessory")}
+          >
+            Accessory
+          </Button>
+
+          <Button
+            variant="raised"
+            color="primary"
+            value="All"
+            onClick={() => filterCategory(null)}
+          >
+            All
+          </Button>
         </div>
-      </div>
+           { filtered }
+           <div className="footer">footer component here</div>
+        </div>
+          :
+          <div className="container">
+          <div className="sidebar">
+          <Button
+            variant="raised"
+            color="primary"
+            value="T-shirts"
+            onClick={() => filterCategory("shirt")}
+          >
+            T-shirts
+          </Button>
+          <Button
+            variant="raised"
+            color="primary"
+            value="Jeans"
+            onClick={() => filterCategory("pant")}
+          >
+            Jeans
+          </Button>
+
+          <Button
+            variant="raised"
+            color="primary"
+            value="Shoes"
+            onClick={() => filterCategory("shoe")}
+          >
+            Shoes
+          </Button>
+          <Button
+            variant="raised"
+            color="primary"
+            value="Watch"
+            onClick={() => filterCategory("accessory")}
+          >
+            Accessory
+          </Button>
+        </div>
+           { products }
+           <div className="footer">footer component here</div>
+          </div>
+        }
+     </div>
+    </div>
     );
   }
 }
@@ -135,7 +247,8 @@ class Shop extends Component {
 const mapStateToProps = state => {
   return {
     products: state.products,
-    product: state.product
+    product: state.product,
+    reducedDataItems: state.reducedDataItems
   };
 };
 export default connect(mapStateToProps, {
