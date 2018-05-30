@@ -3,6 +3,7 @@ import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import FaTrash from "react-icons/lib/fa/trash";
 
 class Cart extends Component {
 
@@ -45,7 +46,7 @@ class Cart extends Component {
                 <button onClick={() => this.increment(e.id)}>+</button>
               </div>  
 
-              <button onClick={() => this.delete(e.id)}>Remove this Item</button>
+              <span onClick={() => this.delete(e.id)}><FaTrash /> </span>
           </div>
           
       }) : 'add something to your cart!'
