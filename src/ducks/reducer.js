@@ -18,7 +18,6 @@ const initialState = {
 
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 const GET_USER_INFO = 'GET_USER_INFO'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_PRODUCT = 'GET_PRODUCT'
@@ -62,13 +61,13 @@ export const actions = {
     return (dispatch, getState ) => {
       let cart = [ ...getState().cart ]
       let index = cart.findIndex( e => e.id === item.id )
-      console.log('the index value is', index)
+      // console.log('the index value is', index)
       if(index !== -1 ){
         cart[index].qty+=1
         cart[index].total = cart[index].qty*cart[index].price
       } else {
         cart.push(item)
-        console.log('response', cart)
+        // console.log('response', cart)
       }
       axios.post('/api/cartToSession', cart)
       return dispatch({
@@ -81,8 +80,8 @@ export const actions = {
   plusOne: (item) => {
     return ( dispatch, getState ) => {
       let cart = [ ...getState().cart ]
-      console.log('response', cart)
-      console.log('you sent me', item)
+      // console.log('response', cart)
+      // console.log('you sent me', item)
       let index = cart.findIndex( e => e.id === item)
         cart[index].qty +=1
         cart[index].total = cart[index].qty*cart[index].price
@@ -114,7 +113,7 @@ export const actions = {
     return ( dispatch, getState ) => {
       let cart = [ ...getState().cart ]
       let total = cart[0] ?  cart.map( e => e.total).reduce( (a, b) => a + b) : 0
-      console.log(total)
+      // console.log(total)
       return dispatch({
         type: CART_TOTAL,
         payload: total
@@ -135,13 +134,6 @@ export const getCategoryProducts =(category_items) =>{
   return {
     type:CATEGORY_ITEMS,
     payload:category_items
-  }
-}
-
-export const updateQuantity = (quantity) => {
-  return {
-    type: UPDATE_QUANTITY,
-    payload: quantity
   }
 }
 
@@ -178,26 +170,23 @@ function reducer ( state=initialState , action ){
   switch(action.type){
 
     case ADD_TO_CART: 
-        return { ...state, cart: action.payload }
+      return { ...state, cart: action.payload }
       
 
     case REMOVE_FROM_CART:
-        return { ...state, cart: action.payload }
+      return { ...state, cart: action.payload }
 
     case GET_USER_INFO:
-        return Object.assign( {}, state, { user: action.payload })
+      return Object.assign( {}, state, { user: action.payload })
 
     case GET_PRODUCTS:
-        return Object.assign( {}, state, { products: action.payload })
+      return Object.assign( {}, state, { products: action.payload })
 
     case GET_PRODUCT:
-        return {
-          ...state, 
-          product: action.payload
-        }
+      return { ...state, product: action.payload }
         
     case CATEGORY_ITEMS:
-        return {...state, category_items:action.payload}
+      return { ...state, category_items:action.payload}
 
         case FILTER_DATA:
         return {...state, reducedDataItems:action.payload}
@@ -210,20 +199,20 @@ function reducer ( state=initialState , action ){
     //   newCart[index].total = newCart[index].qty*newCart[index].price
     //     return { ...state, cart: newCart, cart_total: parseInt(total) }
     case INCREMENT_QTY:
-        return { ...state, cart: action.payload }
+      return { ...state, cart: action.payload }
 
     case DECREMENT_QTY:
-        return { ...state, cart: action.payload }
+      return { ...state, cart: action.payload }
 
     case CART_TOTAL:
       // console.log('newCart',newCart)
       return { ...state, cart_total: action.payload}
     
     case GET_CART:
-        return { ...state, cart: action.payload[0], cart_total: action.payload[1]}
-        // return { ...state, cart: action.payload, total: sessionTotal }
+      return { ...state, cart: action.payload[0], cart_total: action.payload[1]}
+
     default:
-        return state
+      return state
   }
 }
 

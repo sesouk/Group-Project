@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { getProducts, actions} from '../ducks/reducer'
+
 import { connect } from 'react-redux'
 
 import StripeCheckout from './StripeCheckout'

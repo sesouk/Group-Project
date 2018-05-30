@@ -78,6 +78,7 @@ class Shop extends Component {
     }, []);
     this.props.reducedData(reduced);
     // console.log('reduced---------',reduced);
+<<<<<<< HEAD
       // const products = reduced.map((e,i) => {
       //   // console.log(e.products[0].productimage);
       //   // const productsnested = e.products.map((el,i) => {
@@ -89,6 +90,8 @@ class Shop extends Component {
       //           <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
       //           {/* <h3> {e.productcartdesc} </h3> */}
       //           <p>${e.products[0].productprice}</p>
+=======
+>>>>>>> 965724d940cb1c0813c8381dcc0c924237b975f3
 
     // const products = reduced.map((e,i) => {
     //   // console.log(e.products[0].productimage);
