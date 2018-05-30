@@ -36,6 +36,7 @@ class Cart extends Component {
   }
 
   render() {
+    // console.log(window.location.pathname)
       const total = this.props.total
       const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
         return <div key={i}>
@@ -52,7 +53,7 @@ class Cart extends Component {
       }) : 'add something to your cart!'
         return (
           <div>
-            <h1>Cart</h1>
+            {/* <h1>Cart</h1> */}
             {cart}
             <div> <b>SubTotal: {total} </b></div>
 
@@ -60,9 +61,9 @@ class Cart extends Component {
                  
 
 
-   
-    <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link>
-          </div>
+    
+    {window.location.pathname==='/checkout' ? null :  <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link> 
+      }</div>
         )
     }
 }

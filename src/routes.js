@@ -1,7 +1,7 @@
 import React from 'react'
 import home from './components/home'
 import shop from './components/shop'
-import admin from './components/admin'
+// import admin from './components/admin'
 import TabsData from './components/TabsData'
 import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
@@ -23,7 +23,7 @@ export default (
             <Route component={Checkout} path ='/checkout'/>
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
-            <Route component={OrderConfirmation} path='/orderConfirmation'/>
+            <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
             <Route component={redirect} path='./redirect'/>
         </Switch>
 

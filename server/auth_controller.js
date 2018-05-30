@@ -12,14 +12,14 @@ module.exports = {
             redirect_uri: `http://${req.headers.host}/auth/callback`
         }).then( accessTokenResponse => {
           const accessToken = accessTokenResponse.data.access_token;
-            console.log('-------------accessToken', accessToken)
+            // console.log('-------------accessToken', accessToken)
               return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${accessToken}`)
           .then( userInfoResponse => {
-            console.log("response from auth0",userInfoResponse)
+            // console.log("response from auth0",userInfoResponse)
               const userData = userInfoResponse.data;
               const name = userData.name;
               const email = userData.email;
-              // console.log(email)
+              // ffffffconsole.log(email)
               req.app.get('db').findUser(email).then(response =>{
                
                 // console.log("response from database",response)

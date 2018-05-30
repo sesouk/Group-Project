@@ -7,10 +7,10 @@ module.exports ={
         const{cart} = req.session.user
     console.log("inside line items,",cart)
         cart.map((e)=>{
-        req.app.get('db').createLineItems(orderid,e.id,e.qty ).then(data=>res.status(200).send(data))
+        req.app.get('db').createLineItems(orderid,e.id,e.qty ).then(data=>res.status(200).send(data)).catch(error=>console.log(error))
       })
-          .catch(error =>(console.log(error))
-          );
+         
+          
       },
 
 
