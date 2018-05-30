@@ -71,10 +71,11 @@ export const actions = {
       } else {
         cart[cart.length] = item
       }
-      axios.post('/api/cartToSession', cart)
-      return dispatch({
-        type: ADD_TO_CART,
-        payload: cart
+      axios.post('/api/cartToSession', cart).then(() => {
+        return dispatch({
+          type: ADD_TO_CART,
+          payload: cart
+      })
       })
     }
   },
