@@ -9,7 +9,7 @@ module.exports = {
             client_secret: process.env.AUTH0_CLIENT_SECRET,
             code: req.query.code,
             grant_type: 'authorization_code',
-            redirect_uri: `http://${req.headers.host}/auth/callback`
+            redirect_uri: `http://${req.headers.host}/auth/callback || http://${req.headers.host}/shop || http://${req.headers.host}/checkout || http://${req.headers.host}/cart`
         }).then( accessTokenResponse => {
           const accessToken = accessTokenResponse.data.access_token;
             // console.log('-------------accessToken', accessToken)
@@ -30,7 +30,7 @@ module.exports = {
                   req.session.user.name = response[0].username;
                   req.session.user.email = response[0].useremail;
                   req.session.user.cart = []
-                      res.redirect('/');
+                      res.redirect('/redirect');
                 }
                 else
                 {
@@ -53,3 +53,12 @@ module.exports = {
         
           }  
 
+<<<<<<< HEAD
+=======
+          
+                // console.log('-------- userData', userData );
+                //   req.session.user.name = userData.name
+                //   req.session.user.email = userData.email
+                //   req.session.user.cart = []
+                //   res.redirect('/');
+>>>>>>> c3a49b0d8fafe2d0300f1f68331c180815b37ba3

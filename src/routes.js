@@ -12,6 +12,7 @@ import options from './components/options'
 import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
 import { BrowserRouter } from 'react-router-dom'
+import redirect from './components/redirect'
 
 
 export default (
@@ -28,6 +29,7 @@ export default (
             <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation/:order_id'/>
             <Route component={options} path='/options'/>
+            <Route component={redirect} path='/redirect'/>
         </Switch>
 
 )
