@@ -62,13 +62,14 @@ export const actions = {
   add: (item) => {
     return (dispatch, getState ) => {
       let cart = [ ...getState().cart ]
+      console.log(cart)
       let index = cart.findIndex( e => e.id === item.id )
-      // console.log('the index value is', index)
+      console.log('the index value is', index)
       if(index !== -1 ){
         cart[index].qty+=1
         cart[index].total = cart[index].qty*cart[index].price
       } else {
-        cart.push(item)
+        cart[cart.length] = item
       }
       axios.post('/api/cartToSession', cart)
       return dispatch({
