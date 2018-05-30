@@ -61,8 +61,8 @@ class Cart extends Component {
 
 
    
-    <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link>
-          </div>
+    <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link> 
+      </div>
         )
     }
 }
