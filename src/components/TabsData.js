@@ -20,17 +20,10 @@ class TabsData extends Component {
       filteredData: []
     };
   }
-<<<<<<< HEAD
-  // componentDidMount() {
-  //   const { reducedDataItems } = this.props.reducedDataItems;
-  //   // console.log("============= current cart", this.props.reducedDataItems);
-  // }
-=======
   componentDidMount() {
     const { reducedDataItems } = this.props.reducedDataItems;
     // console.log("============= current cart", this.props.reducedDataItems);
   }
->>>>>>> c3a49b0d8fafe2d0300f1f68331c180815b37ba3
 
   filterCategory = category => {
     // console.log("inside filter cat data", this.props.reducedDataItems);
