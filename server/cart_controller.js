@@ -9,6 +9,8 @@ module.exports ={
             res.status(500).send(error, "Sorry an unknown error occured")
           );
       },
+
+
       deleteProduct: (req, res, next) => {
         const db = req.app.get("db");
         const { params } = req;
