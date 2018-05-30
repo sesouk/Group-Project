@@ -23,7 +23,7 @@ module.exports ={
       updateProduct: (req, res, next) => {
         const db = req.app.get("db");
         const { params, body } = req;
-        console.log(body);
+        // console.log(body);
         db
           .update_product([
             params.id,

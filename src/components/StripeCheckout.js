@@ -63,9 +63,10 @@ class TakeMoney extends Component {
     }
 
     successPayment = data => {
-        console.log('Payment Successful')
+        console.log('Payment Successful',data)
+        
 
-        this.setState({orderComplete: true})
+        this.setState({orderNumber:data.data.orderid, orderComplete: true})
 
    
     }
@@ -74,7 +75,7 @@ class TakeMoney extends Component {
       alert('Payment Error');
     }
 
- onToken = (amount) => token =>
+ onToken = (amount,tax) => token =>
   axios.post('/api/payment',
     {
       // name,
@@ -82,24 +83,28 @@ class TakeMoney extends Component {
       source: token.id,
       currency: CURRENCY,
       email:token.email,
+      tax:tax,
       amount: fromUSDToCent(amount)
     }).then(this.successPayment)
     .catch(this.errorPayment);
  
     render() {
         if(this.state.orderComplete){
+
+
             // return <Redirect to={`/OrderConfirmation/${this.state.orderNumber}`} />
             return <Redirect to ={'/orderConfirmation'}/>
         }
 
-        const {name, amount} = this.props
+        const {tax, amount} = this.props
         return (
             <div>
                   <StripeCheckout
     // acct= {acct}
     name='Stop-n-Shop'
+    tax
     amount={fromUSDToCent(amount)}
-    token={this.onToken(amount)}
+    token={this.onToken(amount,tax)}
     currency={CURRENCY}
     stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE}
   />
