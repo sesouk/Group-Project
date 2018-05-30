@@ -1,17 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux'
 import Drawer from '@material-ui/core/Drawer';
+import Badge from '@material-ui/core/Badge'
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import Cart from './cart'
-
-const styles = {
-  list: {
-    width: 500,
-  }
-};
+import '../Styling/nav.css'
 
 class TemporaryDrawer extends React.Component {
   state = {
@@ -25,24 +18,20 @@ class TemporaryDrawer extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
+    const { length } = this.props.cart
     const cartDrawer = (
-      <div className={classes.list}>
+      <div className='cartDrawer'>
           <Cart></Cart>
       </div>
     )
 
     return (
       <div>
-        <Button onClick={this.toggleDrawer('left', true)}>Cart</Button>
+        <Badge badgeContent={length} color="primary">
+        <Button color='inherit' onClick={this.toggleDrawer('left', true)}>Cart</Button>
+        </Badge>
         <Drawer anchor="left" open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-          <div
-            tabIndex={0}
-            role="button"
-            onClick={this.toggleDrawer('left', false)}
-            onKeyDown={this.toggleDrawer('left', false)}
-          >
+          <div>
             {cartDrawer}
           </div>
         </Drawer>
@@ -51,8 +40,10 @@ class TemporaryDrawer extends React.Component {
   }
 }
 
-TemporaryDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  }
+}
 
-export default withStyles(styles)(TemporaryDrawer);
+export default connect(mapStateToProps)(TemporaryDrawer);

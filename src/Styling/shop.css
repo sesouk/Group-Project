@@ -6,7 +6,7 @@
     grid-gap: 10px;
     align-items: center;
     justify-content: center;
-    height: 96vh
+    height: 95vh
 }
 
 img {
@@ -14,9 +14,6 @@ img {
     height: 70px
 }
 
-.tabs{
-    margin:10px 10px;
-}
 .item {
     display: grid;
     margin: 0 auto;
@@ -33,6 +30,11 @@ img {
 
 .sidebar {
     grid-column: span 3;
+}
+
+.btn {
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {
