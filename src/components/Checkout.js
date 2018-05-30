@@ -184,7 +184,7 @@ class Checkout extends React.Component {
         <div > 
           <div onClick ={()=>this.shippingDetails()} >
         <StripeCheckout 
-        shippingAddress ={this.state.address}
+        tax ={((total * .06).toFixed(2))}
         amount = {((total * 1.06) + 5).toFixed(2)}
         zip_code={true}
         token ={this.onToken}

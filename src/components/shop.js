@@ -68,7 +68,7 @@ class Shop extends Component {
       }
     }, []);
     this.props.reducedData(reduced);
-    // console.log('reduced---------',reduced);
+
 
     // const products = reduced.map((e,i) => {
     //   // console.log(e.products[0].productimage);

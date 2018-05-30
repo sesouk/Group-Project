@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class Cart extends Component {
 
@@ -51,7 +53,14 @@ class Cart extends Component {
           <div>
             <h1>Cart</h1>
             {cart}
-            <div>SubTotal: {total}</div>
+            <div> <b>SubTotal: {total} </b></div>
+
+            <br />
+                 
+
+
+   
+    <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link>
           </div>
         )
     }

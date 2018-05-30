@@ -50,7 +50,7 @@ app.get("/api/optionByProductID/:id",productCtrl.optionByProductID)
 
 //*************USER login/logout Endpoints**************/
 app.get("/auth/callback", authCtrl.auth) //auth0 endpoint
-app.post("/api/logout", authCtrl.logout)
+// app.post("/api/logout", authCtrl.logout)
 app.get("/api/user-data", userCtrl.getUser)
 app.post("/api/cartToSession", userCtrl.cartToSession)
 app.post('/api/sessionLocation', userCtrl.sessionLocation)

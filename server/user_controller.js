@@ -7,6 +7,8 @@ module.exports = {
     },
 
     cartToSession: ( req, res ) => {
+    //   console.log('-----cartToSession-----req.body--', req.body)
+    //   console.log('-----req.session.user.cart----', req.session.user.cart)
       req.session.user.cart = req.body
       // console.log(req.session.user)
       res.end()
@@ -20,12 +22,12 @@ module.exports = {
     },
 
     getUser: (req, res) => {
-      // console.log(req.session.user)
+    //   console.log(req.session.user)
       res.status(200).send(req.session.user)
     },
     getUsers: (req,res,next) =>{
         const dbInstance = req.app.get('db');
-        // console.log('received request')
+        console.log('received request')
         dbInstance.getUsers().then(users=> res.status(200).send(users))
         .catch(error => console.log(error));
     },
@@ -40,7 +42,7 @@ module.exports = {
 
     register: (req,res) =>{
         const dbInstance = req.app.get('db');
-        console.log('received request',req.params)
+        // console.log('received request',req.params)
         const userId = req.params.id;
         
         dbInstance.getUserByID(userId).then(user=> res.status(200).send(user))
@@ -51,5 +53,3 @@ module.exports = {
         res.status(200).send(req.session);
     }
 }
-
-// users: #    userid    username    useremail    usercity    userstate    userzip    userphone    useraddress
