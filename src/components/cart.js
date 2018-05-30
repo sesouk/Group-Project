@@ -16,7 +16,7 @@ class Cart extends Component {
     this.delete = this.delete.bind(this)
   }
   componentDidMount(){
-    this.props.getCart()
+    // this.props.getCart()
   }
   
   increment(item){

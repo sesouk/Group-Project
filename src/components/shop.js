@@ -25,6 +25,7 @@ class Shop extends Component {
       .catch(err => {
         console.log(err);
       });
+      this.props.getCart()
   }
 
   render() {
@@ -222,6 +223,13 @@ class Shop extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  ...actions,
+  getProducts,
+  getProduct,
+  reducedData
+}
+
 const mapStateToProps = state => {
   return {
     products: state.products,
@@ -229,8 +237,4 @@ const mapStateToProps = state => {
     reducedDataItems: state.reducedDataItems
   };
 };
-export default connect(mapStateToProps, {
-  getProducts,
-  getProduct,
-  reducedData
-})(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
