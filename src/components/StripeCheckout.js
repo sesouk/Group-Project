@@ -57,21 +57,24 @@ class TakeMoney extends Component {
 
         this.state = {
             orderComplete: false, 
-            orderNumber: 0,
-            order:[]
+            // orderid: 11,
+            orderNumber:'',
+            order:[],
+            lineitem:[]
         }
     }
 
     successPayment = data => {
         console.log('Payment Successful',data.data[0].orderid)
         
-        this.setState({orderNumber:data.data[0].orderid})
+        // this.setState({orderNumber:data.data[0].orderid})
+        const orderid=data.data[0].orderid
 
-        axios.post('/api/lineitem').then(response => response.data)
-        console.log("inisde successpayment". response.data)
-        .catch(error => console.log(error)) 
+        axios.post('/api/lineitem/',{orderid}).then(response =>this.setState({lineitem:response.data}) );
+        console.log("response from line item",this.state.lineitem)
 
-   this.setState({ orderComplete: true})
+   this.setState({ orderNumber:data.data[0].orderid,orderComplete: true })
+   console.log("values in sate",this.state.orderNumber)
     }
 
     errorPayment = data => {

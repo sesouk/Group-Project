@@ -6,9 +6,11 @@ export default class OrderConfirmation extends Component {
     
         return (
             <div>
-                {/* <h1> Thank you for your order!!{this.props.orderid}</h1>
-                <h1> Thank you for your order!!{orderid}</h1> */}
-                <h3> Your order number is : </h3>
+                <h1> Thank you for your order!!</h1>
+            
+
+              
+                <h3> Your order number is : {this.props.match.params.orderNumber} </h3>
 
                 <div>
                 <Link to="/">Continue Shopping</Link>
