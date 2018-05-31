@@ -40,12 +40,24 @@ module.exports = {
         .catch(error => console.log(error));
     },
 
-    register: (req,res) =>{
+    userdetailsByID: (req,res) =>{
         const dbInstance = req.app.get('db');
-        // console.log('received request',req.params)
-        const userId = req.params.id;
-        
-        dbInstance.getUserByID(userId).then(user=> res.status(200).send(user))
+     const{userid} = req.session.user
+    //  const userid=13
+        dbInstance.getUserByID(userid).then(user=> res.status(200).send(user))
+        .catch(error => console.log(error));
+    },
+
+
+    updateUserProfile:(req,res)=>{
+        console.log("inside udate profile server side")
+        const dbInstance = req.app.get('db');
+        const{userid} = req.session.user
+        console.log(req.body)
+        // const userid=13
+        const {address,city,state,zip_code,phone} = req.body;
+
+        dbInstance.updateUserProfile(userid,address,city,state,zip_code,phone).then(user=> res.status(200).send(user))
         .catch(error => console.log(error));
     },
 

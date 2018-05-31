@@ -55,11 +55,13 @@ app.get("/api/user-data", userCtrl.getUser)
 app.post("/api/cartToSession", userCtrl.cartToSession)
 app.post('/api/sessionLocation', userCtrl.sessionLocation)
 app.get('/api/cartToRedux', userCtrl.cartToRedux)
+app.post('/api/updateuserProfile',userCtrl.updateUserProfile)
 
 //************User Endpoints ***************************/
 // app.get('api/register',userCtrl.createUser)
 app.get('/api/users', userCtrl.getUsers) //for admin page to get all users //tested
 app.get('/api/user/:id',userCtrl.getUserByID) //tested
+app.get('/api/userdetails',userCtrl.userdetailsByID) //tested
 app.get('/api/orders',orderCtrl.orderByUserId)
 
 //***************ORDER Endpoints *********************/
