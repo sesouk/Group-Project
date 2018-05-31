@@ -34,7 +34,7 @@ export default class Profile extends Component {
                 return (
                   <tr>
                     <td>{order.orderid}</td>
-                    <td>{order.orderamount}</td>
+                    <td>${order.orderamount}</td>
                     <td>{order.ordershipaddress}</td>
                     <td>{order.orderdate}</td>
                   </tr>

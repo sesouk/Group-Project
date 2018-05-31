@@ -11,7 +11,7 @@ table {
   }
   
   tr:nth-child(even){background-color: #f2f2f2}
-  tr:nth-child(odd){color: white}
+  tr:nth-child(odd){color: black}
   
   th {
     background-color: lightblue;
