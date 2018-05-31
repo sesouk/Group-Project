@@ -25,6 +25,7 @@ class Shop extends Component {
       .catch(err => {
         console.log(err);
       });
+      this.props.getCart()
   }
 
   render() {
@@ -89,17 +90,6 @@ class Shop extends Component {
               ? 'limited-stock' 
               : 'in-stock'}
             </p>
-            
-              {/* <button onClick={() => this.props.getProduct({ 
-                name: e.products[0].productname, 
-                image: e.products[0].productimage, 
-                price: e.products[0].productprice, 
-                info: e.products[0].productcartdesc, 
-                subinfo: e.products[0].productshortdesc, 
-                details: e.products})}>
-                Details
-              </button> */}
-            
             </div>
            </div>
     })
@@ -108,7 +98,16 @@ class Shop extends Component {
       return <div key={i} className='item'>
       <div className='item-contain'>
             <p>{e.name}</p>
-            <img src ={e.products[0].productimage} alt={e.products[0].productname}  />
+            <Link to='/product'>
+              <img src ={e.products[0].productimage} alt={e.products[0].productname}
+                onClick={() => this.props.getProduct({ 
+                  name: e.products[0].productname, 
+                  image: e.products[0].productimage, 
+                  price: e.products[0].productprice, 
+                  info: e.products[0].productcartdesc, 
+                  subinfo: e.products[0].productshortdesc, 
+                  details: e.products})}/>
+              </Link>
             <p>${e.products[0].productprice}</p>
     
             <p className='stock'>
@@ -118,17 +117,6 @@ class Shop extends Component {
                 ? 'limited-stock' 
                 : 'in-stock'}
             </p>
-            <Link to='/product'>
-              <button onClick={() => this.props.getProduct({ 
-                name: e.products[0].productname, 
-                image: e.products[0].productimage, 
-                price: e.products[0].productprice, 
-                info: e.products[0].productcartdesc, 
-                subinfo: e.products[0].productshortdesc, 
-                details: e.products})}>
-                Details
-              </button>
-            </Link>
             </div>
            </div>
     })
@@ -142,7 +130,7 @@ class Shop extends Component {
         ?
         <div className="container">
             <div className="sidebar">
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="T-shirts"
@@ -150,7 +138,7 @@ class Shop extends Component {
           >
             T-shirts
           </Button>
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Jeans"
@@ -159,7 +147,7 @@ class Shop extends Component {
             Jeans
           </Button>
 
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Shoes"
@@ -167,7 +155,7 @@ class Shop extends Component {
           >
             Shoes
           </Button>
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Watch"
@@ -176,7 +164,7 @@ class Shop extends Component {
             Accessory
           </Button>
 
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="All"
@@ -191,7 +179,7 @@ class Shop extends Component {
           :
           <div className="container">
           <div className="sidebar">
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="T-shirts"
@@ -199,7 +187,7 @@ class Shop extends Component {
           >
             T-shirts
           </Button>
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Jeans"
@@ -208,7 +196,7 @@ class Shop extends Component {
             Jeans
           </Button>
 
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Shoes"
@@ -216,7 +204,7 @@ class Shop extends Component {
           >
             Shoes
           </Button>
-          <Button
+          <Button className='btn'
             variant="raised"
             color="primary"
             value="Watch"
@@ -235,6 +223,13 @@ class Shop extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  ...actions,
+  getProducts,
+  getProduct,
+  reducedData
+}
+
 const mapStateToProps = state => {
   return {
     products: state.products,
@@ -242,8 +237,4 @@ const mapStateToProps = state => {
     reducedDataItems: state.reducedDataItems
   };
 };
-export default connect(mapStateToProps, {
-  getProducts,
-  getProduct,
-  reducedData
-})(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);

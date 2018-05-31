@@ -16,7 +16,7 @@ class Cart extends Component {
     this.delete = this.delete.bind(this)
   }
   componentDidMount(){
-    this.props.getCart()
+    // this.props.getCart()
   }
   
   increment(item){
@@ -40,8 +40,14 @@ class Cart extends Component {
       const total = this.props.total
       const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
         return <div key={i}>
+        {/* <div className ="cartbody"> */}
               <div>{e.name}
               <img src={e.image} alt={e.name}/> 
+              <p>Color {e.color} </p>
+              <p>Size {e.size} </p>
+              <p><b> Total {e.total}</b> </p>
+              {/* </div> */}
+
                 <button onClick={() => e.qty-1 === 0 ? this.delete(e.id) : this.decrement(e.id)}>-</button>
                 {e.qty}
                 <button onClick={() => this.increment(e.id)}>+</button>
@@ -53,9 +59,9 @@ class Cart extends Component {
       }) : 'add something to your cart!'
         return (
           <div>
-            <h1>Cart</h1>
+            {/* <h1>Cart</h1> */}
             {cart}
-            <div> <b>SubTotal: {total} </b></div>
+            <div> <b>Order SubTotal: {total ? total.toFixed(2):0} </b></div>
 
             <br />
                  
