@@ -57,9 +57,10 @@ class Checkout extends React.Component {
     const { classes } = this.props;
     return (
       <div className="checkout_main_body">
-        <div className="checkout_body_form">
-          <div className="checkout_title">Check Out</div>
-
+        <div className="checkout_body_form ">
+        <div className="checkout_summary">
+        <h3>Check Out </h3>
+  <div className ="checkout_box">
           <TextField
             required
             label="Email id"
@@ -98,6 +99,7 @@ class Checkout extends React.Component {
             onChange={e => this.setState({ zip_code: e.target.value })}
             margin="normal"
           />
+          <br />
           <br />
           <div className="checkout_third_wrapper">
             <select onChange={e => this.setState({ state: e.target.value })}>
@@ -157,13 +159,15 @@ class Checkout extends React.Component {
 
           </div>
           </div>
+          </div>
            <br />
-           <br />
+           </div>
+       
 
-   
+      <div className="checkout_body_form">
             <div className="checkout_summary">
             <h3> Cart Summary </h3>
-            <div className="checkout_minicart">
+            <div className="checkout_box">
            
            <Cart />
             
@@ -191,6 +195,7 @@ class Checkout extends React.Component {
                   zip_code={true}
                   token={this.onToken}
                 />
+                </div>
               </div>
             </div>
           </div>
