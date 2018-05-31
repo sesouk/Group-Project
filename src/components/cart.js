@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import FaTrash from "react-icons/lib/fa/trash";
+import './../Styling/CartStyle.css'
 
 class Cart extends Component {
 
@@ -40,20 +41,27 @@ class Cart extends Component {
       const total = this.props.total
       const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
         return <div key={i}>
-        {/* <div className ="cartbody"> */}
-              <div>{e.name}
-              <img src={e.image} alt={e.name}/> 
+        <div className="cartitem">
+        <div className ="cartbody">
+      
+        <img src={e.image} alt={e.name}/> 
+              <p>{e.name} </p>
+            
               <p>Color {e.color} </p>
               <p>Size {e.size} </p>
               <p><b> Total {e.total}</b> </p>
-              {/* </div> */}
-
+              </div>
+            
+              <div className ="cartbody">
+              <div>
                 <button onClick={() => e.qty-1 === 0 ? this.delete(e.id) : this.decrement(e.id)}>-</button>
                 {e.qty}
                 <button onClick={() => this.increment(e.id)}>+</button>
-              </div>  
+                </div>
 
               <span onClick={() => this.delete(e.id)}><FaTrash /> </span>
+          </div>
+          </div>
           </div>
           
       }) : 'add something to your cart!'
