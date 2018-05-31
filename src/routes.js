@@ -10,6 +10,7 @@ import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
 import redirect from './components/redirect'
+import Profile from './components/Profile'
 
 
 export default (
@@ -25,6 +26,7 @@ export default (
             <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
             <Route component={redirect} path='./redirect'/>
+            <Route component={Profile} path='/userprofile' />
         </Switch>
 
 )

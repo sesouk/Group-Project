@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 // import {filterCategory} from './../utils/function'
 import ItemList from "./ItemList";
 import axios from "axios";
-import '../Styling/shop.css'
+import "../Styling/shop.css";
 
 class TabsData extends Component {
   constructor() {
@@ -42,7 +42,6 @@ class TabsData extends Component {
 
     return (
       <div>
-
         <div className="filter-data">
           <Button
             variant="raised"
@@ -79,7 +78,6 @@ class TabsData extends Component {
           </Button>
         </div>
         <div>
-
           <ItemList filteredData={this.state.filteredData} />
         </div>
       </div>
@@ -93,4 +91,8 @@ const mapStateToProps = state => {
     reducedDataItems: state.reducedDataItems
   };
 };
-export default connect(mapStateToProps, { getCategoryProducts, getProducts, reducedData })(TabsData);
+export default connect(mapStateToProps, {
+  getCategoryProducts,
+  getProducts,
+  reducedData
+})(TabsData);
