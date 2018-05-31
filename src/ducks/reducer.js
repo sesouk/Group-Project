@@ -37,9 +37,10 @@ export const actions = {
     // console.log(getState());
     return (
       axios.get('/api/user-data')
-        .then( response => { dispatch({
-          type: GET_CART,
-          payload: [response.data.cart, response.data.cart[0] ? response.data.cart.map( e => e.total).reduce((a, b) => a+b) : null]
+        .then( response => { 
+          dispatch({
+            type: GET_CART,
+            payload: [response.data.cart, response.data.cart[0] ? response.data.cart.map( e => e.total).reduce((a, b) => a+b) : null]
         })})
         .catch( err => console.error( err ))
       )
@@ -51,10 +52,11 @@ export const actions = {
       let cart = [ ...getState().cart ]
       let index = cart.findIndex( e => e.id === item)
       cart.splice( index, 1 )
-      axios.post('/api/cartToSession', cart)
-      return dispatch({
-        type: REMOVE_FROM_CART,
-        payload: cart
+      axios.post('/api/cartToSession', cart).then(()=> {
+        return dispatch({
+          type: REMOVE_FROM_CART,
+          payload: cart
+        })
       })
     }
   },
@@ -71,11 +73,11 @@ export const actions = {
       } else {
         cart[cart.length] = item
       }
-      axios.post('/api/cartToSession', cart).then(() => {
+      axios.post('/api/cartToSession', cart).then(()=> {
         return dispatch({
           type: ADD_TO_CART,
           payload: cart
-      })
+        })
       })
     }
   },
@@ -87,10 +89,11 @@ export const actions = {
         cart[index].qty +=1
         cart[index].total = cart[index].qty*cart[index].price
 
-      axios.post('/api/cartToSession', cart )
-      return dispatch({
-        type: INCREMENT_QTY,
-        payload: cart
+      axios.post('/api/cartToSession', cart ).then(() => {
+        return dispatch({
+          type: INCREMENT_QTY,
+          payload: cart
+        })
       })
     }
   },
@@ -102,10 +105,11 @@ export const actions = {
         cart[index].qty -=1
         cart[index].total = cart[index].qty*cart[index].price
 
-      axios.post('/api/cartToSession', cart )
-      return dispatch({
-        type: DECREMENT_QTY,
-        payload: cart
+      axios.post('/api/cartToSession', cart ).then(()=> {
+        return dispatch({
+          type: DECREMENT_QTY,
+          payload: cart
+        })
       })
     }
   }, 
