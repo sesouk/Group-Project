@@ -54,7 +54,7 @@ class Cart extends Component {
             
               <p>Color {e.color} </p>
               <p>Size {e.size} </p>
-              <p><b> Total {e.total}</b> </p>
+              <p><b> Total {e.total.toFixed(2)}</b> </p>
               </div>
             
               <div className ="cartbody">
