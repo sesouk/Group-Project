@@ -17,6 +17,14 @@ export default class Profile extends Component {
         this.updateStateProfile=this.updateStateProfile.bind(this)
         this.updateStateOrder = this.updateStateOrder.bind(this)
     }
+    componentDidMount() {
+      axios.get("/api/userdetails").then(response => {
+        console.log("inside user details data", response.data);
+        this.setState({
+          username: response.data[0].username
+        });
+      });
+  }
   getOrdersByUserID(){
     console.log("inside getuserid")
     axios.get('/api/orders').then(response=>{
@@ -59,7 +67,7 @@ export default class Profile extends Component {
        
             <div className="profile-header"> 
                {console.log("value of display", this.state.display)}
-               <h1>Welcome valued customer </h1>
+               <h1>Welcome {this.state.username} </h1>
                <br />
                 <div className="profile-container">
                     <div onClick={this.updateStateProfile}>

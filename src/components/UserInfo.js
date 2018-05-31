@@ -53,7 +53,7 @@ updateUserProfile() {
       <div className="checkout_main_body">
         <div className="checkout_body_form ">
           <div className="checkout_summary">
-            <h3>Welcome {this.state.username} Edit your profile</h3>
+            <h3>Please Edit your profile</h3>
             <div className="checkout_box">
               <TextField
                 required
