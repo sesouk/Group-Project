@@ -37,6 +37,10 @@ class Cart extends Component {
     this.props.cartTotal()
   }
 
+  total(){
+
+  }
+
   render() {
     // console.log(window.location.pathname)
       const total = this.props.total
@@ -70,7 +74,7 @@ class Cart extends Component {
           <div>
             {/* <h1>Cart</h1> */}
             {cart}
-            <div> <b>Order SubTotal: {total ? total.toFixed(2):0} </b></div>
+            <div> <b>Order SubTotal: {this.props.cart[0] ? total.toFixed(2):0} </b></div>
 
             <br />
                  
