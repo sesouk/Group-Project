@@ -23,7 +23,11 @@ module.exports ={
 
     orderByUserId:(req,res,next)=>{
         const dbInstance = req.app.get('db')
-        dbInstance.orderByUserId().then(order=>res.status(200).send(order))
+        console.log("inside order by user id",req.session.user.userid)
+        // const{userid} = req.session.user
+        //******************Hardcoding the user id as most of user id do not have a order except userid 13 */
+        const userid=13
+        dbInstance.orderByUserId(userid).then(order=>res.status(200).send(order))
         .catch(error =>console.log(error))
 
     },

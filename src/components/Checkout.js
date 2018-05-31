@@ -169,18 +169,14 @@ class Checkout extends React.Component {
             <h3> Cart Summary </h3>
             <div className="checkout_box">
               <Cart />
-
-              <div>SubTotal:{total}</div>
               <div>
                 <div>
-                  {" "}
                   <span>Shipping(Flat Rate):</span>$5.00
                 </div>
               </div>
               <div>
                 {/* <span>Tax:</span> */}
                 <div>
-                  {" "}
                   <span>Tax:</span> ${(total * 0.06).toFixed(2)}
                 </div>
               </div>

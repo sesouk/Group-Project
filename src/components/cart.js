@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import FaTrash from "react-icons/lib/fa/trash";
 import './../Styling/CartStyle.css'
 
+
 class Cart extends Component {
 
   constructor(){

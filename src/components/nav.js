@@ -29,6 +29,7 @@ function Nav(props) {
             Stop N Shop
           </Typography>
           <Link to='/shop'><Button color="inherit">Shop</Button></Link>
+          <Link to='/userprofile'><Button color="inherit">Profile</Button></Link>
           <TemporaryDrawer/>
           <Link to='/shop'><Button color="inherit" onClick={()=>login()}>Login</Button></Link>
         </Toolbar>

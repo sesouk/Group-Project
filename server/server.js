@@ -60,11 +60,12 @@ app.get('/api/cartToRedux', userCtrl.cartToRedux)
 // app.get('api/register',userCtrl.createUser)
 app.get('/api/users', userCtrl.getUsers) //for admin page to get all users //tested
 app.get('/api/user/:id',userCtrl.getUserByID) //tested
+app.get('/api/orders',orderCtrl.orderByUserId)
 
 //***************ORDER Endpoints *********************/
 app.post('/api/lineitem/', orderCtrl.addToLineItem) 
-//***************Payment****************** */
 
+//***************Payment****************** */
 app.post('/api/payment',paymentCtrl.paymentAPI)
 app.post('/api/shippingDetails',paymentCtrl.shippingDetails)
 app.get('/api/checksession',userCtrl.checkSession)
