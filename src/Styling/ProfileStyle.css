@@ -19,3 +19,45 @@ table {
   }
   
   
+  .profile-container 
+
+    {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: stretch;
+    }
+  
+  
+  .profile-container h1{
+      color:black
+  }
+  
+  
+  /* Style the header */
+  .profile-header {
+      padding: 30px;
+      text-align: center;
+      font-size: 25px;
+      color:black;
+      
+  }
+  
+  
+  .home-text {
+      color:white;
+    margin-left:5%;
+    margin-right:5%
+  
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  
+  
+.profile-buttons{
+  margin:20px 20px;
+  height:80px;
+}
+ 
