@@ -18,12 +18,12 @@
 
 
 
-/* .checkout_body_form  input {
+.checkout_body_form  input {
     margin: 10px 10px;
     font-size: 14pt;
-    width: 200;
+    width: 300;
     padding: 7px;
-} */
+}
 
 .checkout_title{
     font-size: 20pt;

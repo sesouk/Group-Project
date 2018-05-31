@@ -33,6 +33,21 @@ class Checkout extends React.Component {
     this.shippingDetails = this.shippingDetails.bind(this);
   }
 
+  componentDidMount() {
+    axios.get("/api/userdetails").then(response => {
+      console.log("inside user details data", response.data);
+      this.setState({
+        address: response.data[0].useraddress,
+        city: response.data[0].usercity,
+        state: response.data[0].userstate,
+        zip_code: response.data[0].userzip,
+        phone: response.data[0].userphone,
+        username: response.data[0].username,
+        email:response.data[0].useremail
+      });
+    });
+}
+
   shippingDetails() {
     console.log("state values", this.state);
     console.log("props value", this.props);
@@ -65,6 +80,7 @@ class Checkout extends React.Component {
                 required
                 label="Email id"
                 margin="normal"
+                value={this.state.email}
                 onChange={e => {
                   this.setState({ email: e.target.value });
                   console.log("insidecheckout", e.target.value);
@@ -74,6 +90,7 @@ class Checkout extends React.Component {
               <TextField
                 required
                 label="Phone number"
+                value={this.state.phone}
                 onChange={e => this.setState({ phone: e.target.value })}
                 margin="normal"
               />
@@ -81,6 +98,7 @@ class Checkout extends React.Component {
               <TextField
                 required
                 label="Enter your Address"
+                value={this.state.address}
                 onChange={e => this.setState({ address: e.target.value })}
                 margin="normal"
               />
@@ -89,6 +107,7 @@ class Checkout extends React.Component {
               <TextField
                 required
                 label="City"
+                value={this.state.city}
                 onChange={e => this.setState({ city: e.target.value })}
                 margin="normal"
               />
@@ -96,6 +115,7 @@ class Checkout extends React.Component {
               <TextField
                 required
                 label="Zip Code"
+                value={this.state.zip_code}
                 onChange={e => this.setState({ zip_code: e.target.value })}
                 margin="normal"
               />
@@ -103,6 +123,7 @@ class Checkout extends React.Component {
               <br />
               <div className="checkout_third_wrapper">
                 <select
+                  value={this.state.state}
                   onChange={e => this.setState({ state: e.target.value })}
                 >
                   <option value="State">State</option>
