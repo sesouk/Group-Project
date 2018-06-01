@@ -40,7 +40,7 @@ export const actions = {
         .then( response => { 
           dispatch({
             type: GET_CART,
-            payload: [response.data.cart, response.data.cart[0] ? response.data.cart.map( e => e.total).reduce((a, b) => a+b) : null]
+            payload: [response.data.cart, response.data.cart[0] ? response.data.cart.map( e => e.total).reduce((a, b) => a+b) : 0]
         })})
         .catch( err => console.error( err ))
       )
