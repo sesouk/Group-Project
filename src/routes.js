@@ -10,6 +10,7 @@ import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
 import redirect from './components/redirect'
 import Profile from './components/Profile'
+import AdminOrders from './components/AdminOrders'
 
 
 export default (
@@ -24,6 +25,8 @@ export default (
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
             <Route component={redirect} path='/redirect'/>
+            <Route component={Profile} path='/userprofile' />
+            <Route component={AdminOrders} path='/allorders' />
         </Switch>
 
 )
