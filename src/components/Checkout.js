@@ -15,6 +15,7 @@ import { getProducts, actions } from "../ducks/reducer";
 import axios from "axios";
 import Cart from "./cart";
 import "./../Styling/checkout.css";
+import UserInfo from './UserInfo'
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class Checkout extends React.Component {
     const { classes } = this.props;
     return (
       <div className="checkout_main_body">
+      {/* <UserInfo /> */}
         <div className="checkout_body_form ">
           <div className="checkout_summary">
             <h3>Check Out </h3>

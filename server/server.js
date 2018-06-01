@@ -2,12 +2,14 @@ require("dotenv").config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const session = require("express-session")
+const cloudinary = require('cloudinary');
 const massive = require("massive")
 const userCtrl = require('./user_controller')
 const productCtrl = require('./product_controller')
 const orderCtrl = require('./order_controller')
 const paymentCtrl = require('./payment_controller')
 const authCtrl = require('./auth_controller')
+
 
 const checkForSession = require('./checkForSession')
 
@@ -43,7 +45,7 @@ app.get("/api/shop", productCtrl.getProducts) //tested
 app.get("/api/product/:id", productCtrl.getProduct)
 app.delete("/api/shop/:id", productCtrl.deleteProduct) //tested
 app.put("/api/shop/:id", productCtrl.updateProduct) //tested
-app.post("/api/shop", productCtrl.createProduct) //tested
+app.post("/api/createProduct", productCtrl.createProduct) //tested
 app.get("/api/itemOptions", productCtrl.itemOptions) //tested
 app.get("/api/optionByProductID/:id",productCtrl.optionByProductID)
 
@@ -71,3 +73,6 @@ app.post('/api/lineitem/', orderCtrl.addToLineItem)
 app.post('/api/payment',paymentCtrl.paymentAPI)
 app.post('/api/shippingDetails',paymentCtrl.shippingDetails)
 app.get('/api/checksession',userCtrl.checkSession)
+
+//*************Cloudinary Image uploader  */
+app.get('/api/upload',productCtrl.imageUpload);
