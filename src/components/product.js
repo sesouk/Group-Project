@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getProduct, actions } from '../ducks/reducer'
-import axios from 'axios'
+import Popup from 'reactjs-popup'
 
 class Product extends Component {
   constructor(){
@@ -47,11 +47,18 @@ toggle = () => {
 }
 
   render() {
+
     const {product} = this.props
     const {price} = this.props.product
-    const reducedSize = this.props.product.price ? this.props.product.details.reduce( (arr, current) => {
+    const reducedSize = this.props.product.price ? this.props.product.details.reduce((arr, current) => {
     	if(!arr.length) {
-        arr.push({name: current.productname, id: current.productid, size: current.productsize, etc: [ current ]})
+        arr.push(
+          {
+            name: current.productname, 
+            id: current.productid, 
+            size: current.productsize, 
+            etc: [ current ]
+          })
           return arr
           }
             let i = arr.findIndex(e => {
@@ -61,14 +68,21 @@ toggle = () => {
               	arr[i].etc.push(current)
               	return arr
             } else {
-              arr.push({name: current.productname, id: current.productid, size: current.productsize, etc: [ current ]})
+              arr.push(
+                {
+                  name: current.productname, 
+                  id: current.productid, 
+                  size: current.productsize, 
+                  etc: [ current ]
+                })
               return arr
             }
           }, []): null
 
     const optionColors = this.state.size ? this.state.colorOptions.map((e, i) => {
       return <div key={i}>
-      				<input onClick={() => this.setState({checked: true, button: false})} type="radio" id={e.id} name={e.name} checked={this.state.checked}
+      				<input onClick={() => this.setState({ checked: true, button: false })} 
+                type="radio" id={e.id} name={e.name} checked={this.state.checked}
         				onChange={() => {
           			this.setState({ color: e.color, id: e.id })
         				}}/>
@@ -90,7 +104,7 @@ toggle = () => {
 						}): null
 
   return (
-    <div>
+    <div className='product-page'>
       { 
         price 
           ? (
@@ -99,15 +113,36 @@ toggle = () => {
               <img src={product.image} alt={product.name}/>
               <p>{product.info}</p>
               <p>${product.price}</p>
-              <Link to='/shop'><button disabled={this.state.button} onClick={
-                () => this.props.add({ name: product.name, id: this.state.id, color: this.state.color, size: this.state.size, qty: 1, image: product.image, price: product.price, total: product.price })
-                && this.props.cartTotal() 
-                && this.props.getCart()}>Buy it!</button></Link>
+                <button disabled={this.state.button} 
+                  onClick={
+                    () => this.props.add(
+                      {
+                        name: product.name, 
+                        id: this.state.id, 
+                        color: this.state.color, 
+                        size: this.state.size, 
+                        qty: 1, 
+                        image: product.image, 
+                        price: product.price, 
+                        total: product.price 
+                      })
+                      && this.props.cartTotal() 
+                      && this.props.getCart()}
+                    >
+                    Buy it!
+                </button>
                 <p>Select a Size: </p>
                   {optionSize}
-                { this.state.size ?
-                  <div><p>Select a Color: </p>{optionColors}</div>
-                    : <p>Pick a Size</p>} 
+                { 
+                  this.state.size 
+                  ?
+                  <div>
+                    <p>Select a Color: </p>
+                      {optionColors}
+                  </div>
+                  : 
+                    null
+                } 
             </div> 
                 	) 
                 		: ( 
