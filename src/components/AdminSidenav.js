@@ -24,18 +24,24 @@ export default class AdminSidenav extends Component {
             <div>
                
                <MenuList>
-                    <MenuItem primary ="All products" />
+                     <Button variant="raised" color="primary">
+                     All products
+    </Button>
+    <Button variant="raised" color="primary">
+    Users
+    </Button>
+    <Button variant="raised" color="primary">
+    Orders
+    </Button>
+    <Button variant="raised" color="primary">
+                     Add new products
+    </Button>
+  
             
-                <MenuItem primaryText = "Users"  />
-                <MenuItem primaryText="Analytics" />
-                <MenuItem primaryText ="Orders"  />
-                <MenuItem primaryText ="Order Tracking" />
+                
                 </MenuList>
     
-    <Button variant="raised" color="primary">
-      Hello World
-    </Button>
-    <p> Hey </p>
+  
                 </div>
 
         );

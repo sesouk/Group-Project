@@ -4,7 +4,6 @@
 	flex-wrap: nowrap;
 	justify-content: space-around;
     align-items: stretch;
-    padding: 100px 50px;
    
 
 }
@@ -21,7 +20,7 @@
 .checkout_body_form  input {
     margin: 10px 10px;
     font-size: 14pt;
-    width: 300;
+    width: 300px;
     padding: 7px;
 }
 
@@ -44,7 +43,8 @@
 } */
 
 .checkout_third_wrapper select {
-    width: 35%;
+    width: 320px;
+    padding: 7px;
     height: 30px;
     background-color:#C5C6C7;
     margin-right: 10px;

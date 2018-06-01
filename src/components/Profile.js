@@ -70,7 +70,7 @@ export default class Profile extends Component {
                <h1>Welcome {this.state.username} </h1>
                <br />
                 <div className="profile-container">
-                    <div onClick={this.updateStateProfile}>
+                    <div onClick={this.updateStateProfile} >
                         <Button variant="raised" color="primary" > Edit your Profile </Button>
                      </div>
                      <div onClick={this.updateStateOrder}>
@@ -79,7 +79,9 @@ export default class Profile extends Component {
 </div>
 <div>
   {this.state.display==='profile'?
+  <div className="checkout_main_body">
 <UserInfo />
+</div>
 : null
         }
 <div>

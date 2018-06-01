@@ -1,9 +1,9 @@
 import React from 'react'
 import home from './components/home'
 import shop from './components/shop'
-// import admin from './components/admin'
+import Admin from './components/Admin'
 import TabsData from './components/TabsData'
-import newproduct from './components/newproduct'
+import NewProduct from './components/NewProduct'
 import Checkout from './components/Checkout'
 import StripeCheckout from './components/StripeCheckout'
 import product from './components/product'
@@ -18,8 +18,8 @@ export default (
         <Switch>
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
-            {/* <Route component={admin} exact path='/admin'/> */}
-            <Route component={newproduct} path ='/admin/newproduct'/>
+            <Route component={Admin} exact path='/admin'/>
+            <Route component={NewProduct} path ='/admin/NewProduct'/>
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
             <Route component={StripeCheckout} path ='/StripeCheckout' />
