@@ -38,8 +38,9 @@ img {
 }
 
 .footer {
+    
     grid-column: span 3;
-    grid-row-start: 5 
+    grid-row-start: 6 
 }
 
 p {

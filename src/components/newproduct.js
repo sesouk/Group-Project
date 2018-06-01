@@ -182,3 +182,4 @@ export default class NewProduct extends Component {
     );
   }
 }
+

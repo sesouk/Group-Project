@@ -34,20 +34,20 @@ class Checkout extends React.Component {
     this.shippingDetails = this.shippingDetails.bind(this);
   }
 
-//   componentDidMount() {
-//     axios.get("/api/userdetails").then(response => {
-//       console.log("inside user details data", response.data);
-//       this.setState({
-//         address: response.data[0].useraddress,
-//         city: response.data[0].usercity,
-//         state: response.data[0].userstate,
-//         zip_code: response.data[0].userzip,
-//         phone: response.data[0].userphone,
-//         username: response.data[0].username,
-//         email:response.data[0].useremail
-//       });
-//     });
-// }
+  componentDidMount() {
+    axios.get("/api/userdetails").then(response => {
+      console.log("inside user details data", response.data);
+      this.setState({
+        address: response.data[0].useraddress,
+        city: response.data[0].usercity,
+        state: response.data[0].userstate,
+        zip_code: response.data[0].userzip,
+        phone: response.data[0].userphone,
+        username: response.data[0].username,
+        email:response.data[0].useremail
+      });
+    });
+}
 
   shippingDetails() {
     console.log("state values", this.state);
@@ -73,8 +73,8 @@ class Checkout extends React.Component {
     const { classes } = this.props;
     return (
       <div className="checkout_main_body">
-      <UserInfo />
-        {/* <div className="checkout_body_form ">
+      {/* <UserInfo /> */}
+        <div className="checkout_body_form ">
           <div className="checkout_summary">
             <h3>Check Out </h3>
             <div className="checkout_box">
@@ -185,7 +185,7 @@ class Checkout extends React.Component {
             </div>
           </div>
           <br />
-        </div> */}
+        </div>
 
         <div className="checkout_body_form">
           <div className="checkout_summary">
