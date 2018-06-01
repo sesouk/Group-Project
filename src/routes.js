@@ -25,7 +25,7 @@ export default (
             <Route component={StripeCheckout} path ='/StripeCheckout' />
             <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
-            <Route component={redirect} path='./redirect'/>
+            <Route component={redirect} path='/redirect'/>
             <Route component={Profile} path='/userprofile' />
         </Switch>
 
