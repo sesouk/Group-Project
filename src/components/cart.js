@@ -18,7 +18,7 @@ class Cart extends Component {
     this.delete = this.delete.bind(this)
   }
   componentDidMount(){
-    // this.props.getCart()
+    this.props.cart[0] ? null : this.props.getCart()
   }
   
   increment(item){
@@ -27,7 +27,6 @@ class Cart extends Component {
   }
 
   decrement(item){
-    
     this.props.minusOne(item)
     this.props.cartTotal()
   }
@@ -37,13 +36,12 @@ class Cart extends Component {
     this.props.cartTotal()
   }
 
-  total(){
-
-  }
 
   render() {
     // console.log(window.location.pathname)
-      const total = this.props.total
+    // console.log(this.props.total);
+    const total = this.props.total
+    // console.log(total)
       const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
         return <div key={i}>
         <div className="cartitem">
