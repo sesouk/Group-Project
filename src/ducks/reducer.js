@@ -38,6 +38,7 @@ export const actions = {
     return (
       axios.get('/api/user-data')
         .then( response => { 
+          console.log(response.data.isAdmin)
           dispatch({
             type: GET_CART,
             payload: [response.data.cart, response.data.cart[0] ? response.data.cart.map( e => e.total).reduce((a, b) => a+b) : 0]
