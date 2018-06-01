@@ -5,18 +5,20 @@ import { Link } from "react-router-dom";
 import {getProducts, getProduct, actions, reducedData } from "../ducks/reducer";
 import "../Styling/shop.css";
 import Button from "@material-ui/core/Button";
-import TabsData from "./TabsData";
-import ItemList from "./ItemList";
+import Product from './product'
+import Popup from "reactjs-popup";
 
 class Shop extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       category: "",
-      filteredData: []
+      filteredData: [],
+      open: false
     };
   }
   
+
   componentDidMount(props) {
     axios.get("/api/shop")
       .then(products => {
@@ -28,11 +30,16 @@ class Shop extends Component {
       this.props.getCart()
   }
 
+  openModal = () => {
+    this.setState({ open: true });
+  };
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const reduced = this.props.products.reduce((arr, current) => {
-      // console.log(current)
       if (!arr.length) {
-        // console.log('no length')
         arr.push({
           name: current.productname,
           category: current.productcategory,
@@ -41,16 +48,13 @@ class Shop extends Component {
         return arr;
       }
       let i = arr.findIndex(e => {
-        // console.log(e.name, current.productname)
         return e.name === current.productname;
       });
       if (i !== -1) {
-        // console.log('duplicate item')
         arr[i].products.push(current);
 
         return arr;
       } else {
-        // console.log('new item')
         arr.push({
           name: current.productname,
           category: current.productcategory,
@@ -69,149 +73,168 @@ class Shop extends Component {
 
     const products = reduced.map((e,i) => {
       return <div key={i} className='item'>
-      <div className='item-contain'>
-            <p>{e.name}</p>
-            <Link to='/product'>
-              <img src ={e.products[0].productimage} alt={e.products[0].productname}
-                onClick={() => this.props.getProduct({ 
-                  name: e.products[0].productname, 
-                  image: e.products[0].productimage, 
-                  price: e.products[0].productprice, 
-                  info: e.products[0].productcartdesc, 
-                  subinfo: e.products[0].productshortdesc, 
-                  details: e.products})}/>
-              </Link>
-            <p>${e.products[0].productprice}</p>
-    
-            <p className='stock'>
-              {e.products[0].productstock <=0
-              ? 'out-of-stock' 
-              : e.products[0].productstock >0 && e.products[0].productstock <= 10 
-              ? 'limited-stock' 
-              : 'in-stock'}
-            </p>
-            </div>
-           </div>
-    })
-    
+                {/* <Link to='/product' style={{ textDecoration: 'none', color: 'black' }}> */}
+                  <div className='item-contain'
+                    onClick={() => this.props.getProduct({ 
+                      name: e.products[0].productname, 
+                      image: e.products[0].productimage, 
+                      price: e.products[0].productprice, 
+                      info: e.products[0].productcartdesc, 
+                      subinfo: e.products[0].productshortdesc, 
+                      details: e.products}) && this.openModal()}
+                    >
+                    <p>{e.name}</p>
+                    <img src ={e.products[0].productimage} alt={e.products[0].productname}/>
+                    <p>${e.products[0].productprice}</p>
+      
+                    <p className='stock'>
+                      {e.products[0].productstock <=0
+                      ? 'out-of-stock' 
+                      : e.products[0].productstock >0 && e.products[0].productstock <= 10 
+                      ? 'limited-stock' 
+                      : 'in-stock'}
+                    </p>
+                  </div>
+                {/* </Link> */}
+              </div>
+            })
+
     const filtered = this.state.filteredData.length ? this.state.filteredData.map((e,i) => {
       return <div key={i} className='item'>
-      <div className='item-contain'>
-            <p>{e.name}</p>
-            <Link to='/product'>
-              <img src ={e.products[0].productimage} alt={e.products[0].productname}
-                onClick={() => this.props.getProduct({ 
-                  name: e.products[0].productname, 
-                  image: e.products[0].productimage, 
-                  price: e.products[0].productprice, 
-                  info: e.products[0].productcartdesc, 
-                  subinfo: e.products[0].productshortdesc, 
-                  details: e.products})}/>
-              </Link>
-            <p>${e.products[0].productprice}</p>
-    
-            <p className='stock'>
-              {e.products[0].productstock <=0 
-                ? 'out-of-stock' 
-                : e.products[0].productstock >0 && e.products[0].productstock <= 10 
-                ? 'limited-stock' 
-                : 'in-stock'}
-            </p>
-            </div>
-           </div>
-    })
-    : null
-    const {reducedDataItems} = this.props.reducedDataItems
-    const { category } = this.state;
+               <Link to='/product' style={{ textDecoration: 'none', color: 'black' }}>
+                  <div className='item-contain'
+                    onClick={() => this.props.getProduct({ 
+                      name: e.products[0].productname, 
+                      image: e.products[0].productimage, 
+                      price: e.products[0].productprice, 
+                      info: e.products[0].productcartdesc, 
+                      subinfo: e.products[0].productshortdesc, 
+                      details: e.products})}
+                    >
+                    <p>{e.name}</p>
+                    <img src ={e.products[0].productimage} alt={e.products[0].productname}/>
+                    <p>${e.products[0].productprice}</p>
+      
+                    <p className='stock'>
+                      {e.products[0].productstock <=0
+                      ? 'out-of-stock' 
+                      : e.products[0].productstock >0 && e.products[0].productstock <= 10 
+                      ? 'limited-stock' 
+                      : 'in-stock'}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            })
+          : null
+      
     return (
       <div>
+         <Popup
+          open={this.state.open}
+          closeOnDocumentClick
+          onClose={this.closeModal}
+        >
+          <div className="modal">
+            <a className="close" onClick={this.closeModal}>
+              &times;
+            </a>
+            <br/>
+            <Product/>
+          </div>
+        </Popup>
         <div>
-        {(this.state.filteredData.length!=0)
-        ?
-        <div className="container">
+          {
+            (this.state.filteredData.length!==0)
+          ?
+          <div className="container">
             <div className="sidebar">
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="T-shirts"
-            onClick={() => filterCategory("shirt")}
-          >
-            T-shirts
-          </Button>
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Jeans"
-            onClick={() => filterCategory("pant")}
-          >
-            Jeans
-          </Button>
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="T-shirts"
+                onClick={() => filterCategory("shirt")}
+              >
+                T-shirts
+              </Button>
 
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Shoes"
-            onClick={() => filterCategory("shoe")}
-          >
-            Shoes
-          </Button>
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Watch"
-            onClick={() => filterCategory("accessory")}
-          >
-            Accessory
-          </Button>
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Jeans"
+                onClick={() => filterCategory("pant")}
+              >
+                Jeans
+              </Button>
 
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="All"
-            onClick={() => filterCategory(null)}
-          >
-            All
-          </Button>
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Shoes"
+                onClick={() => filterCategory("shoe")}
+              >
+                Shoes
+              </Button>
+
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Watch"
+                onClick={() => filterCategory("accessory")}
+              >
+                Accessory
+              </Button>
+
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="All"
+                onClick={() => filterCategory(null)}
+              >
+                All
+              </Button>
         </div>
            { filtered }
            <div className="footer">footer component here</div>
         </div>
           :
           <div className="container">
-          <div className="sidebar">
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="T-shirts"
-            onClick={() => filterCategory("shirt")}
-          >
-            T-shirts
-          </Button>
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Jeans"
-            onClick={() => filterCategory("pant")}
-          >
-            Jeans
-          </Button>
+            <div className="sidebar">
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="T-shirts"
+                onClick={() => filterCategory("shirt")}
+              >
+                T-shirts
+              </Button>
 
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Shoes"
-            onClick={() => filterCategory("shoe")}
-          >
-            Shoes
-          </Button>
-          <Button className='btn'
-            variant="raised"
-            color="primary"
-            value="Watch"
-            onClick={() => filterCategory("accessory")}
-          >
-            Accessory
-          </Button>
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Jeans"
+                onClick={() => filterCategory("pant")}
+              >
+                Jeans
+              </Button>
+
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Shoes"
+                onClick={() => filterCategory("shoe")}
+              >
+                Shoes
+              </Button>
+
+              <Button className='btn'
+                variant="flat"
+                color="primary"
+                value="Watch"
+                onClick={() => filterCategory("accessory")}
+              >
+                Accessory
+              </Button>
         </div>
            { products }
            <div className="footer">footer component here</div>
