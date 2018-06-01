@@ -76,3 +76,6 @@ app.get('/api/checksession',userCtrl.checkSession)
 
 //*************Cloudinary Image uploader  */
 app.get('/api/upload',productCtrl.imageUpload);
+
+//*************Admin Endpoints************ */
+app.get('/api/allOrders',orderCtrl.allOrdersAdmin)
