@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AdminSidenav from './AdminSidenav';
-import NewProduct from './newproduct'
+import NewProduct from './NewProduct'
 export default class Admin extends Component {
     render() {
         return (
