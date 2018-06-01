@@ -6,7 +6,6 @@ import TabsData from './components/TabsData'
 import newproduct from './components/newproduct'
 import Checkout from './components/Checkout'
 import StripeCheckout from './components/StripeCheckout'
-import product from './components/product'
 import {Route, Switch} from 'react-router-dom'
 import OrderConfirmation from './components/OrderConfirmation'
 import redirect from './components/redirect'
@@ -22,9 +21,8 @@ export default (
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
             <Route component={StripeCheckout} path ='/StripeCheckout' />
-            <Route component={product} path='/product'/>
             <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
-            <Route component={redirect} path='./redirect'/>
+            <Route component={redirect} path='/redirect'/>
         </Switch>
 
 )

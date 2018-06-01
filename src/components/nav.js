@@ -26,12 +26,22 @@ function Nav(props) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Stop N Shop
+            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>  
+              Stop N Shop
+            </Link>  
           </Typography>
-          <Link to='/shop'><Button color="inherit">Shop</Button></Link>
+          <Link to='/shop' style={{ textDecoration: 'none', color: 'white' }}>
+            <Button color="inherit">
+              Shop
+            </Button>
+          </Link>
           <TemporaryDrawer/>
-          <Link to='/shop'><Button color="inherit" onClick={()=>login()}>Login</Button></Link>
-        </Toolbar>
+            <Link to='/shop' style={{ textDecoration: 'none', color: 'white' }}>
+              <Button color="inherit" onClick={()=>login()}>
+                Login
+              </Button>
+          </Link>
+        </Toolbar>       
       </AppBar>
     </div>
   );

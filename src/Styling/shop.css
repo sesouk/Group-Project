@@ -2,7 +2,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 5% 1fr 1fr 1fr 5%;
+    grid-template-rows: 5% 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
     align-items: center;
     justify-content: center;
@@ -10,8 +10,8 @@
 }
 
 img {
-    width: 70px;
-    height: 70px
+    width: 150px;
+    height: 150px
 }
 
 .item {
@@ -25,21 +25,18 @@ img {
 }
 
 .item-contain {
-    min-height: 200px;
+    min-height: 150px;
 }
 
 .sidebar {
     grid-column: span 3;
-}
-
-.btn {
-    justify-content: center;
-    align-items: center;
+    align-self: start;
+    justify-self: center;
 }
 
 .footer {
     grid-column: span 3;
-    grid-row-start: 5 
+    grid-row-start: end;
 }
 
 p {

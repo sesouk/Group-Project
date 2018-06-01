@@ -13,7 +13,7 @@ const initialState = {
     location: ''
   },
   product: [],
-  reducedDataItems:[]
+  reducedDataItems:[],
  
 }
 
@@ -149,13 +149,6 @@ export const getProducts = (products) => {
   return {
     type: GET_PRODUCTS,
     payload: products
-  }
-}
-
-export const getOptions = (options) => {
-  return {
-    type: GET_OPTIONS,
-    payload: options
   }
 }
 
