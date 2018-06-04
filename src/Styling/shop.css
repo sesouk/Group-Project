@@ -43,4 +43,7 @@ img {
 p {
     font-size: small
 }
-
+.cont {
+    width: 85%;
+    margin: 0 auto
+}

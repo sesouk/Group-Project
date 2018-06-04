@@ -108,7 +108,7 @@ toggle = () => {
       { 
         price 
           ? (
-            <div>
+            <div className='contain-pp'>
               <p>{product.name}</p>
               <img src={product.image} alt={product.name}/>
               <p>{product.info}</p>

@@ -1,0 +1,11 @@
+.modal > .product-page {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto
+}
+
+.product-page > .contain-pp {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto
+}

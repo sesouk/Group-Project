@@ -73,7 +73,6 @@ class Shop extends Component {
 
     const products = reduced.map((e,i) => {
       return <div key={i} className='item'>
-                {/* <Link to='/product' style={{ textDecoration: 'none', color: 'black' }}> */}
                   <div className='item-contain'
                     onClick={() => this.props.getProduct({ 
                       name: e.products[0].productname, 
@@ -95,13 +94,11 @@ class Shop extends Component {
                       : 'in-stock'}
                     </p>
                   </div>
-                {/* </Link> */}
               </div>
             })
 
     const filtered = this.state.filteredData.length ? this.state.filteredData.map((e,i) => {
       return <div key={i} className='item'>
-               <Link to='/product' style={{ textDecoration: 'none', color: 'black' }}>
                   <div className='item-contain'
                     onClick={() => this.props.getProduct({ 
                       name: e.products[0].productname, 
@@ -109,7 +106,7 @@ class Shop extends Component {
                       price: e.products[0].productprice, 
                       info: e.products[0].productcartdesc, 
                       subinfo: e.products[0].productshortdesc, 
-                      details: e.products})}
+                      details: e.products}) && this.openModal()}
                     >
                     <p>{e.name}</p>
                     <img src ={e.products[0].productimage} alt={e.products[0].productname}/>
@@ -123,13 +120,12 @@ class Shop extends Component {
                       : 'in-stock'}
                     </p>
                   </div>
-                </Link>
               </div>
             })
           : null
       
     return (
-      <div>
+      <div className='cont'>
          <Popup
           open={this.state.open}
           closeOnDocumentClick
@@ -237,7 +233,6 @@ class Shop extends Component {
               </Button>
         </div>
            { products }
-           <div className="footer">footer component here</div>
           </div>
         }
      </div>
