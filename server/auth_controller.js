@@ -52,7 +52,15 @@ module.exports = {
             });
           });
         })
-      }
+      },
+      logout: (req, res) => {
+        req.session.destroy();
+        res.status(200).send("logged out").catch(error => {
+          console.log(error);
+        
+      });
+    },
+
         
           }  
 
