@@ -25,12 +25,15 @@ module.exports = {
                 // console.log("response from database",response)
                 if(response.length){
                   // console.log("response from session",response[0].userid)
+                  // console.log(response[0].userid)
+                  if(response[0].userid === 13 || response[0].userid === 14 || response[0].userid === 15){
+                    req.session.user.isAdmin = true
+                  }
                   req.session.user.userid = response[0].userid;
-                 
                   req.session.user.name = response[0].username;
                   req.session.user.email = response[0].useremail;
                   req.session.user.cart = []
-                      res.redirect('/redirect');
+                    res.redirect('/redirect');
                 }
                 else
                 {
@@ -49,13 +52,15 @@ module.exports = {
             });
           });
         })
-      }
+      },
+      logout: (req, res) => {
+        req.session.destroy();
+        res.status(200).send("logged out").catch(error => {
+          console.log(error);
+        
+      });
+    },
+
         
           }  
 
-          
-                // console.log('-------- userData', userData );
-                //   req.session.user.name = userData.name
-                //   req.session.user.email = userData.email
-                //   req.session.user.cart = []
-                //   res.redirect('/');

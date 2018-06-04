@@ -50,9 +50,9 @@ class Cart extends Component {
         <img src={e.image} alt={e.name}/> 
               <p>{e.name} </p>
             
-              <p>Color {e.color} </p>
-              <p>Size {e.size} </p>
-              <p><b> Total {e.total.toFixed(2)}</b> </p>
+              <p>Color: {e.color} </p>
+              <p>Size: {e.size} </p>
+            
               </div>
             
               <div className ="cartbody">
@@ -61,8 +61,10 @@ class Cart extends Component {
                 {e.qty}
                 <button onClick={() => this.increment(e.id)}>+</button>
                 </div>
+                <br />
 
               <span onClick={() => this.delete(e.id)}><FaTrash /> </span>
+              <p><b> Total: {e.total.toFixed(2)}</b> </p>
           </div>
           </div>
           </div>
