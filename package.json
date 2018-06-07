@@ -18,7 +18,11 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.11.0",
+    "cypress": "^3.0.1",
     "dotenv": "^5.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "massive": "^4.8.2",
@@ -43,6 +47,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "jest": "^23.1.0"
+    "react-test-renderer": "^16.4.0"
   }
 }
