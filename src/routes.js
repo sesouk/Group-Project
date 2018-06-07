@@ -19,7 +19,7 @@ export default (
         <Switch>
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
-            {/* <Route component={Admin} exact path='/admin'/> */}
+            <Route component={Admin} exact path='/admin'/>
             <Route component={NewProduct} path ='/admin/NewProduct'/>
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
