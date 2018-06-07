@@ -19,6 +19,7 @@ class Cart extends Component {
   }
   componentDidMount(){
     this.props.cart[0] ? null : this.props.getCart()
+    this.props.cartTotal()
   }
   
   increment(item){
