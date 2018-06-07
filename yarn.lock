@@ -8443,15 +8443,9 @@ toposort@^1.0.0:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
 
-<<<<<<< HEAD
-tough-cookie@^2.3.2, tough-cookie@~2.3.3:
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
-=======
 tough-cookie@^2.3.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.4.2.tgz#aa9133154518b494efab98a58247bfc38818c00c"
->>>>>>> 7810ba26bea240e10f434d32c737f2c73117fcc2
   dependencies:
     psl "^1.1.24"
     punycode "^1.4.1"
