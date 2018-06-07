@@ -70,6 +70,8 @@ class Cart extends Component {
           </div>
           
       }) : 'add something to your cart!'
+
+      console.log(total.toFixed(2))
         return (
           <div>
             {/* <h1>Cart</h1> */}

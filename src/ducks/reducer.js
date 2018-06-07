@@ -65,6 +65,7 @@ export const actions = {
   add: (item) => {
     return (dispatch, getState ) => {
       let cart = [ ...getState().cart ]
+      let cart_total = getState().cart_total
       console.log(cart)
       let index = cart.findIndex( e => e.id === item.id )
       console.log('the index value is', index)
