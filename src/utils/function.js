@@ -48,6 +48,17 @@ module.exports={
           .indexOf(filterIssue.toLowerCase()) >= 0
       );
     });
-  }
+  },
 
-  }
+  myNewFunction :(orderArrayOfProductObj)=> {
+
+  
+    for(let key in orderArrayOfProductObj) {
+      const obj = orderArrayOfProductObj[key];
+      const products = obj.products;
+  
+    console.log(obj)
+      }
+    }
+
+}
