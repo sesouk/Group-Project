@@ -2,6 +2,11 @@
 
 describe('Find shop button', function() {
   it('loads first page', function() {
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // returning false here prevents Cypress from
+      // failing the test
+      return false
+    })
     cy.visit('http://localhost:3000')
   })
   it('check shop button', function(){

@@ -3,6 +3,11 @@
 
 describe("Login page of Stop-n-Shop", function() {
     it("Visit the Login page and Check title of page", function() {
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        // returning false here prevents Cypress from
+        // failing the test
+        return false
+      })
       cy.visit("http://localhost:3000");
       cy.title().should("include", "React App");
     });
@@ -23,11 +28,27 @@ describe("login using auth0", function(){
 
 describe("return home", function() {
   it("Visit the Login page and Check title of page", function() {
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // returning false here prevents Cypress from
+      // failing the test
+      return false
+    })
     cy.visit("http://localhost:3000");
     cy.title().should("include", "React App");
   });
 
 })
 
-describe("checkout shop page")
+describe('check scrolls', function(){
+  it('view background splashes', function(){
+    cy.get('.next').click()
+    cy.get('.next').click()
+    cy.get('.next').click()
+  })
+
+  // it('view cart', function (){
+  //   cy.get('')
+  // }
+})
+
 
