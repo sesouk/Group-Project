@@ -7,6 +7,7 @@ import "../Styling/shop.css";
 import Button from "@material-ui/core/Button";
 import Product from './product'
 import Popup from "reactjs-popup";
+import { withStyles } from '@material-ui/core/styles';
 
 class Shop extends Component {
   constructor(props) {
@@ -108,7 +109,7 @@ class Shop extends Component {
                       subinfo: e.products[0].productshortdesc, 
                       details: e.products}) && this.openModal()}
                     >
-                    <p>{e.name}</p>
+                    <h3>{e.name}</h3>
                     <img src ={e.products[0].productimage} alt={e.products[0].productname}/>
                     <p>${e.products[0].productprice}</p>
       
@@ -125,8 +126,8 @@ class Shop extends Component {
           : null
       
     return (
-      <div className='cont'>
-         <Popup
+      <div className="popup-content">
+         <Popup 
           open={this.state.open}
           closeOnDocumentClick
           onClose={this.closeModal}
@@ -145,17 +146,19 @@ class Shop extends Component {
           ?
           <div className="container">
             <div className="sidebar">
-              <Button className='btn'
-                variant="flat"
+      
+              <Button variant="raised" color="primary"
+          
                 color="primary"
                 value="T-shirts"
                 onClick={() => filterCategory("shirt")}
               >
                 T-shirts
+                
               </Button>
+        
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="Jeans"
                 onClick={() => filterCategory("pant")}
@@ -163,8 +166,7 @@ class Shop extends Component {
                 Jeans
               </Button>
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="Shoes"
                 onClick={() => filterCategory("shoe")}
@@ -172,8 +174,7 @@ class Shop extends Component {
                 Shoes
               </Button>
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="Watch"
                 onClick={() => filterCategory("accessory")}
@@ -181,8 +182,7 @@ class Shop extends Component {
                 Accessory
               </Button>
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="All"
                 onClick={() => filterCategory(null)}
@@ -196,8 +196,7 @@ class Shop extends Component {
           :
           <div className="container">
             <div className="sidebar">
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="T-shirts"
                 onClick={() => filterCategory("shirt")}
@@ -205,8 +204,7 @@ class Shop extends Component {
                 T-shirts
               </Button>
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="Jeans"
                 onClick={() => filterCategory("pant")}
@@ -214,8 +212,7 @@ class Shop extends Component {
                 Jeans
               </Button>
 
-              <Button className='btn'
-                variant="flat"
+              <Button className="buttons"variant="raised"
                 color="primary"
                 value="Shoes"
                 onClick={() => filterCategory("shoe")}
@@ -223,14 +220,13 @@ class Shop extends Component {
                 Shoes
               </Button>
 
-              <Button className='btn'
-                variant="flat"
-                color="primary"
+              <Button className="buttons"variant="raised" color="primary"
                 value="Watch"
                 onClick={() => filterCategory("accessory")}
               >
                 Accessory
               </Button>
+            
         </div>
            { products }
           </div>

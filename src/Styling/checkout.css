@@ -4,6 +4,7 @@
 	flex-wrap: nowrap;
 	justify-content: space-around;
     align-items: stretch;
+    background: rgb(179, 200, 209);
    
 
 }
@@ -60,10 +61,11 @@
 }
 
 .checkout_box{
-    box-shadow: 2px 2px 24px -6px rgba(0,0,0,0.49);
+    box-shadow: 17px 14px 30px 0px rgba(23,17,23,1);
     padding: 30px;
     margin:10px 10px;
-    background-color:lightpink;
+    background: rgba(147,206,222,1);
+
    
 }
 .minicart_flex{

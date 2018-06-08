@@ -3,7 +3,7 @@ import home from './components/home'
 import shop from './components/shop'
 import Admin from './components/admin'
 import TabsData from './components/TabsData'
-import NewProduct from './components/NewProduct'
+// import NewProduct from './components/NewProduct'
 import Checkout from './components/Checkout'
 import StripeCheckout from './components/StripeCheckout'
 import {Route, Switch} from 'react-router-dom'
@@ -20,7 +20,7 @@ export default (
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
             <Route component={Admin} exact path='/admin'/>
-            <Route component={NewProduct} path ='/admin/NewProduct'/>
+            {/* <Route component={NewProduct} path ='/admin/NewProduct'/> */}
             <Route component={TabsData} path ='/tabs'/>
             <Route component={Checkout} path ='/checkout'/>
             <Route component={StripeCheckout} path ='/StripeCheckout' />

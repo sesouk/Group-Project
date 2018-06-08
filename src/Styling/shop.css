@@ -6,7 +6,9 @@
     grid-gap: 10px;
     align-items: center;
     justify-content: center;
-    height: 95vh
+    /* height: 95vh; */
+
+    
 }
 
 img {
@@ -17,15 +19,34 @@ img {
 .item {
     display: grid;
     margin: 0 auto;
+  
+ 
 }
 
 .item > * {
     text-align: center;
     justify-content: center;
+    
+
+    
+}
+.buttons {
+    margin:5px 5px;
+  }
+
+.popup-content{
+    position: relative;
+    background: rgb(255, 255, 255);
+    /* width: 50%; */
+    margin: auto;
+    border: 1px solid rgb(187, 187, 187);
+    padding: 5px;
+    background: rgba(212,228,239,1);
 }
 
 .item-contain {
     min-height: 150px;
+   
 }
 
 .sidebar {
@@ -41,7 +62,7 @@ img {
 }
 
 p {
-    font-size: small
+    font-size: 18px;
 }
 .cont {
     width: 85%;

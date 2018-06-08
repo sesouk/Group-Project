@@ -1,6 +1,21 @@
+const data = require ('./../utils/data.js')
+const axios = require("axios");
+
 module.exports={
 
+  category: (productcategory) => {
+    console.log("insdie category function************************");
+    return data.filter(item => {
+      return item.productcategory === productcategory;
+    });
+  },
 
+  getOrders:(url)=> {
+    return data.get(url).then(res => {
+      return res.data;
+    })
+  },
+  
     arrayToArrayofObject:(orders)=> {
      const result = {};
      orders.map(order => {
@@ -62,3 +77,5 @@ module.exports={
     }
 
 }
+
+

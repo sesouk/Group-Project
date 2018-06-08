@@ -1,6 +1,8 @@
 .cartitem{
 	border:1px solid;
-	margin:5px 5px;
+	margin:0px 5px;
+
+
 }
 
 
@@ -10,5 +12,6 @@
 	flex-wrap: nowrap;
 	justify-content: space-around;
 	align-items: center;
-    align-content: center;
+	align-content: center;
+
 }

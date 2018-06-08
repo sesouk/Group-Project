@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getProduct, actions } from '../ducks/reducer'
 import Popup from 'reactjs-popup'
+import './../Styling/product.css'
 
 class Product extends Component {
   constructor(){

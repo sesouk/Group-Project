@@ -26,7 +26,7 @@ class TemporaryDrawer extends React.Component {
     )
 
     return (
-      <div>
+      <div className="cart-drawer">
         <Badge badgeContent={length} color="primary">
         <Button color='inherit' onClick={this.toggleDrawer('left', true)}>Cart</Button>
         </Badge>
