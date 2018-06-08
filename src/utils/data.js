@@ -1,0 +1,67 @@
+module.exports =[
+    {
+        "productid": 1,
+        "productname": "Men T-shirt",
+        "productprice": 25,
+        "productcartdesc": "FAKE ReactJS JavaScript Programmer T-Shirt",
+        "productshortdesc": "Cool Programming T-Shirts",
+        "productthumb": null,
+        "productimage": "https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg",
+        "productstock": 10,
+        "productsize": "M",
+        "productcolor": "Red",
+        "productcategory": "shirt"
+    },
+    {
+        "productid": 2,
+        "productname": "Men T-shirt",
+        "productprice": 25,
+        "productcartdesc": "FAKE ReactJS JavaScript Programmer T-Shirt",
+        "productshortdesc": "Cool Programming T-Shirts",
+        "productthumb": null,
+        "productimage": "https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg",
+        "productstock": 10,
+        "productsize": "S",
+        "productcolor": "Blue",
+        "productcategory": "shirt"
+    },
+    {
+        "productid": 3,
+        "productname": "Men T-shirt",
+        "productprice": 25,
+        "productcartdesc": "FAKE ReactJS JavaScript Programmer T-Shirt",
+        "productshortdesc": "Cool Programming T-Shirts",
+        "productthumb": null,
+        "productimage": "https://vangogh.teespring.com/v3/image/dFJEFk0QNNTKVaEuz6fZ_gH5NX8/480/560.jpg",
+        "productstock": 10,
+        "productsize": "L",
+        "productcolor": "Red",
+        "productcategory": "shirt"
+    },
+    {
+        "productid": 4,
+        "productname": "Men Jeans",
+        "productprice": 150,
+        "productcartdesc": "Levis Men  505 Regular Fit Jean",
+        "productshortdesc": "Slim fit Jeans",
+        "productthumb": null,
+        "productimage": "https://www.supercasuals.com/images/Levis/00501_0193_L.jpg",
+        "productstock": 15,
+        "productsize": "36",
+        "productcolor": "Blue",
+        "productcategory": "pant"
+    },
+    {
+        "productid": 5,
+        "productname": "Men Shoes",
+        "productprice": 200,
+        "productcartdesc": "MEN VARSITY COMPETE WIDE TRAINING SHOE",
+        "productshortdesc": "best running shoes",
+        "productthumb": null,
+        "productimage": "https://www.famousfootwear.com/ProductImages/shoes_ia77638.jpg",
+        "productstock": 25,
+        "productsize": "Black",
+        "productcolor": "8",
+        "productcategory": "shoe"
+    },
+]

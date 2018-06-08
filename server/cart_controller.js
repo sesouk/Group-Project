@@ -1,3 +1,4 @@
+
 module.exports ={
 
     addToCart: (req, res, next) => {
@@ -8,6 +9,8 @@ module.exports ={
             res.status(500).send(error, "Sorry an unknown error occured")
           );
       },
+
+
       deleteProduct: (req, res, next) => {
         const db = req.app.get("db");
         const { params } = req;
@@ -22,7 +25,7 @@ module.exports ={
       updateProduct: (req, res, next) => {
         const db = req.app.get("db");
         const { params, body } = req;
-        console.log(body);
+        // console.log(body);
         db
           .update_product([
             params.id,

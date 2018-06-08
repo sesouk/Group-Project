@@ -1,21 +1,34 @@
 import React from 'react'
-import cart from './components/cart'
 import home from './components/home'
 import shop from './components/shop'
-import admin from './components/admin'
+import Admin from './components/admin'
 import TabsData from './components/TabsData'
-import newproduct from './components/newproduct'
+// import NewProduct from './components/NewProduct'
+import Checkout from './components/Checkout'
+import StripeCheckout from './components/StripeCheckout'
 import {Route, Switch} from 'react-router-dom'
+import OrderConfirmation from './components/OrderConfirmation'
+import redirect from './components/redirect'
+import Profile from './components/Profile'
+import AdminOrders from './components/AdminOrders'
+import logout from './components/logout'
 
 
 export default (
+
         <Switch>
             <Route component={home} exact path='/'/>
             <Route component={shop} path='/shop'/>
-            <Route component={cart} path='/cart'/>
-            <Route component={admin} exact path='/admin'/>
-            <Route component={newproduct} path ='/admin/newproduct'/>
+            <Route component={Admin} exact path='/admin'/>
+            {/* <Route component={NewProduct} path ='/admin/NewProduct'/> */}
             <Route component={TabsData} path ='/tabs'/>
-
+            <Route component={Checkout} path ='/checkout'/>
+            <Route component={StripeCheckout} path ='/StripeCheckout' />
+            <Route component={OrderConfirmation} path='/orderConfirmation/:orderNumber'/>
+            <Route component={redirect} path='/redirect'/>
+            <Route component={Profile} path='/userprofile' />
+            <Route component={AdminOrders} path='/allorders' />
+             <Route component={logout} path='/logout' />
         </Switch>
+
 )

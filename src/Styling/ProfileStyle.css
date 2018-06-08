@@ -1,0 +1,63 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-left:2%;
+    margin-right:2%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  tr:nth-child(odd){color: black}
+  
+  th {
+    background-color: lightblue;
+    color: white;
+  }
+  
+  
+  .profile-container 
+
+    {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: stretch;
+    }
+  
+  
+  .profile-container h1{
+      color:black
+  }
+  
+  
+  /* Style the header */
+  .profile-header {
+      padding: 30px;
+      text-align: center;
+      font-size: 25px;
+      color:black;
+      
+  }
+  
+  
+  .home-text {
+      color:white;
+    margin-left:5%;
+    margin-right:5%
+  
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  
+  
+.profile-buttons{
+  margin:20px 20px;
+  height:80px;
+}
+ 

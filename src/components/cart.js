@@ -1,44 +1,91 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { getProducts, decrementQty, incrementQty, removeFromCart, cartTotal} from '../ducks/reducer'
+import { getProducts, actions } from '../ducks/reducer'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import FaTrash from "react-icons/lib/fa/trash";
+import './../Styling/CartStyle.css'
+
 
 class Cart extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      cart: this.props.cart,
-      total: this.props.total
-    }
+
+  constructor(){
+    super()
+
+
+    this.increment = this.increment.bind(this)
+    this.decrement = this.decrement.bind(this)
+    this.delete = this.delete.bind(this)
   }
   componentDidMount(){
+    this.props.cart[0] ? null : this.props.getCart()
+    this.props.cartTotal()
+  }
+  
+  increment(item){
+    this.props.plusOne(item)
     this.props.cartTotal()
   }
 
-  
-    render() {
-      console.log('============= current cart', this.props.cart)
-      console.log('-------------------', this.props.total)
-      const total = this.props.total
-      const cart = this.props.cart ? this.props.cart.map( (e,i) => {
-        console.log('--------------- items ', 'qty: ', e.qty)
-        return <div key={i}>
-              <div>{e.item}
-              <img src={e.image} alt={e.shortdesc}/> 
-                <button onClick={() =>e.qty-1 == 0 ? this.props.removeFromCart(e.id) && this.props.cartTotal() : this.props.decrementQty(e.id) && this.props.cartTotal()}>-</button>{e.qty}
-                <button onClick={() => this.props.incrementQty(e.id) && this.props.cartTotal()}>+</button>
-              </div>  
+  decrement(item){
+    this.props.minusOne(item)
+    this.props.cartTotal()
+  }
 
-              <button onClick={() => this.props.removeFromCart(e.id) && this.props.cartTotal()}>Remove this Item</button>
+  delete(item){
+    this.props.remove(item)
+    this.props.cartTotal()
+  }
+
+
+  render() {
+    // console.log(window.location.pathname)
+    // console.log(this.props.total);
+    const total = this.props.total
+    // console.log(total)
+      const cart = this.props.cart[0] ? this.props.cart.map( (e,i) => {
+        return <div key={i}>
+        <div className="cartitem">
+        <div className ="cartbody">
+      
+        <img src={e.image} alt={e.name}/> 
+              <p>{e.name} </p>
+            
+              <p>Color: {e.color} </p>
+              <p>Size: {e.size} </p>
+            
+              </div>
+            
+              <div className ="cartbody">
+              <div>
+                <button onClick={() => e.qty-1 === 0 ? this.delete(e.id) : this.decrement(e.id)}>-</button>
+                {e.qty}
+                <button onClick={() => this.increment(e.id)}>+</button>
+                </div>
+                <br />
+
+              <span onClick={() => this.delete(e.id)}><FaTrash /> </span>
+              <p><b> Total: {e.total.toFixed(2)}</b> </p>
+          </div>
+          </div>
           </div>
           
       }) : 'add something to your cart!'
+
+      console.log(total.toFixed(2))
         return (
           <div>
-            <h1>Cart</h1>
+            {/* <h1>Cart</h1> */}
             {cart}
-            <div>{total}</div>
-          </div>
+            <div> <b>Order SubTotal: {this.props.cart[0] ? total.toFixed(2):0} </b></div>
+
+            <br />
+                 
+
+
+    
+    {window.location.pathname==='/checkout' ? null :  <Link to="/checkout">     <Button variant="raised" color="primary"> Check Out </Button></Link> 
+      }</div>
         )
     }
 }
@@ -49,4 +96,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {getProducts, decrementQty, incrementQty, removeFromCart, cartTotal })(Cart)
+const mapDispatchToProps = {
+  getProducts,
+  ...actions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

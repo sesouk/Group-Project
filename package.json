@@ -3,28 +3,48 @@
   "version": "0.1.0",
   "private": true,
   "main": "server/server.js",
-  "proxy": "http://localhost:9000",
+  "proxy": {
+    "/auth/callback": {
+      "target": "http://localhost:9000"
+    },
+    "/api": {
+      "target": "http://localhost:9000"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "add": "^2.0.6",
+    "antd": "^3.6.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cloudinary": "^1.11.0",
+    "cypress": "^3.0.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "massive": "^4.8.2",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-icons": "^2.2.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^1.6.0",
+    "reactjs-popup": "^1.1.1",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "stripe": "^6.0.0",
     "yarn": "^1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.4.0"
   }
 }

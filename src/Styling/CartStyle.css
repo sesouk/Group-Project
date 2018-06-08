@@ -1,0 +1,17 @@
+.cartitem{
+	border:1px solid;
+	margin:0px 5px;
+
+
+}
+
+
+.cartbody {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+
+}
