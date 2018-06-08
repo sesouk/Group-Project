@@ -30,6 +30,9 @@ img {
 
     
 }
+.close{
+    font-size:40px;
+}
 .buttons {
     margin:5px 5px;
   }
@@ -62,7 +65,7 @@ img {
 }
 
 p {
-    font-size: 18px;
+    font-size: 15px;
 }
 .cont {
     width: 85%;

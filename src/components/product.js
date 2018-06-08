@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getProduct, actions } from '../ducks/reducer'
 import Popup from 'reactjs-popup'
+import Button from '@material-ui/core/Button';
 import './../Styling/product.css'
 
 class Product extends Component {
@@ -114,7 +115,7 @@ toggle = () => {
               <img src={product.image} alt={product.name}/>
               <p>{product.info}</p>
               <p>${product.price}</p>
-                <button disabled={this.state.button} 
+              <Button variant="raised" color="primary" disabled={this.state.button} 
                   onClick={
                     () => this.props.add(
                       {
@@ -131,7 +132,7 @@ toggle = () => {
                       && this.props.getCart()}
                     >
                     Buy it!
-                </button>
+                </Button>
                 <p>Select a Size: </p>
                   {optionSize}
                 { 
