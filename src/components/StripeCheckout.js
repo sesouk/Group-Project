@@ -64,12 +64,12 @@ class TakeMoney extends Component {
   }
 
   successPayment = data => {
-    console.log("Payment Successful", data.data[0].orderid);
+    // console.log("Payment Successful", data.data[0].orderid);
     const orderid = data.data[0].orderid;
     axios.post("/api/lineitem/", { orderid })
     .then(response => this.setState({ lineitem: response.data }));
      this.setState({ orderNumber: data.data[0].orderid, orderComplete: true });
-    console.log("values in sate", this.state.orderNumber);
+    // console.log("values in sate", this.state.orderNumber);
   };
 
   errorPayment = data => { alert("Payment Error");
