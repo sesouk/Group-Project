@@ -11,7 +11,7 @@ const paymentCtrl = require('./payment_controller')
 const authCtrl = require('./auth_controller')
 const path = require('path')
 
-const checkForSession = require('./checkForSession')
+const checkForSession = require('./checkforsession')
 
 const app = express()
 app.use(bodyParser.json())
