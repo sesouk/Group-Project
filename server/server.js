@@ -9,12 +9,15 @@ const productCtrl = require('./product_controller')
 const orderCtrl = require('./order_controller')
 const paymentCtrl = require('./payment_controller')
 const authCtrl = require('./auth_controller')
-
+const path = require('path')
 
 const checkForSession = require('./checkForSession')
 
 const app = express()
 app.use(bodyParser.json())
+
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -79,3 +82,7 @@ app.get('/api/upload',productCtrl.imageUpload);
 
 //*************Admin Endpoints************ */
 app.get('/api/allOrders',orderCtrl.allOrdersAdmin)
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
